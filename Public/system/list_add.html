@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>后台用户管理</title>
+<title>Background user management</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin-style.css' />
 <script charset="utf-8" src="__PUBLIC__/jquery/1.11.3/jquery.min.js"></script>
@@ -47,73 +47,73 @@ $(document).ready(function(){
 <input type="hidden" name="list_id" id="list_id" value="{$list_id}">
 </gt>
 <div class="title">
-	<div class="left">{$tpltitle}分类分类</div>
-    <div class="right"><a href="?s=Admin-List-Show">返回分类管理</a></div>
+	<div class="left">{$tpltitle}Classification classification</div>
+    <div class="right"><a href="?s=Admin-List-Show">Return to classification management</a></div>
 </div>
 <div class="add">
-<ul><li class="left">上级分类：</li>
-  <li class="right"><select name="list_pid" id="list_pid" class="w120"><option value="0">无</option><volist name=":ff_mysql_list('order:list_pid asc,list_oid;sort:asc')" id="feifei"><option value="{$feifei.list_id}" <eq name="feifei.list_id" value="$list_pid">selected</eq>>{$feifei.list_name}</option></volist></select> * 不选择将成为一级分类</li>
+<ul><li class="left">Sub-headings:</li>
+  <li class="right"><select name="list_pid" id="list_pid" class="w120"><option value="0">no</option><volist name=":ff_mysql_list('order:list_pid asc,list_oid;sort:asc')" id="feifei"><option value="{$feifei.list_id}" <eq name="feifei.list_id" value="$list_pid">selected</eq>>{$feifei.list_name}</option></volist></select> * Not selected will become a primary classification</li>
 </ul>
-<ul><li class="left">所属模型：</li>
-  <li class="right"><select name="list_sid" id="list_sid" class="w120"><option value="1" <eq name="list_sid" value="1">selected</eq>>视频模型 | vod</option><option value="2" <eq name="list_sid" value="2">selected</eq>>新闻模块 | news</option></select>&nbsp;</li>
+<ul><li class="left">Model:</li>
+  <li class="right"><select name="list_sid" id="list_sid" class="w120"><option value="1" <eq name="list_sid" value="1">selected</eq>>Video model | vod</option><option value="2" <eq name="list_sid" value="2">selected</eq>>News module | news</option></select>&nbsp;</li>
 </ul>
-<ul><li class="left">分类排序：</li>
-  <li class="right"><input type="text" name="list_oid" id="list_oid" value="{$list_oid}" maxlength="3" class="w120"><label>越小越前面</label></li>
+<ul><li class="left">Sort by:</li>
+  <li class="right"><input type="text" name="list_oid" id="list_oid" value="{$list_oid}" maxlength="3" class="w120"><label>The smaller the front</label></li>
 </ul>
-<ul><li class="left">播放页跳转时间：</li>
+<ul><li class="left">Play Page Jump Time:</li>
   <li class="right"><input type="text" name="list_copyright" id="list_copyright" value="{$list_copyright}" maxlength="3" class="w120">
-    <label>单位：（秒）</label></li>
+    <label>Unit: (seconds)</label></li>
 </ul>
-<ul><li class="left">分类中文名称：</li>
-  <li class="right"><input type="text" name="list_name" id="list_name" value="{$list_name}" maxlength="20" error="* 分类名称不能为空!" class="w120"><span id="list_name_error">*</span></li>
+<ul><li class="left">Classification Chinese name:</li>
+  <li class="right"><input type="text" name="list_name" id="list_name" value="{$list_name}" maxlength="20" error="* Category name can not be empty!" class="w120"><span id="list_name_error">*</span></li>
 </ul>
-<ul><li class="left">分类英文别名：</li>
-   <li class="right"><input type="text" name="list_dir" id="list_dir" value="{$list_dir}" maxlength="40" class="w120"><label>留空则自动转为拼音</label></li>
+<ul><li class="left">Category English alias:</li>
+   <li class="right"><input type="text" name="list_dir" id="list_dir" value="{$list_dir}" maxlength="40" class="w120"><label>Leave the gap is automatically changed to Pinyin</label></li>
 </ul>
-<ul><li class="left">分类页模板名：</li>
-   <li class="right"><input type="text" name="list_skin" id="list_skin" value="{$list_skin|default='vod_list'}" maxlength="40" error="* 使用模板名不能为空!" class="w120"><label><a href="javascript:" onClick="list_skin.value='vod_channel';">影视大类</a> <a href="javascript:" onClick="list_skin.value='vod_list';">影视小类</a> <a href="javascript:" onClick="list_skin.value='news_channel';">新闻大类</a> <a href="javascript:" onClick="list_skin.value='news_list';">新闻小类</a></label><span id="list_skin_error"></span></li>
+<ul><li class="left">Category page template name:</li>
+   <li class="right"><input type="text" name="list_skin" id="list_skin" value="{$list_skin|default='vod_list'}" maxlength="40" error="* Use template name can not be empty!" class="w120"><label><a href="javascript:" onClick="list_skin.value='vod_channel';">Major categories of film and television</a> <a href="javascript:" onClick="list_skin.value='vod_list';">Video class</a> <a href="javascript:" onClick="list_skin.value='news_channel';">News category</a> <a href="javascript:" onClick="list_skin.value='news_list';">News class</a></label><span id="list_skin_error"></span></li>
 </ul>
-<ul><li class="left">详情页模板名：</li>
+<ul><li class="left">Details page template name:</li>
    <li class="right"><input type="text" name="list_skin_detail" id="list_skin_detail" value="{$list_skin_detail|default='vod_detail'}" maxlength="40" class="w120"></li>
 </ul>
-<ul><li class="left">播放页模板名：</li>
+<ul><li class="left">Play page template name:</li>
    <li class="right"><input type="text" name="list_skin_play" id="list_skin_play" value="{$list_skin_play|default='vod_play'}" maxlength="40" class="w120"></li>
 </ul>
-<ul><li class="left">筛选页模板名：</li>
+<ul><li class="left">Filter page template name:</li>
    <li class="right"><input type="text" name="list_skin_type" id="list_skin_type" value="{$list_skin_type|default='vod_type'}" maxlength="40" class="w120"></li>
 </ul>
-<ul><li class="left">分类SEO标题：</li>
+<ul><li class="left">Category SEO Title:</li>
    <li class="right"><input type="text" name="list_title" id="list_title" value="{$list_title}" maxlength="80" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类SEO关键词：</li>
+<ul><li class="left">Category SEO Keywords:</li>
    <li class="right"><input type="text" name="list_keywords" id="list_keywords" value="{$list_keywords}" maxlength="150" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类SEO描述：</li>
+<ul><li class="left">Category SEO Description:</li>
    <li class="right"><textarea name="list_description" id="list_description">{$list_description}</textarea></li>
 </ul>
-<ul><li class="left">分类扩展配置.多分类：</li>
+<ul><li class="left">Classification extension configuration.Many categories:</li>
    <li class="right"><input type="text" name="list_extend[type]" id="list_extend_type" value="{$list_extend.type}" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类扩展配置.地区：</li>
+<ul><li class="left">Classification extension configuration.area:</li>
    <li class="right"><input type="text" name="list_extend[area]" id="list_extend_area" value="{$list_extend.area}" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类扩展配置.年代：</li>
+<ul><li class="left">Classification extension configuration.Age:</li>
    <li class="right"><input type="text" name="list_extend[year]" id="list_extend_year" value="{$list_extend.year}" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类扩展配置.明星：</li>
+<ul><li class="left">Classification extension configuration.Celebrity:</li>
    <li class="right"><input type="text" name="list_extend[star]" id="list_extend_star" value="{$list_extend.star}" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类扩展配置.资源：</li>
+<ul><li class="left">Classification extension configuration.Resources:</li>
    <li class="right"><input type="text" name="list_extend[state]" id="list_extend_state" value="{$list_extend.state}" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类扩展配置.语言：</li>
+<ul><li class="left">Classification extension configuration.Language:</li>
    <li class="right"><input type="text" name="list_extend[language]" id="list_extend_language" value="{$list_extend.language}" class="w400">&nbsp;</li>
 </ul>
-<ul><li class="left">分类扩展配置.版本：</li>
+<ul><li class="left">Classification extension configuration.version:</li>
    <li class="right"><input type="text" name="list_extend[version]" id="list_extend_version" value="{$list_extend.version}" class="w400">&nbsp;</li>
 </ul>
 <ul class="footer">
-<input type="submit" name="submit" value="提交"> <input type="reset" name="reset" value="重置"> <gt name="admin_id" value="0">注：不修改密码请留空</gt>
+<input type="submit" name="submit" value="提交"> <input type="reset" name="reset" value="重置"> <gt name="admin_id" value="0">Note: do not change the password, please leave blank</gt>
 </ul>
 </div>
 </form>

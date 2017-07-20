@@ -13,31 +13,31 @@ class IndexAction extends Action
     public function check_env(){
         //预定义查询变量
       $info = array(
-          'safe_mode'=>array('运行于安全模式',0),
-          'allow_url_fopen'=>array('访问 URL 对象','OFF','建议关闭'),
-          'register_globals'=>array('注册全局变量','OFF','建议关闭'),
-          'magic_quotes_gpc'=>array('魔术引号开启','OFF','建议关闭'),
-          'short_open_tag'=>array('短标记支持','OFF','建议关闭'),
-          'magic_quotes_runtime'=>array('自动转义溢出字符','OFF','建议关闭'),
-          'enable_dl'=>array('允许动态加载链接库','OFF','建议打开'),
-          'display_errors'=>array('显示错误信息',0),
-          'post_max_size'=>array('post最大数据量',0),
-          'upload_max_filesize'=>array('上传文件的最大大小',0),
-          'memory_limit'=>array('脚本最大内存使用量',1),
+          'safe_mode'=>array('Run in safe mode',0),
+          'allow_url_fopen'=>array('access URL Object','OFF','It is recommended to close'),
+          'register_globals'=>array('Register global variables','OFF','It is recommended to close'),
+          'magic_quotes_gpc'=>array('Magic quotation marks open','OFF','It is recommended to close'),
+          'short_open_tag'=>array('Short tag support','OFF','It is recommended to close'),
+          'magic_quotes_runtime'=>array('Auto Escape Overrides Characters','OFF','It is recommended to close'),
+          'enable_dl'=>array('Allows dynamic loading of link libraries','OFF','It is recommended to open'),
+          'display_errors'=>array('Displays an error message',0),
+          'post_max_size'=>array('Post maximum amount of data',0),
+          'upload_max_filesize'=>array('The maximum size of the uploaded file',0),
+          'memory_limit'=>array('Script maximum memory usage',1),
        );
 
        $fun = array(
-            'mysql_close'=>array('MySQL数据库','ON','推荐使用MySQL数据库'),
-            'gd_info'=>array('图形处理 GD 库','ON','建议打开GD库'),
-            'socket_accept'=>array('Socket支持',0),
-            'xml_set_object'=>array('XML解析支持','ON','建议开启'),
-            'gzclose'=>array('压缩文件支持(Zlib)',0),
-            'mcrypt_cbc'=>array('MCrypt加密处理',0),
-            'preg_match'=>array('PREL相容语法 PCRE','ON','必须打开PREL语法兼容'),
+            'mysql_close'=>array('MySQL database','ON','It is recommended to use a MySQL database'),
+            'gd_info'=>array('Graphics processing GD Library','ON','It is recommended to open the GD library'),
+            'socket_accept'=>array('Socket support',0),
+            'xml_set_object'=>array('XML parsing support','ON','It is recommended to open'),
+            'gzclose'=>array('Compressed file support(Zlib)',0),
+            'mcrypt_cbc'=>array('MCrypt encryption processing',0),
+            'preg_match'=>array('PREL compatible grammar PCRE','ON','PREL syntax must be enabled for compatibility'),
         );
         //根据查询条件,动态赋值
         $phpversiON = phpversion();//获取php版本号
-        $versiON_msg=versiON_compare(PHP_VERSION,'5.2.0','<')?'推荐使用5.2.0以上版本':'正常使用';
+        $versiON_msg=versiON_compare(PHP_VERSION,'5.2.0','<')?'Recommended 5.2.0 or more':'Normal use';
         $run_env = strtoupper(php_sapi_name());//查看运行环境
         $os = PHP_OS;
         $is_rewrite = false;//预设rewrite为否定
@@ -79,10 +79,10 @@ class IndexAction extends Action
 <meta name="Copyright" content="" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<title>ThinkPHP环境检测</title>
+<title>ThinkPHP environmental testing</title>
 <style type="text/css">
 *{margin:0;padding:0}
-    body{font:400 14px/2em 'Microsoft Yahei','黑体',Tahoma,sans-serif;text-align:center;background:#fff;}
+    body{font:400 14px/2em 'Microsoft Yahei','Blackbody',Tahoma,sans-serif;text-align:center;background:#fff;}
     table {margin-top:10px;width:700px;}
     .red{color:red;font-weight:bold;}
     .blue{color:blue;}
@@ -94,38 +94,38 @@ class IndexAction extends Action
 </style>
 </head>
 <body>
-    <div class="title">^_^ Hello, 欢迎使用<span class="red">ThinkPHP</span>!</div>
+    <div class="title">^_^ Hello, welcome<span class="red">ThinkPHP</span>!</div>
     <table>
-        <tr class='thead'><td colspan="2">服务器参数</td></tr>
-        <tr><th class="tbhead">服务器域名/IP：</th><td>{$_SERVER['SERVER_NAME']} [{$_SERVER['REMOTE_ADDR']}]</td></tr>
-        <tr><th class="tbhead">服务端口：</th><td>{$_SERVER['SERVER_PORT']}</td></tr>
-        <tr><th class="tbhead">服务器类型/版本：</th><td>{$_SERVER['SERVER_SOFTWARE']}</td></tr>
-        <tr><th class="tbhead">服务器操作系统：</th><td>{$os}</td></tr>
-        <tr><th class="tbhead">网站根目录：</th><td>{$_SERVER['DOCUMENT_ROOT']}</td></tr>
-        <tr><th class="tbhead">当前文件所在位置：</th><td>{$_SERVER['SCRIPT_FILENAME']}</td></tr>
+        <tr class='thead'><td colspan="2">Server parameters</td></tr>
+        <tr><th class="tbhead">Server domain name/IP：</th><td>{$_SERVER['SERVER_NAME']} [{$_SERVER['REMOTE_ADDR']}]</td></tr>
+        <tr><th class="tbhead">Service port:</th><td>{$_SERVER['SERVER_PORT']}</td></tr>
+        <tr><th class="tbhead">Server type/version:</th><td>{$_SERVER['SERVER_SOFTWARE']}</td></tr>
+        <tr><th class="tbhead">Server operating system:</th><td>{$os}</td></tr>
+        <tr><th class="tbhead">Website root directory:</th><td>{$_SERVER['DOCUMENT_ROOT']}</td></tr>
+        <tr><th class="tbhead">Current file location:</th><td>{$_SERVER['SCRIPT_FILENAME']}</td></tr>
     </table>
     <table>
     <tr>
-        <th class='title'>变量名称</th><th class='title'>当前状态</th><th class='title'>推荐</th>
+        <th class='title'>Variable name</th><th class='title'>Current state</th><th class='title'>recommend</th>
     </tr>
     <tbody>
-        <tr><th class='tbhead'>PHP版本</th><td>{$phpversiON}</td><td>{$versiON_msg}</td></tr>
-        <tr><th class='tbhead'>PHP运行环境</th><td>{$run_env}</td><td></td></tr>
+        <tr><th class='tbhead'>PHP version</th><td>{$phpversiON}</td><td>{$versiON_msg}</td></tr>
+        <tr><th class='tbhead'>PHP operating environment</th><td>{$run_env}</td><td></td></tr>
 HTML;
-        $moban .="<tr><th class='tbhead'>是否开启rewrite</th><td>";
+        $moban .="<tr><th class='tbhead'>Whether to open rewrite</th><td>";
         if ($is_apache===false)
         {
-            $moban .= "无法检测</td><td></td></tr>";
+            $moban .= "Can not be detected</td><td></td></tr>";
         }else{
-            $moban .= ($is_rewrite)?'<span color="green">开启</span>':'<span class="red">未开启</span>';
+            $moban .= ($is_rewrite)?'<span color="green">Open</span>':'<span class="red">Unopened</span>';
             $moban .="</td><td></td></tr>";
         }
-        $moban .="<tr class='thead'><td colspan='3'>PHP环境</td></tr>";
+        $moban .="<tr class='thead'><td colspan='3'>PHP environment</td></tr>";
         foreach ($info as $key => $val)
         {
             $moban.="<tr><th class='tbhead'>{$val[0]} [{$key}]</th><td>{$val['value']}</td><td>{$val['message']}</td></tr>";
         }
-        $moban .="<tr class='thead'><td colspan='3'>PHP模块检测</td></tr>";
+        $moban .="<tr class='thead'><td colspan='3'>PHP module detection</td></tr>";
 
         foreach($fun as $key=>$val)
         {

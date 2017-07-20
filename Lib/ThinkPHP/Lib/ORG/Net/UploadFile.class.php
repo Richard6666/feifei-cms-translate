@@ -137,16 +137,16 @@ class UploadFile extends Think
         $filename = $file['savepath'].$file['savename'];
         if(!$this->uploadReplace && is_file($filename)) {
             // 不覆盖同名文件
-            $this->error	=	'文件已经存在！'.$filename;
+            $this->error	=	'File already exists!'.$filename;
             return false;
         }
         // 如果是图像文件 检测文件格式
         if( in_array(strtolower($file['extension']),array('gif','jpg','jpeg','bmp','png','swf')) && false === getimagesize($file['tmp_name'])) {
-            $this->error = '非法图像文件';
+            $this->error = 'Illegal image file';
             return false;
         }
         if(!move_uploaded_file($file['tmp_name'], auto_charset($filename,'utf-8','gbk'))) {
-            $this->error = '文件上传保存错误！';
+            $this->error = 'File upload save error!';
             return false;
         }
         if($this->thumb && in_array(strtolower($file['extension']),array('gif','jpg','jpeg','bmp','png'))) {
@@ -205,13 +205,13 @@ class UploadFile extends Think
             }else{
                 // 尝试创建目录
                 if(!mkdir($savePath)){
-                    $this->error  =  '上传目录'.$savePath.'不存在';
+                    $this->error  =  'Upload directory'.$savePath.'does not exist';
                     return false;
                 }
             }
         }else {
             if(!is_writeable($savePath)) {
-                $this->error  =  '上传目录'.$savePath.'不可写';
+                $this->error  =  'Upload directory'.$savePath.'Can not be written';
                 return false;
             }
         }
@@ -252,7 +252,7 @@ class UploadFile extends Think
             $this->uploadFileInfo = $fileInfo;
             return true;
         }else {
-            $this->error  =  '没有选择上传文件';
+            $this->error  =  'No choice to upload files';
             return false;
         }
     }
@@ -279,12 +279,12 @@ class UploadFile extends Think
         if(!is_dir($savePath)) {
             // 尝试创建目录
             if(!mk_dir($savePath)){
-                $this->error  =  '上传目录'.$savePath.'不存在';
+                $this->error  =  'Upload directory'.$savePath.'does not exist';
                 return false;
             }
         }else {
             if(!is_writeable($savePath)) {
-                $this->error  =  '上传目录'.$savePath.'不可写';
+                $this->error  =  'Upload directory'.$savePath.'Can not be written';
                 return false;
             }
         }
@@ -324,7 +324,7 @@ class UploadFile extends Think
             // 返回上传的文件信息
             return $info;
         }else {
-            $this->error  =  '没有选择上传文件';
+            $this->error  =  'No choice to upload files';
             return false;
         }
     }
@@ -377,25 +377,25 @@ class UploadFile extends Think
     {
          switch($errorNo) {
             case 1:
-                $this->error = '上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值';
+                $this->error = 'Uploaded files over php.ini 中 upload_max_filesize Option limit value';
                 break;
             case 2:
-                $this->error = '上传文件的大小超过了 HTML 表单中 MAX_FILE_SIZE 选项指定的值';
+                $this->error = 'The size of the uploaded file is over HTML In the form MAX_FILE_SIZE Option specifies the value';
                 break;
             case 3:
-                $this->error = '文件只有部分被上传';
+                $this->error = 'Only part of the file is uploaded';
                 break;
             case 4:
-                $this->error = '没有文件被上传';
+                $this->error = 'No files are uploaded';
                 break;
             case 6:
-                $this->error = '找不到临时文件夹';
+                $this->error = 'Can not find temporary folder';
                 break;
             case 7:
-                $this->error = '文件写入失败';
+                $this->error = 'File write failed';
                 break;
             default:
-                $this->error = '未知上传错误！';
+                $this->error = 'Unknown upload error!';
         }
         return ;
     }
@@ -486,24 +486,24 @@ class UploadFile extends Think
         //文件上传成功，进行自定义规则检查
         //检查文件大小
         if(!$this->checkSize($file['size'])) {
-            $this->error = '上传文件大小不符！';
+            $this->error = 'Upload file size does not match!';
             return false;
         }
 
         //检查文件Mime类型
         if(!$this->checkType($file['type'])) {
-            $this->error = '上传文件MIME类型不允许！';
+            $this->error = 'Upload file MIME type not allowed!';
             return false;
         }
         //检查文件类型
         if(!$this->checkExt($file['extension'])) {
-            $this->error ='上传文件类型不允许';
+            $this->error ='Upload file type not allowed';
             return false;
         }
 
         //检查是否合法上传
         if(!$this->checkUpload($file['tmp_name'])) {
-            $this->error = '非法上传文件！';
+            $this->error = 'Illegally upload files!';
             return false;
         }
         return true;

@@ -54,11 +54,11 @@ var cms_player_fun = {
 					document.write('<object id="ffhd_player" name="ffhd_player" type="application/npFFPlayer" width="480" height="320" progid="XLIB.FFPlayer.1" url="'+cms_player.url+'" CurWebPage="'+cms_player_fun.weburl+'"></object></div>');
 					cms_player_fun.buffer();
 				}else{
-					document.write('<div id="ffhd_player" name="ffhd_player">请安装非凡影音播放器</div></div>');
+					document.write('<div id="ffhd_player" name="ffhd_player">Please install the extraordinary audio and video player</div></div>');
 					cms_player_fun.install();
 				}
 			}else{
-				alert('不支持该浏览器点播，推荐使用Goolge Chrome');
+				alert('Does not support the browser on demand, it is recommended to use Goolge Chrome');
 			}
 		}
 	}

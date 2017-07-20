@@ -24,7 +24,7 @@ class SpecialAction extends BaseAction{
 		$currentpage = ff_page_max($currentpage,$totalpages);
 		$pageurl = U('Admin-Special/Show',$admin,false,false).'FFLINK'.C('url_html_suffix');
 		$admin['p'] = $currentpage;
-		$pages = '共'.$count.'篇专题&nbsp;当前:'.$currentpage.'/'.$totalpages.'页&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
+		$pages = '共'.$count.'Articles&nbsp;current:'.$currentpage.'/'.$totalpages.'page&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
 		$admin['pages'] = $pages;
 		//查询数据	
 		$list = $rs->where($where)->page($currentpage)->limit($limit)->order($order)->select();
@@ -43,7 +43,7 @@ class SpecialAction extends BaseAction{
 		if ($where['special_id']) {
 			$rs = D("Special");
 			$array = $rs->ff_find('*', $where);
-			$array['tpltitle'] = '编辑';
+			$array['tpltitle'] = 'edit';
 			$array['special_starsarr'] = admin_star_arr($array['special_stars']);
 			foreach($array['Tag'] as $key=>$value){
 				$tag[$value['tag_list']][$key] = $value['tag_name'];
@@ -52,7 +52,7 @@ class SpecialAction extends BaseAction{
 		}else{
 			$array['special_starsarr'] = admin_star_arr(1);
 			$array['special_addtime'] = time();
-			$array['tpltitle'] = '添加';
+			$array['tpltitle'] = 'Add to';
 			$array['countvod'] = 0;
 			$array['countnews'] = 0;		
 		}
@@ -74,7 +74,7 @@ class SpecialAction extends BaseAction{
 			S('cache_page_special_'.intval($_POST['special_id']),NULL);
 		}
 		$this->assign("jumpUrl",'?s=Admin-Special-Show');
-		$this->success('恭喜您，数据库、缓存、静态所有操作已完成！');
+		$this->success('Congratulations, database, cache, static all operations have been completed!');
 	}	
 	// 隐藏与显示专题
   public function status(){
@@ -95,7 +95,7 @@ class SpecialAction extends BaseAction{
 	// 删除专题all
   public function delall(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要删除的专题！');
+			$this->error('Please select the topic you want to delete!');
 		}	
 		$array = $_POST['ids'];
 		foreach($array as $val){

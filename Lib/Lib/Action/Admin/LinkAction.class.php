@@ -17,10 +17,10 @@ class LinkAction extends BaseAction{
 	  $rs = D("Link");
 		if ($id) {
 			$info = $rs->ff_find($id);
-			$info['tpltitle'] = '编辑';
+			$info['tpltitle'] = 'edit';
 		}else{
 		  $info['link_order'] = $rs->max('link_order')+1;
-			$info['tpltitle'] = '添加';
+			$info['tpltitle'] = 'Add to';
 		}
 		$this->assign($info);	
 		$this->display('./Public/system/link_add.html');
@@ -32,7 +32,7 @@ class LinkAction extends BaseAction{
 			$this->error(D('Link')->getError());
 		}
 		$this->assign("jumpUrl",'?s=Admin-Link-Show');
-		$this->success('恭喜您，所有操作已完成！');
+		$this->success('Congratulations, all the operations have been done!');
 	}			
 	// 批量更新
 	public function updateall(){
@@ -51,7 +51,7 @@ class LinkAction extends BaseAction{
 			  $rs->save($data);
 			}
 		}
-		$this->success('友情链接数据更新成功！');
+		$this->success('Friendship link data update success!');
 	}
 	// 删除友情链接
   public function del(){

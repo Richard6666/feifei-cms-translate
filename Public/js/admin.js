@@ -134,7 +134,7 @@ function setcontinu(id,string){
 	//var width = document.body.scrollWidth;
 	//var height = document.body.scrollHeight;
 	$('#showbg').css({width:$(window).width(),height:$(window).height()});	
-	$('#ct_'+id).after('<span class="continu" id="htmlcontinu">更新至（集、期）<input type="text" size="8" maxlength="10" value="'+string+'" name="continuajax" id="continuajax" onMouseOver="this.select();"> <input type="button" value="确定" onclick="ajaxcontinu('+id+',continuajax.value);" class="submit navpoint"/> <input type="button" value="取消" onclick="hidecontinu()" class="submit navpoint"/></span>');
+	$('#ct_'+id).after('<span class="continu" id="htmlcontinu">Update to (set, period)<input type="text" size="8" maxlength="10" value="'+string+'" name="continuajax" id="continuajax" onMouseOver="this.select();"> <input type="button" value="确定" onclick="ajaxcontinu('+id+',continuajax.value);" class="submit navpoint"/> <input type="button" value="取消" onclick="hidecontinu()" class="submit navpoint"/></span>');
 	var offset = $('#ct_'+id).offset();
 	$('#htmlcontinu').css({left:offset.left,top:offset.top});
 }

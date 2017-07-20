@@ -16,14 +16,14 @@ if($forum_page > 1){
     <input name="forum_sid" type="hidden" value="{$forum_sid|default=1}" />
     <input name="forum_pid" type="hidden" value="{$forum_pid}" />
     <div class="form-group">
-      <textarea name="forum_content" class="form-control" rows="5" placeholder="吐槽......"></textarea>
+      <textarea name="forum_content" class="form-control" rows="5" placeholder="Make complaints......"></textarea>
     </div>
     <div class="form-group ff-submit text-right">
       <label>
       	<input class="form-control input-sm text-center ff-vcode ff-vcode-input" name="forum_vcode" maxlength="4" type="text" placeholder="验证码">
       </label>
       <label>
-    		<button type="submit" class="btn btn-default btn-sm">发表评论</button>
+    		<button type="submit" class="btn btn-default btn-sm">Comment</button>
       </label>
     </div>
     <div class="form-group ff-alert clear">
@@ -39,7 +39,7 @@ if($forum_page > 1){
 <gt name="page_array.records" value="10">
 <div class="col-xs-12">
   <h6>
-    <a class="btn btn-default btn-block ff-page-more" id="ff-page-more" data-id="ff-forum-item" data-page="{$forum_page}" data-url="{$root}index.php?s=forum-special_ajax-sid-{$forum_sid}-cid-{$forum_cid}-p-" href="javascript:;">查看更多评论...</a>
+    <a class="btn btn-default btn-block ff-page-more" id="ff-page-more" data-id="ff-forum-item" data-page="{$forum_page}" data-url="{$root}index.php?s=forum-special_ajax-sid-{$forum_sid}-cid-{$forum_cid}-p-" href="javascript:;">Read more comments...</a>
   </h6>
 </div>
 <div class="clear"></div>

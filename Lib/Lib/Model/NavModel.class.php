@@ -3,7 +3,7 @@ class NavModel extends AdvModel {
 	
 	//自动验证
 	protected $_validate=array(
-		array('nav_title','require','标题必须填写！'),
+		array('nav_title','require','Title must be filled in!'),
 	);
 	
 	/* 自动完成 */
@@ -18,7 +18,7 @@ class NavModel extends AdvModel {
 		if($info){
 			return $info;
 		}
-		$this->error = '没有查询到数据！';
+		$this->error = 'no data has been found!';
 		return false;
 	}
 	
@@ -41,7 +41,7 @@ class NavModel extends AdvModel {
 		if($infos){
 			return $infos;
 		}
-		$this->error = '无符合条件的数据';
+		$this->error = 'No eligible data';
 		return false;
 	}
 	

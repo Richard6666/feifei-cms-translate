@@ -2,73 +2,73 @@
 return array (
   'xfplay' => 
   array (
-    0 => '影音先锋',
-    1 => '需下载安装影音先锋',
+    0 => 'Video vanguard',
+    1 => 'Need to download and install video vanguard',
     2 => '0',
   ),
   'xigua' => 
   array (
-    0 => '西瓜影音',
-    1 => '需下载安装西瓜播放器',
+    0 => 'Watermelon video',
+    1 => 'Need to download and install the watermelon player',
     2 => '0',
   ),
   'jjvod' => 
   array (
-    0 => '吉吉影音',
-    1 => '需下载安装吉吉影音播放器',
+    0 => 'Gigi',
+    1 => 'Need to download and install Gigi audio and video player',
     2 => '0',
   ),
   'ffhd' => 
   array (
-    0 => '非凡影音',
-    1 => '需下载安装非凡影音播放器',
+    0 => 'Extraordinary video',
+    1 => 'Need to download and install the extraordinary audio and video player',
     2 => '0',
   ),
   'iframe' => 
   array (
-    0 => '框架引用',
-    1 => 'iframe引用任何网页',
+    0 => 'Frame reference',
+    1 => 'Iframe references any page',
     2 => '0',
   ),
   'youku' => 
   array (
-    0 => '优酷网',
+    0 => 'Youku',
     1 => 'youku',
     2 => '0',
   ),
   'ykyun' => 
   array (
-    0 => '优酷云',
+    0 => 'Youku cloud',
     1 => 'youkuyun',
     2 => '0',
   ),
   'tudou' => 
   array (
-    0 => '土豆网',
+    0 => 'Tudou',
     1 => 'tudou',
     2 => '0',
   ),
   'sohu' => 
   array (
-    0 => '搜狐',
+    0 => 'Sohu',
     1 => 'sohu',
     2 => '0',
   ),
   'iqiyi' => 
   array (
-    0 => '爱奇艺',
+    0 => 'IQIYI',
     1 => 'iqiyi',
     2 => '0',
   ),
   'qq' => 
   array (
-    0 => '腾讯视频',
+    0 => 'Tencent video',
     1 => 'qq',
     2 => '0',
   ),
   'down' => 
   array (
-    0 => '下载',
+    0 => 'download',
     1 => 'down',
     2 => '0',
   ),
@@ -80,19 +80,19 @@ return array (
   ),
   'mgtv' => 
   array (
-    0 => '芒果TV',
+    0 => 'Mango TV',
     1 => 'mgtv',
     2 => '0',
   ),
   'wasu' => 
   array (
-    0 => '华数TV',
+    0 => 'Number of TV',
     1 => 'wasu',
     2 => '0',
   ),
   'kankan' => 
   array (
-    0 => '响巢看看',
+    0 => 'Listen to the nest',
     1 => 'kankan',
     2 => '0',
   ),
@@ -104,7 +104,7 @@ return array (
   ),
   'letv' => 
   array (
-    0 => '乐视网',
+    0 => 'Letv',
     1 => 'letv',
     2 => '3',
   ),
@@ -152,20 +152,20 @@ return array (
   ),
   'fun' => 
   array (
-    0 => '风行',
+    0 => 'Popular',
     1 => 'fun',
     2 => '0',
   ),
   'video' => 
   array (
-    0 => '自定义播放器',
-    1 => '自定义播放器html5的video标签',
+    0 => 'Customize the player',
+    1 => 'Customize the video tag of the player html5',
     2 => '0',
   ),
   'm3u8' => 
   array (
     0 => 'm3u8',
-    1 => 'm3u8格式播放',
+    1 => 'M3u8 format playback',
     2 => '0',
   ),
   58 => 

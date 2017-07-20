@@ -76,11 +76,11 @@ var cms_player_fun = {
 					cms_player_fun.buffer();
 					setInterval('cms_player_fun.status()','1000');
 				}else{
-					document.write('<div id="xigua_player" name="xigua_player">请安装西瓜影音播放器</div></div>');
+					document.write('<div id="xigua_player" name="xigua_player">Please install watermelon video player</div></div>');
 					cms_player_fun.install();
 				}
 			}else{
-				alert('不支持该浏览器点播，推荐使用Goolge Chrome');
+				alert('Does not support the browser on demand, it is recommended to use Goolge Chrome');
 			}
 		}
 	}

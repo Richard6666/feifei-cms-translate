@@ -25,7 +25,7 @@ class CjAction extends BaseAction{
 			if ( false !==  $rs->add() ) {
 				redirect('?s=Admin-Cj-Show');
 			}else{
-				$this->error($rs->getError().'添加资源库地址失败！');
+				$this->error($rs->getError().'Add library address failed!');
 			}
 		}else{
 		    $this->error($rs->getError());
@@ -39,7 +39,7 @@ class CjAction extends BaseAction{
 			if ($list !== false) {
 			    redirect('?s=Admin-Cj-Show');
 			}else{
-				$this->error("更新资源库地址失败！");
+				$this->error("Update repository address failed!");
 			}
 		}else{
 			$this->error($rs->getError());
@@ -145,7 +145,7 @@ class CjAction extends BaseAction{
 			$array_url['p'] = 'FFLINK';
 			$array_url['xmlurl'] = base64_encode($array_url['xmlurl']);
 			$page_link = U('Admin-Cj/api', $array_url);
-			$page_list = '共'.$json_data['page']['recordcount'].'条数据&nbsp;页次:'.$json_data['page']['pageindex'].'/'.$json_data['page']['pagecount'].'页&nbsp;'.getpage($json_data['page']['pageindex'],$json_data['page']['pagecount'], 5, $page_link, 'pagego(\''.$page_link.'\','.$json_data['page']['pagecount'].')');
+			$page_list = '共'.$json_data['page']['recordcount'].'Article data&nbsp;Page:'.$json_data['page']['pageindex'].'/'.$json_data['page']['pagecount'].'page&nbsp;'.getpage($json_data['page']['pageindex'],$json_data['page']['pagecount'], 5, $page_link, 'pagego(\''.$page_link.'\','.$json_data['page']['pagecount'].')');
 			$this->assign('page_list', $page_list);	
 			// 加载模板
 			$this->display('./Public/system/cj_show.html');
@@ -160,13 +160,13 @@ class CjAction extends BaseAction{
 		if ($json) {
 			$json = json_decode($json, true);
 			if($json['status'] == 501){
-				$this->error("连接API资源库成功，但服务器IP未获得授权。");
+				$this->error("The connection to the API repository was successful, but the server IP was not authorized.");
 			}
 			if(!$json['list']){
-				$this->error("连接APi资源库成功、但采集到的数据格式不正确。");
+				$this->error("The APi repository was successfully connected, but the data format collected was not correct.");
 			}
 		}else{
-			$this->error("连接API资源库失败、通常为服务器网络不稳定或禁用了采集。");
+			$this->error("The connection to the API repository failed, usually the server network was unstable or disabled.");
 		}
 		// 获取到的远程栏目数据增加对应的绑定ID
 		foreach($json['list'] as $key=>$value){
@@ -187,7 +187,7 @@ class CjAction extends BaseAction{
 	// 分页采集入库
 	private function database($array_url, $json_data){
 		echo'<style type="text/css">li{font-size:12px;color:#333;line-height:21px}span{font-weight:bold;color:#FF0000}</style>';
-		echo'<div id="show"><li>共有<span>'.$json_data['page']['recordcount'].'</span>个数据，需要采集<span>'.$json_data['page']['pagecount'].'</span>次，正在执行第<span color=green>'.$array_url['p'].'</span>次采集任务，每一次采集<span>'.$json_data['page']['pagesize'].'</span>个。</li>';
+		echo'<div id="show"><li>Altogether<span>'.$json_data['page']['recordcount'].'</span>Data need to be collected<span>'.$json_data['page']['pagecount'].'</span>Times, is the implementation of the first<span color=green>'.$array_url['p'].'</span>Times the collection task, each acquisition<span>'.$json_data['page']['pagesize'].'</span>个。</li>';
 		// 重采资料或是采集入库
 		if($array_url['field'] && $json_data['data']){
 			$field = explode(',',$array_url['field']);
@@ -198,9 +198,9 @@ class CjAction extends BaseAction{
 				}
 				$status = D('VodXml')->xml_field($data, $vod['vod_reurl']);
 				if($status){
-					echo '<li>重采['.ff_list_find($vod['vod_cid']).'] '.$vod['vod_name'].' '.$array_url['field'].'更新完成。</li>';
+					echo '<li>Re-mining['.ff_list_find($vod['vod_cid']).'] '.$vod['vod_name'].' '.$array_url['field'].'update completed.</li>';
 				}else{
-					echo '<li>重采['.ff_list_find($vod['vod_cid']).'] '.$vod['vod_name'].' 没有添加该片或不需要更新。</li>';
+					echo '<li>Re-mining['.ff_list_find($vod['vod_cid']).'] '.$vod['vod_name'].' Did not add the slice or do not need to be updated.</li>';
 				}
 				ob_flush();flush();
 			}
@@ -208,7 +208,7 @@ class CjAction extends BaseAction{
 			foreach($json_data['data'] as $key=>$vod){
 				$array_vod_play = explode('$$$',$vod['vod_play']);
 				$array_vod_url = explode('$$$',$vod['vod_url']);
-				echo '<li>第<span>'.(($array_url['p']-1)*$json_data['page']['pagesize']+$key+1).'</span>个影片有<span>'.count($array_vod_play).'</span>组播放地址 ['.ff_list_find($vod['vod_cid']).'] '.$vod['vod_name'].' <font color="green">';
+				echo '<li>第<span>'.(($array_url['p']-1)*$json_data['page']['pagesize']+$key+1).'</span>There are movies<span>'.count($array_vod_play).'</span>Group play address ['.ff_list_find($vod['vod_cid']).'] '.$vod['vod_name'].' <font color="green">';
 				//有几组播放地址就添加几次
 				foreach($array_vod_play as $ii=>$value){
 					$vod['vod_inputer'] = 'xml_'.$array_url['cjid'];
@@ -228,12 +228,12 @@ class CjAction extends BaseAction{
 			//缓存断点续采并跳转到下一页
 			$jumpurl = str_replace('FFLINK',($page+1), $pagelink);
 			F('_cj/xucai',$jumpurl);
-			echo C('collect_time').'秒后将自动采集下一页!';
+			echo C('collect_time').'The next page will be automatically collected!';
 			echo '<meta http-equiv="refresh" content='.C('collect_time').';url='.$jumpurl.'>';
 		}else{
 			//清除断点续采
 			F('_cj/xucai',NULL);
-			echo '<div>恭喜您，所有采集任务已经完成，返回[<a href="?s=Admin-Vod-Show">视频管理中心</a>]，查看[<a href="?s=Admin-Vod-Show-vod_cid-0">需要人工再次审核的数据</a>]!</div>';
+			echo '<div>Congratulations, all the collection tasks have been completed and returned[<a href="?s=Admin-Vod-Show">Video management center</a>], View[<a href="?s=Admin-Vod-Show-vod_cid-0">Need to manually re-examine the data</a>]!</div>';
 		}
 	}		
 }

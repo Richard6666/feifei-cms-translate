@@ -1,8 +1,8 @@
 <?php 
 class AdsModel extends AdvModel {
 	protected $_validate=array(
-		array('ads_name','require','广告标识必须填写！',1,'',1),
-		array('ads_name','','该广告标识已经存在,请重新填写一个广告标识！',1,'unique',1),
+		array('ads_name','require','Ad ID must be filled in!',1,'',1),
+		array('ads_name','','The ad ID already exists,Please re-fill an ad logo!',1,'unique',1),
 	);
 	
 	protected $_auto=array(
@@ -17,7 +17,7 @@ class AdsModel extends AdvModel {
 		if($info){
 			return $info;
 		}
-		$this->error = '没有查询到数据！';
+		$this->error = 'no data has been found!';
 		return false;
 	}
 	
@@ -39,7 +39,7 @@ class AdsModel extends AdvModel {
 		if($infos){
 			return $infos;
 		}
-		$this->error = '无符合条件的数据';
+		$this->error = 'No eligible data';
 		return false;
 	}
 	

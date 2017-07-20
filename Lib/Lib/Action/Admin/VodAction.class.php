@@ -84,7 +84,7 @@ class VodAction extends BaseAction{
 		$currentpage = ff_page_max($currentpage,$totalpages);//$admin['page'] = $currentpage;
 		$pageurl = U('Admin-Vod/Show',$admin,false,false).'FFLINK'.C('url_html_suffix');
 		$admin['p'] = $currentpage;$_SESSION['vod_jumpurl'] = U('Admin-Vod/Show',$admin).C('url_html_suffix');
-		$pages = '共'.$count.'部影片&nbsp;当前:'.$currentpage.'/'.$totalpages.'页&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
+		$pages = '共'.$count.'a movie&nbsp;current:'.$currentpage.'/'.$totalpages.'page&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
 		$admin['pages'] = $pages;
 		//查询数据
 		$list = $rs->where($where)->order($order)->limit($limit)->page($currentpage)->select();
@@ -121,7 +121,7 @@ class VodAction extends BaseAction{
 			$array['vod_starsarr'] = admin_star_arr($array['vod_stars']);
 			$array['vod_type'] = implode(',',$tag['vod_type']);
 			$array['vod_keywords'] = implode(',',$tag['vod_tag']);
-			$array['vod_tplname'] = '编辑';
+			$array['vod_tplname'] = 'edit';
 			$_SESSION['vod_jumpurl'] = $_SERVER['HTTP_REFERER'];
 		}else{
 		  $array['vod_cid'] = cookie('vod_cid');
@@ -135,7 +135,7 @@ class VodAction extends BaseAction{
 			$array['vod_server_list'] = C('play_server');
 			$array['vod_url']=array(0=>'');
 			$array['vod_starsarr'] = admin_star_arr(1);
-			$array['vod_tplname'] = '添加';
+			$array['vod_tplname'] = 'Add to';
 			//默认配置
 			$array["list_extend"]['type'] = C('play_type');
 			$array["list_extend"]['area'] = C('play_area');
@@ -203,9 +203,9 @@ class VodAction extends BaseAction{
 			}
 			//最后跳转
 			$this->assign("jumpUrl",$_SESSION['vod_jumpurl']);
-			$this->success('恭喜您，数据库、缓存、静态所有操作已完成！');
+			$this->success('Congratulations, database, cache, static all operations have been completed!');
 		}else{
-			$this->error('数据库操作完成，附加操作不做处理！');
+			$this->error('Database operation is completed, additional operations do not deal with!');
 		}		
 	}
 	// 删除影片
@@ -216,7 +216,7 @@ class VodAction extends BaseAction{
 	// 删除影片all
   public function delall(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要删除的影片！');
+			$this->error('Please select the video you want to delete!');
 		}	
 		$array = $_POST['ids'];
 		foreach($array as $val){
@@ -269,13 +269,13 @@ class VodAction extends BaseAction{
 			redirect('?s=Admin-Create-vod_detail_id-ids-'.implode(',',$_POST['ids']));
 		}else{
 			$this->assign("jumpUrl",$_SESSION['vod_jumpurl']);
-			$this->error('操作错误！');
+			$this->error('Wrong operation!');
 		}
   }	
 	// 批量转移影片
   public function pestcid(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要转移的影片！');
+			$this->error('Please select the video you want to transfer!');
 		}	
 		$cid = intval($_POST['pestcid']);
 		if (ff_list_isson($cid)) {
@@ -285,7 +285,7 @@ class VodAction extends BaseAction{
 			$rs->where($where)->save($data);
 			redirect($_SESSION['vod_jumpurl']);
 		}else{
-			$this->error('请选择当前大类下面的子分类！');		
+			$this->error('Please select the subclass for the current category!');		
 		}
   }	
 	// 设置状态

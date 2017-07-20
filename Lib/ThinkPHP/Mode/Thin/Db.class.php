@@ -317,7 +317,7 @@ class Db extends Think
     public function error() {
         $this->error = mysql_error($this->linkID);
         if($this->queryStr!=''){
-            $this->error .= "\n [ SQL语句 ] : ".$this->queryStr;
+            $this->error .= "\n [ SQL statement ] : ".$this->queryStr;
         }
         return $this->error;
     }

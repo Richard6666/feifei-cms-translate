@@ -29,10 +29,10 @@ class UploadAction extends BaseAction{
 		$up->dateFormat = C('upload_style');
     if (!$up->upload()) {
 			$error = $up->getErrorMsg();
-			if($error == '上传文件类型不允许'){
+			if($error == 'Upload file type not allowed'){
 				$error .= '，可上传<font color=red>'.C('upload_class').'</font>';
 			}
-			exit($error.' [<a href="?s=Admin-Upload-Show-sid-'.$sid.'-fileback-'.$fileback.'">重新上传</a>]');
+			exit($error.' [<a href="?s=Admin-Upload-Show-sid-'.$sid.'-fileback-'.$fileback.'">re-upload</a>]');
 			//dump($up->getErrorMsg());
 		}
 		$uploadList = $up->getUploadFileInfo();
@@ -54,7 +54,7 @@ class UploadAction extends BaseAction{
 			$img->ftp_upload($sid.'/'.$uploadList[0]['savename']);
 		}
 		echo "<script type='text/javascript'>parent.document.getElementById('".$fileback."').value='".$sid.'/'.$uploadList[0]['savename']."';</script>";
-		echo '文件上传成功　[<a href="?s=Admin-Upload-Show-sid-'.$sid.'-fileback-'.$fileback.'">重新上传</a>]';
+		echo 'The file was uploaded successfully[<a href="?s=Admin-Upload-Show-sid-'.$sid.'-fileback-'.$fileback.'">re-upload</a>]';
 		//<a href="'.$uppath.$uploadList[0]['savename'].'" target="_blank"><font color=red>'.$uploadList[0]['savename'].'</font></a>
 		echo '</div>';
 	}					

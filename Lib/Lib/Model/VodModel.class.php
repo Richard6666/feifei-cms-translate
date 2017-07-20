@@ -3,10 +3,10 @@ class VodModel extends RelationModel {
 	private $vod_id;
 	//自动验证
 	protected $_validate = array(
-	  array('vod_cid','number','请选择分类！',1,'',3),
-		array('vod_cid','ff_list_isson','请选择当前子类栏目！',1,'function',3),
-		array('vod_name','require','影片名称必须填写！',1,'',3),
-		array('vod_ename','','链接别名标识重复，请重新填写',2,'unique',3),
+	  array('vod_cid','number','please select a type!',1,'',3),
+		array('vod_cid','ff_list_isson','Please select the current sub-section!',1,'function',3),
+		array('vod_name','require','Video title must be filled in!',1,'',3),
+		array('vod_ename','','Link alias logo repeat, please re-fill',2,'unique',3),
 	);
 	//自动完成
 	protected $_auto = array(
@@ -128,7 +128,7 @@ class VodModel extends RelationModel {
 			}
     	return $info;
     }
-		$this->error = '数据不存在！';
+		$this->error = 'Data does not exist!';
 		return false;
 	}
 

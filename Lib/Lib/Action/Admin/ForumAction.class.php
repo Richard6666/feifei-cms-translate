@@ -30,7 +30,7 @@ class ForumAction extends BaseAction{
 		$page = $_GET['ff_page_forum'];
 		$params = array('cid'=>$admin['cid'], 'sid'=>$admin['sid'], 'uid'=>$admin['uid'], 'pid'=>$admin['pid'], 'istheme'=>$admin['istheme'], 'status'=>$admin['status'], 'wd'=>urlencode($admin['wd']), 'order'=>$admin['order'], 'sort'=>$admin['sort'], 'p'=>'FFLINK');
 		$pageurl = U('Forum/Show', $params, false, true);
-		$admin['pages'] = '共'.$page['records'].'篇评论&nbsp;当前:'.$page['currentpage'].'/'.$page['totalpages'].'页&nbsp;'.getpage($page['currentpage'],$page['totalpages'],8,$pageurl,'pagego(\''.$pageurl.'\','.$page['totalpages'].')');
+		$admin['pages'] = 'Total'.$page['records'].'Commentary&nbsp;current:'.$page['currentpage'].'/'.$page['totalpages'].'page&nbsp;'.getpage($page['currentpage'],$page['totalpages'],8,$pageurl,'pagego(\''.$pageurl.'\','.$page['totalpages'].')');
 		$admin['list'] = $list;
 		$this->assign($admin);
 		//回跳URL
@@ -50,7 +50,7 @@ class ForumAction extends BaseAction{
 		$info = D("Forum")->ff_update($$data);
 		if($info){
 			$this->assign("jumpUrl",$_SESSION['forum_jumpurl']);
-			$this->success('更新评论信息成功！');
+			$this->success('Update comment message success!');
 		}else{
 			$this->error(D("Forum")->getError());
 			
@@ -61,7 +61,7 @@ class ForumAction extends BaseAction{
 		$where = array();
 		$where['forum_id'] = array('eq', $_REQUEST['ids']);
 		D('Forum')->where( $where )->setField('forum_istop', intval($_REQUEST['value']));
-		$this->success('置顶状态修改完成！');
+		$this->success('The top state is modified!');
 		//redirect($_SERVER['HTTP_REFERER']);
 	}
 	//状态
@@ -73,7 +73,7 @@ class ForumAction extends BaseAction{
 			$where['forum_id'] = array('eq', $_REQUEST['ids']);
 		}
 		D('Forum')->where( $where )->setField('forum_status', intval($_REQUEST['value']));
-		$this->success('显示状态修改完成！');
+		$this->success('Show status changes complete!');
 		//redirect($_SERVER['HTTP_REFERER']);
 	}
 	// 删除
@@ -89,7 +89,7 @@ class ForumAction extends BaseAction{
 		}
 		$where['_logic'] = 'or';
 		D('Forum')->where($where)->delete();
-		$this->success('删除评论完成！');
+		$this->success('Delete comment finished!');
   }
 	// 清空
   public function clear(){
@@ -100,7 +100,7 @@ class ForumAction extends BaseAction{
 			$where['forum_sid'] = array('eq', $sid);
 		}
 		D('Forum')->where($where)->delete();
-		$this->success('对应的评论已清空！');
+		$this->success('The corresponding comment is cleared!');
   }				
 }
 ?>

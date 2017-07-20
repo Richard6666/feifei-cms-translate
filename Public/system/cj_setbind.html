@@ -2,6 +2,6 @@
 <volist name="vod_list" id="feifei">
 <option value="{$feifei.list_id}" <eq name="feifei.list_id" value="$vod_cid">selected</eq>>{$feifei.list_name}</option>
 </volist>
-<option value="">取消绑定</option>
+<option value="">Unbind</option>
 </select>
-<input class="submit" type="button" value="提 交" onClick="submitbind($('#cid').val(),'{.bind}');" style="cursor:pointer"> <input name="button" type="button" value="取 消" class="submit" onClick="hidebind();" style="cursor:pointer">
+<input class="submit" type="button" value="To submit" onClick="submitbind($('#cid').val(),'{.bind}');" style="cursor:pointer"> <input name="button" type="button" value="Cancel" class="submit" onClick="hidebind();" style="cursor:pointer">

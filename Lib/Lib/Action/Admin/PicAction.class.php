@@ -12,27 +12,27 @@ class PicAction extends BaseAction{
 		$list = $rs->where('Left(vod_pic,7)="http://"')->order('vod_addtime desc')->limit(C('upload_http_down'))->select();
 		if($list){
 			echo '<style type="text/css">div{font-size:13px;color: #333333;line-height:21px;}span{font-weight:bold;color:#FF0000}</style>';
-			echo'<div>共有<span>'.$count.'</span>张远程图片，每次批量下载<span>'.C('upload_http_down').'</span>张，<span>'.C('collect_time').'</span>秒后执行下一次操作。<br />';
+			echo'<div>Altogether<span>'.$count.'</span>Zhang Yuan Cheng picture, each batch download<span>'.C('upload_http_down').'</span>Zhang<span>'.C('collect_time').'</span>Seconds after the next operation.<br />';
 			foreach($list as $key=>$value){
 				$imgnew = $img->down_load($value['vod_pic'],'vod');
 				if($value['vod_pic'] == $imgnew){
 					$rs->where('vod_id='.$value['vod_id'])->setField('vod_pic',str_replace("http://","httpf://",$value['vod_pic']));
-					echo(($key+1).' <a href="'.$value['vod_pic'].'" target="_blank">'.$value['vod_pic'].'</a> <font color=red>下载失败!</font><br/>');
+					echo(($key+1).' <a href="'.$value['vod_pic'].'" target="_blank">'.$value['vod_pic'].'</a> <font color=red>download failed!</font><br/>');
 				}else{
 					$rs->where('vod_id = '.$value['vod_id'])->setField('vod_pic',$imgnew);
-					echo(($key+1).' <a href="'.$value['vod_pic'].'" target="_blank">'.$value['vod_pic'].'</a> 下载成功！<br />');					
+					echo(($key+1).' <a href="'.$value['vod_pic'].'" target="_blank">'.$value['vod_pic'].'</a> download successful!<br />');					
 				}
 				ob_flush();flush();
 			}
-			echo'请稍等一会，正在释放服务器资源...<meta http-equiv="refresh" content='.C('collect_time').';url=?s=Admin-Pic-Down>';
+			echo'Please wait for a while and release the server resource...<meta http-equiv="refresh" content='.C('collect_time').';url=?s=Admin-Pic-Down>';
 			echo'</div>';
 		}else{
 			$count = $rs->where('Left(vod_pic,8)="httpf://"')->count('vod_id');
 			if($count){
-				echo'<div style="font-size:14px;">共有<span>'.$count.'</span>张远程图片保存失败,如果需要重新下载,请点击<a href="?s=Admin-Pic-Down-id-fail">[这里]</a>!</div>';
+				echo'<div style="font-size:14px;">Altogether<span>'.$count.'</span>Zhang Yuancheng picture save failed,If you need to re-download,Please click<a href="?s=Admin-Pic-Down-id-fail">[Here]</a>!</div>';
 			}else{
 				$this->assign("jumpUrl","?s=Admin-Vod-Show");
-				$this->success('恭喜您,所有远程图片已经下载完成！');
+				$this->success('congratulations,All remote images have been downloaded!');
 			}
 		}
   }
@@ -45,7 +45,7 @@ class PicAction extends BaseAction{
 			$dirpath = './'.C('upload_path');
 		}
 		if (!strpos($dirpath,C('upload_path'))) {
-			$this->error('不在上传文件夹范围内！');
+			$this->error('Not in the range of uploaded folders!');
 		}		
 		$dirlast = $this->dirlast();
 		import("ORG.Io.Dir");
@@ -55,7 +55,7 @@ class PicAction extends BaseAction{
 			$list_dir[$key]['pathfile'] = admin_ff_url_repalce($value['path'],'desc').'|'.str_replace('-','*',$value['filename']);
 		}	
 		if (empty($list_dir)){
-			$this->error('还没有上传任何附件,无需管理！');
+			$this->error('No attachments have been uploaded yet,No management!');
 		}	
 		if($dirlast && $dirlast != '.'){
 			$this->assign('dirlast',admin_ff_url_repalce($dirlast,'desc'));
@@ -78,7 +78,7 @@ class PicAction extends BaseAction{
 		$path = trim(str_replace('*','-',$_GET['id']));
 		@unlink($path);
 		@unlink(str_replace(C('upload_path').'/',C('upload_path').'-s/',$path));
-		$this->success('删除附件成功！');
+		$this->success('Delete attachments successfully!');
   }
 	// 清理无效图片
 	public function ajaxpic(){
@@ -86,7 +86,7 @@ class PicAction extends BaseAction{
 		//根据参数组合生成当前目录下的图片数组
 		$list = glob($path.'/*');
 		if(empty($list)){
-			exit('无图片');
+			exit('No picture');
 		}
 		foreach ($list as $i=>$file){
 			$dir[] = str_replace('./'.C('upload_path').'/','',$path.'/'.basename($file));
@@ -122,7 +122,7 @@ class PicAction extends BaseAction{
 		foreach ($del as $key=>$value){
 			@unlink('./'.C('upload_path').'/'.$value);
 		};
-		exit('清理完成');
+		exit('Clean up');
   }						
 }
 ?>

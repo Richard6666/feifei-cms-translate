@@ -4,10 +4,10 @@ class VodXmlModel extends Model {
 	//采集入库 先检查库里面是否有相同来源地址，再智能判断是否有相同影片，最后都没有的情况才新添加
   public function xml_insert($vod){
 	  if(empty($vod['vod_name']) || empty($vod['vod_url']) || empty($vod['vod_play'])){
-			return '影片名称或播放器名称或播放地址为空，不做处理!';
+			return 'The movie name or player name or play address is empty and is not processed!';
 		}
 		if(!$vod['vod_cid']){
-			return '未匹配到对应栏目分类，不做处理!';
+			return 'Did not match the corresponding column classification, do not deal with!';
 		}
 		// 要查询检查的字段
 		$field = 'vod_id,vod_cid,vod_name,vod_title,vod_actor,vod_continu,vod_isend,vod_total,vod_inputer,vod_play,vod_url';
@@ -107,20 +107,20 @@ class VodXmlModel extends Model {
 			if( $vod['vod_keywords'] ){
 				D('Tag')->tag_update($id, $vod["vod_keywords"], 'vod_tag');
 			}			
-			return '视频添加成功('.$id.')。';
+			return 'Video added successfully('.$id.')。';
 		}
-		return '视频添加失败。'.M('Vod')->getDbError();
+		return 'Video added failed.'.M('Vod')->getDbError();
   }	
 	
 	// 根据影片ID更新数据
 	public function xml_update($vod, $vod_old){	
 		// 检测是否站长手动锁定更新
 		if('feifeicms' == $vod_old['vod_inputer']){
-			return '站长手动设置，不更新。';
+			return 'Webmaster manually set, not updated.';
 		}
 		$edit = $this->xml_play_url($vod, $vod_old);//return false/array
 		if($edit == false){
-			return '播放地址组未变化，不需要更新。';
+			return 'The playback address group does not change and does not need to be updated.';
 		}
 		// 组合更新条件及内容(以最后一次更新的库为检测依据)
 		$edit['vod_id'] = $vod_old['vod_id'];
@@ -208,11 +208,11 @@ class VodXmlModel extends Model {
 			if($url_old && $url_new){
 				if($url_old != $url_new){
 					$array_old[$play][0][$key] = trim($url_new);
-					$edit['vod_update_info'] = strtoupper($vod['vod_play']).'旧播放地址已更新 ';
+					$edit['vod_update_info'] = strtoupper($vod['vod_play']).'Old play address has been updated ';
 				}
 			}else{
 				$array_old[$play][0][$key] = trim($url_new);
-				$edit['vod_update_info'] = strtoupper($vod['vod_play']).'播放地址有新增加 ';
+				$edit['vod_update_info'] = strtoupper($vod['vod_play']).'There is a new increase in play address ';
 			}
 		}
 		//播放地址没有变化则返回false

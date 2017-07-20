@@ -4,10 +4,10 @@ class PostAction extends HomeAction{
 	public function _initialize(){
 		if(C('collect_passwd')){
 			if(trim(C('collect_passwd')) != htmlspecialchars($_POST['collect_passwd'])){
-				exit( '密码不正确。' );
+				exit( 'Incorrect password.' );
 			}
 		}else{
-			exit( '请先在后台设置密码。' );
+			exit( 'Please set your password in the background.' );
 		}
   }
 

@@ -1,7 +1,7 @@
       <ul class="nav nav-pills" id="ff-tabs">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            播放列表 <span class="caret"></span>
+            playlist <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <volist name="vod_play_list" id="feifei" key="k">

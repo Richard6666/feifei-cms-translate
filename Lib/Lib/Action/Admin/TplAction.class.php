@@ -8,7 +8,7 @@ class TplAction extends BaseAction{
 		$dir = new Dir($dirpath);
 		$list_dir = $dir->toArray();
 		if (empty($list_dir)){
-			$this->error('该文件夹下面没有文件！');
+			$this->error('There is no file below this folder!');
 		}
 		foreach($list_dir as $key=>$value){
 			$list_dir[$key]['pathfile'] = admin_ff_url_repalce($value['path'],'desc').'|'.$value['filename'];
@@ -30,7 +30,7 @@ class TplAction extends BaseAction{
 			$dirpath = TMPL_PATH;
 		}
 		if (!strpos($dirpath,'Tpl')) {
-			$this->error('不在模板文件夹范围内！');
+			$this->error('Not within the template folder!');
 		}
 		return $dirpath;
 	}
@@ -47,7 +47,7 @@ class TplAction extends BaseAction{
 	public function add(){
 		$filename = admin_ff_url_repalce(str_replace('*','.',trim($_GET['id'])));
 		if (empty($filename)) {
-			$this->error('模板名称不能为空！');
+			$this->error('Template name can not be empty!');
 		}
 		$content = read_file($filename);
 		$this->assign('filename',$filename);
@@ -58,18 +58,18 @@ class TplAction extends BaseAction{
 	public function update(){
 		$filename = trim($_POST['filename']);
 		if (empty($filename)) {
-			$this->error('模板文件名不能为空！');
+			$this->error('Template file name can not be empty!');
 		}		
 		if( !in_array( strrchr($filename,"."), array('.html','.htm','.shtml','.shtm','.xml','.js','.css','.tpl')) ){
-			$this->error('模板格式错误！');
+			$this->error('Template format is wrong!');
 		}
 		//
 		$content = stripslashes(htmlspecialchars_decode($_POST['content']));
 		if (empty($content)) {
-			$this->error('模板内容不能为空！');
+			$this->error('Template content can not be empty!');
 		}		
 		if (!testwrite(substr($filename,0,strrpos($filename,'/')))){
-			$this->error('在线编辑模板需要给'.TEMPLATE_PATH.'添加写入权限！');
+			$this->error('Online editing templates need to be given'.TEMPLATE_PATH.'Add write permission!');
 		}
 		write_file($filename,$content);
 		if (!empty($_SESSION['tpl_jumpurl'])) {
@@ -77,13 +77,13 @@ class TplAction extends BaseAction{
 		}else{
 			$this->assign("jumpUrl",'?s=Admin/Tpl/Show');
 		}
-		$this->success('恭喜您，模板更新成功！');
+		$this->success('Congratulations, template update success!');
 	}
 	// 删除模板
   public function del(){
 		$id = admin_ff_url_repalce(str_replace('*','.',trim($_GET['id'])));
 		if (!substr(sprintf("%o",fileperms($id)),-3)){
-			$this->error('无删除权限！');
+			$this->error('No delete permission!');
 		}
 		@unlink($id);
 		if (!empty($_SESSION['tpl_jumpurl'])) {
@@ -91,7 +91,7 @@ class TplAction extends BaseAction{
 		}else{
 			$this->assign("jumpUrl",'?s=Admin/Tpl/Show');
 		}
-		$this->success('删除文件成功！');
+		$this->success('Delete file successfully!');
   }				
 }
 ?>

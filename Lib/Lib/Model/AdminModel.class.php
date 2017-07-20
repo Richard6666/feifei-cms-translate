@@ -1,10 +1,10 @@
 <?php 
 class AdminModel extends AdvModel {
 	protected $_validate=array(
-		array('admin_name','require','管理员名称必须填写！',1,'',1),
-		array('admin_pwd','require','管理员密码必须填写！',1,'',1),
-		array('admin_repwd','admin_pwd','两次输入的密码不一致,请重新输入！',1,'confirm','',3),
-		array('admin_name','','帐号名称已经存在！',1,'unique',1),
+		array('admin_name','require','The administrator name must be filled in!',1,'',1),
+		array('admin_pwd','require','The administrator password must be filled in!',1,'',1),
+		array('admin_repwd','admin_pwd','The password entered twice is inconsistent,please enter again!',1,'confirm','',3),
+		array('admin_name','','Account name already exists!',1,'unique',1),
 	);
 	protected $_auto=array(
 		array('admin_pwd','admin_pwd',3,'callback'),

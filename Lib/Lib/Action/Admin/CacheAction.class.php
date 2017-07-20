@@ -14,7 +14,7 @@ class CacheAction extends BaseAction{
 		if(!$dir->isEmpty('./Runtime/Temp')){$dir->delDir('./Runtime/Temp');}
 		if(!$dir->isEmpty('./Runtime/Cache')){$dir->delDir('./Runtime/Cache');}
 		if(!$dir->isEmpty('./Runtime/Logs')){$dir->delDir('./Runtime/Logs');}
-		echo('清除成功');
+		echo('Clear success');
   }
 	// 删除静态缓存
 	public function delhtml(){
@@ -46,7 +46,7 @@ class CacheAction extends BaseAction{
 			if(is_dir(HTML_PATH.'News_read')){$dir->delDir(HTML_PATH.'News_read');}
 		  if(is_dir(HTML_PATH.'Ajax_show')){$dir->delDir(HTML_PATH.'Ajax_show');}	    
 		}
-		echo('清除成功');
+		echo('Clear success');
 	}
 	//清理当天静态缓存文件
 	public function delhtml_day(){
@@ -66,7 +66,7 @@ class CacheAction extends BaseAction{
 			if(!$dir->isEmpty('./Html/Ajax_show')){$dir->delDir('./Html/Ajax_show');}
 			@unlink('./Html/index'.C('html_file_suffix'));						
 		}
-		echo('清除成功');
+		echo('Clear success');
 	}
 	//清空所有数据缓存
   public function dataclear(){
@@ -80,7 +80,7 @@ class CacheAction extends BaseAction{
 				$dir->delDir(TEMP_PATH);
 			}
 		}
-		echo('清除成功');
+		echo('Clear success');
   }
 	//循环标签调用数据缓存（采用改变缓存标识前缀的方法，缺点就是如果是File方式会遗留很多垃圾文件，但这些垃圾文件可以通过dataclear一键清空的方式删除）
   public function dataforeach(){
@@ -88,7 +88,7 @@ class CacheAction extends BaseAction{
 		$config_new = array_merge($config_old, array('cache_foreach_prefix'=>uniqid()) );
 		arr2file('./Runtime/Conf/config.php',$config_new);
 		@unlink('./Runtime/~app.php');
-		echo('清除成功');
+		echo('Clear success');
   }
 	//当天视频
 	public function datadayvod(){
@@ -99,7 +99,7 @@ class CacheAction extends BaseAction{
 		foreach($array as $key=>$val){
 			S('cache_page_vod_'.$val['vod_id'],NULL);
 		}						
-		echo('清除成功');
+		echo('Clear success');
 	}	
 	//当天文章
 	public function datadaynews(){
@@ -110,7 +110,7 @@ class CacheAction extends BaseAction{
 		foreach($array as $key=>$val){
 			S('cache_page_news_'.$val['news_id'],NULL);
 		}						
-		echo('清除成功');
+		echo('Clear success');
 	}
 	//当天专题
 	public function datadayspecial(){
@@ -121,7 +121,7 @@ class CacheAction extends BaseAction{
 		foreach($array as $key=>$val){
 			S('cache_page_special_'.$val['special_id'],NULL);
 		}						
-		echo('清除成功');
+		echo('Clear success');
 	}			
 }
 ?>

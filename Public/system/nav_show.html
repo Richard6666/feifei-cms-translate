@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>后台用户管理</title>
+<title>Background user management</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin-style.css' />
 <script charset="utf-8" src="__PUBLIC__/jquery/1.11.3/jquery.min.js"></script>
@@ -16,14 +16,14 @@ $(document).ready(function(){
 <table border="0" cellpadding="0" cellspacing="0" class="table">
   <thead>
     <tr class="ct">
-      <th class="l" width="40">删除</th>
+      <th class="l" width="40">delete</th>
       <th class="l" width="40">ID</th>
-      <th class="l" width="50">排序</th>
-      <th class="l" width="60">子导航</th>
-      <th class="l" width="60">编辑</th> 
-      <th class="l" width="50">可用</th>     
-      <th class="l" width="340">导航名称</th>
-      <th class="r">链接地址</th>
+      <th class="l" width="50">Sorting</th>
+      <th class="l" width="60">Sub navigation</th>
+      <th class="l" width="60">edit</th> 
+      <th class="l" width="50">Available</th>     
+      <th class="l" width="340">Navigation name</th>
+      <th class="r">link address</th>
     </tr>
   </thead>
   <form action="?s=Admin-Nav-All" method="post" name="myform" id="myform"> 
@@ -33,8 +33,8 @@ $(document).ready(function(){
     <td class="l ct"><input name='nav_delid[{$feifei.nav_id}]' type='checkbox' value='{$feifei.nav_id}' class="noborder"></td>
     <td class="l ct">{$feifei.nav_id}</td>
     <td class="l ct"><input name="nav_oid[{$feifei.nav_id}]" type="text" value="{$feifei.nav_oid}" class="w30"></td>
-    <td class="l ct"><a href="?s=Admin-Nav-Add-pid-{$feifei.nav_id}" title="添加子导航"><img src="__PUBLIC__/images/admin/add.gif" border="0"></a></td>
-    <td class="l ct"><a href="?s=Admin-Nav-Add-id-{$feifei.nav_id}" title="编辑导航"><img src="__PUBLIC__/images/admin/edit.gif" border="0"></a></td>
+    <td class="l ct"><a href="?s=Admin-Nav-Add-pid-{$feifei.nav_id}" title="Add sub navigation"><img src="__PUBLIC__/images/admin/add.gif" border="0"></a></td>
+    <td class="l ct"><a href="?s=Admin-Nav-Add-id-{$feifei.nav_id}" title="Edit navigation"><img src="__PUBLIC__/images/admin/edit.gif" border="0"></a></td>
     <td class="l ct"><input name="nav_status[{$feifei.nav_id}]" type="checkbox" value="1" <eq name='feifei.nav_status' value='1'>checked</eq>></td> 
     <td class="l pd"><input name="nav_title[{$feifei.nav_id}]" type="text" value="{$feifei.nav_title}" class="w300 pd"></td>
     <td class="r ct"><input name="nav_link[{$feifei.nav_id}]" type="text" value="{$feifei.nav_link}" class="pd" style="width:90%"></td>
@@ -45,8 +45,8 @@ $(document).ready(function(){
       <td class="l ct son"><input name='nav_delid[{$feifeison.nav_id}]' type='checkbox' value='{$feifeison.nav_id}' class="noborder"></td>
       <td class="l ct son">{$feifeison.nav_id}</td>
       <td class="l ct son"><input name="nav_oid[{$feifeison.nav_id}]" type="text" value="{$feifeison.nav_oid}" class="w30"></td>
-      <td class="l ct son"><a href="?s=Admin-Nav-Add-pid-{$feifeison.nav_id}" title="添加子导航"><img src="__PUBLIC__/images/admin/add.gif" border="0"></a></td>
-      <td class="l ct son"><a href="?s=Admin-Nav-Add-id-{$feifeison.nav_id}" title="编辑导航"><img src="__PUBLIC__/images/admin/edit.gif" border="0"></a></td> 
+      <td class="l ct son"><a href="?s=Admin-Nav-Add-pid-{$feifeison.nav_id}" title="Add sub navigation"><img src="__PUBLIC__/images/admin/add.gif" border="0"></a></td>
+      <td class="l ct son"><a href="?s=Admin-Nav-Add-id-{$feifeison.nav_id}" title="Edit navigation"><img src="__PUBLIC__/images/admin/edit.gif" border="0"></a></td> 
       <td class="l ct"><input name="nav_status[{$feifeison.nav_id}]" type="checkbox" value="1" <eq name='feifeison.nav_status' value='1'>checked</eq>></td>
       <td class="l pd son">├─ <input name="nav_title[{$feifeison.nav_id}]" type="text" value="{$feifeison.nav_title}" class="w300 pd"></td>
       <td class="r ct son"><input name="nav_link[{$feifeison.nav_id}]" type="text" value="{$feifeison.nav_link}" class="pd" style="width:90%"></td>
@@ -57,7 +57,7 @@ $(document).ready(function(){
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="8" class="r"><input type="submit" value="批量操作" class="submit"></td>
+      <td colspan="8" class="r"><input type="submit" value="Batch operation" class="submit"></td>
     </tr>  
   </tfoot>
   </form>

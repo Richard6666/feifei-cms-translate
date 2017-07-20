@@ -13,7 +13,7 @@ class ListAction extends BaseAction{
 			$this->display('./Public/system/list_show.html');
 		}else{
 		  $this->assign("jumpUrl",'?s=Admin-List-Add');
-			$this->success('暂无分类数据请先添加！');		    
+			$this->success('No classification data Please add first!');		    
 		}
   }
 	
@@ -23,14 +23,14 @@ class ListAction extends BaseAction{
 	  $rs = D("List");
 		if ($cid) {
 			$info = $rs->ff_find('*', array('list_id'=>array('eq',$cid)) );
-			$info['tpltitle'] = '编辑';
+			$info['tpltitle'] = 'edit';
 		}else{
 		  $info['list_id'] = 0;
 		  $info['list_pid'] = intval($_GET['pid']);
 			$info['list_sid'] = intval($_GET['sid']);
 		  $info['list_oid'] = $rs->max('list_oid')+1;
 			$info['list_status'] = 1;
-			$info['tpltitle'] = '添加';
+			$info['tpltitle'] = 'Add to';
 		}
 		$this->assign($info);
 		$this->display('./Public/system/list_add.html');
@@ -41,12 +41,12 @@ class ListAction extends BaseAction{
 			$this->error(D('List')->getError());
 		}
 		$this->assign("jumpUrl",'?s=Admin-List-Show');
-		$this->success('恭喜您，操作已完成！');
+		$this->success('Congratulations, the operation is done!');
 	}	
 	// 批量更新数据
   public function updateall(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要修改的栏目！');
+			$this->error('Please select the section you want to modify!');
 		}
 		$rs = D("List");
 		$array = $_POST;
@@ -80,12 +80,12 @@ class ListAction extends BaseAction{
 		$rs = D("List");
 		$where['list_id'] = $_GET['id'];
 		if (!ff_list_isson($_GET['id'])) {
-			$this->error("请先删除本类下面的子栏目！");
+			$this->error("Please delete the sub-section below this category!");
 		}
 		$rs->where($where)->delete();
 		$sid = ff_list_find($id,'list_sid');
 		$this->deldata($sid,$id);
-		$this->success('成功删除该栏目分类与本类有关的内容！');
+		$this->success('Successfully deleted this column category related to this category!');
   }
 	//删除对应的数据
 	public function deldata($sid,$cid){
@@ -100,7 +100,7 @@ class ListAction extends BaseAction{
 	// 批量删除数据
   public function delall(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要删除的栏目！');
+			$this->error('Please select the section you want to delete!');
 		}	
 		$list = D("List");
 		$array = $_POST;
@@ -108,12 +108,12 @@ class ListAction extends BaseAction{
 			$id = intval($value);
 			$sid = ff_list_find($id,'list_sid');
 			if (!ff_list_isson($id)) {
-				$this->error("请先删除本类下面的子栏目！");
+				$this->error("Please delete the sub-section below this category!");
 			}			
 		  $list->where('list_id = '.$id)->delete(); 
 			$this->deldata($sid,$id);
 		}
-		$this->success('批量删除栏目成功！');
+		$this->success('Batch delete column success!');
   }
 	//
 	public function extend(){

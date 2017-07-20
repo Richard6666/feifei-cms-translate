@@ -3,7 +3,7 @@
   <div class="page-header">
     <h4>
     	<span class="glyphicon glyphicon-th-list ff-text"></span> 
-      <a href="{:ff_url('vod/scenario', array('id'=>$vod_id), true)}" title="{$vod_name}分集剧情">分集剧情</a>
+      <a href="{:ff_url('vod/scenario', array('id'=>$vod_id), true)}" title="{$vod_name}Diversity plot">Diversity plot</a>
     </h4>
   </div>
   <ul id="vod_scenario_item" class="row list-unstyled vod_scenario_item">

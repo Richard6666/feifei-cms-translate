@@ -11,21 +11,21 @@ return array (
   'default_theme' => 'default',
   'app_sub_domain_deploy' => 0,
   'app_sub_domain_rules' => '',
-  'site_name' => '飞飞影视导航系统',
+  'site_name' => 'Feifei video navigation system',
   'site_path' => '/',
   'site_domain' => '127.0.0.1',
   'site_domain_m' => '',
-  'site_title' => '飞飞影视导航系统首页',
-  'site_keywords' => '飞飞影视导航系统,PHP电影程序,电影网站程序',
-  'site_description' => '努力打造飞飞影视导航系统为最好的PHP影视系统!',
+  'site_title' => 'Feifei video navigation system home page',
+  'site_keywords' => 'Feifei video navigation system,PHP movie program,Movie website program',
+  'site_description' => 'Efforts to build Feifei video navigation system for the best PHP video system!',
   'site_email' => '110119@qq.com',
-  'site_copyright' => '本网站为非赢利性站点，本网站所有内容均来源于互联网相关站点自动搜索采集信息，相关链接已经注明来源。',
+  'site_copyright' => 'This site is a non-profit site, all the content of this site are from the Internet-related sites automatically search and collect information, the relevant link has been marked with the source.',
   'site_hot' => '热门影片1
-热门影片2
-热门影片3
-热门影片4
-热门影片5
-热门影片6',
+Hot Videos 2
+Popular videos 3
+Top movies 4
+Popular videos 5
+Popular video 6',
   'site_tongji' => '<script language="javascript" type="text/javascript" src="http://js.users.51.la/14834816.js"></script>',
   'site_icp' => 'ICP备2010111号',
   'admin_ads_file' => 'Runtime/Js',
@@ -64,17 +64,17 @@ return array (
   'play_playad' => 'http://cdn.feifeicms.com/loading/3.0/',
   'play_cloud' => 'http://cdn.feifeicms.com/player/3.0/',
   'play_second' => 10,
-  'play_language' => '国语,英语,粤语,闽南语,韩语,日语,其它',
-  'play_area' => '大陆,香港,台湾,美国,韩国,日本,泰国,新加坡,马来西亚,印度,英国,法国,加拿大,西班牙,俄罗斯,其它',
+  'play_language' => 'Mandarin,English,Cantonese,Minnan Language,Korean,Japanese,other',
+  'play_area' => 'mainland,Hong Kong,Taiwan,United States,Korea,Japan,Thailand,Singapore,Malaysia,India,United Kingdom,France,Canada,Spain,Russia,other',
   'play_year' => '2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1990,1980,1970,1960,1950',
   'play_server' => 
   array (
     'down_a' => 'http://downa.feifeicms.com/',
     'down_b' => 'http://downb.feifeicms.com/',
   ),
-  'play_type' => '爱情,动作,喜剧,战争,科幻,剧情,武侠,冒险,枪战,恐怖,微电影,其它',
-  'play_state' => '正片,预告片,花絮,付费片',
-  'play_version' => '高清版,剧场版,抢先版,OVA,TV,影院版',
+  'play_type' => 'Love, action, comedy, war, science fiction, plot, martial arts, adventure, gunfire, horror, micro-film, other',
+  'play_state' => 'Positive, Trailer, Highlights, Paid',
+  'play_version' => 'HD version, theatrical version, preemptive version, OVA, TV, cinema version',
   'play_jiexi' => '',
   'cache_foreach' => '0',
   'cache_page_cm' => '0',
@@ -96,9 +96,9 @@ return array (
   'collect_golder' => '9',
   'collect_tags' => '0',
   'collect_passwd' => '',
-  'news_type' => '段子手,私房话,八卦精,爱生活,汽车迷,科技咖,美食家,辣妈帮',
+  'news_type' => 'Section hand,Private words,Gossip fine,Love life,Car fans,Science and technology,Foodie,Hot mother to help',
   'user_second' => '600',
-  'user_replace' => '她妈|它妈|他妈|你妈|去死|贱人',
+  'user_replace' => 'Her mother|It mother|His mother|Your mother|To die|Slut',
   'user_check' => '0',
   'url_rewrite' => '0',
   'url_html_suffix' => '.html',

@@ -108,7 +108,7 @@ class VodAction extends HomeAction{
 		$info = D('Vod')->ff_find('*', $where, 'cache_page_vod_'.$params['id'], true);
 		if(!$info){
 			$this->assign("jumpUrl",C('site_path'));
-			$this->error('此影片已经删除，请选择观看其它节目！');
+			$this->error('This video has been deleted. Please choose to watch other shows!');
 		}
 		//解析标签
 		return $this->Lable_Vod_Read($info);
@@ -133,7 +133,7 @@ class VodAction extends HomeAction{
 		$info = D('List')->ff_find('*', $where, 'cache_page_list_'.$params['id']);
 		if(!$info){
 			$this->assign("jumpUrl",C('site_path'));
-			$this->error('该分类已删除，请选择其它分类！');
+			$this->error('The classification has been deleted, please select another category!');
 		}
 		//解析标签
 		return $this->Lable_Vod_List($params, $info);

@@ -72,7 +72,7 @@ class NewsAction extends HomeAction{
 		$info = D('News')->ff_find('*', $where, 'cache_page_news_'.$params['id'], true);
 		if(!$info){
 			$this->assign("jumpUrl",C('site_path'));
-			$this->error('此文章已经删除！');
+			$this->error('This article has been deleted!');
 		}
 		//解析标签
 		return $this->Lable_News_Read($params, $info);
@@ -97,7 +97,7 @@ class NewsAction extends HomeAction{
 		$info = D('List')->ff_find('*', $where, 'cache_page_list_'.$params['id']);
 		if(!$info){
 			$this->assign("jumpUrl",C('site_path'));
-			$this->error('该分类已删除，请选择其它分类！');
+			$this->error('The classification has been deleted, please select another category!');
 		}
 		//解析标签
 		return $this->Lable_News_List($params, $info);

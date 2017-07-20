@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>资源库列表</title>
+<title>Resource List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin-style.css' />
 <script charset="utf-8" src="__PUBLIC__/jquery/1.11.3/jquery.min.js"></script>
@@ -32,81 +32,81 @@ $(document).ready(function(){
 <thead>
 <tr>
 <th colspan="2" class="r">
-	<span style="float:left">自定义采集参数</span>
-  <span style="float:right"><a href="?s=Admin-Cj-Show">返回资源库列表</a></span>
+	<span style="float:left">Customize acquisition parameters</span>
+  <span style="float:right"><a href="?s=Admin-Cj-Show">Return to the repository list</a></span>
 </th>
 </tr>
 </thead>
 <tr>
 <td class="tl">
-影片分类：
+Category:
 </td>
-<td class="pd l"><input type="text" name="cid" id="cid" class="w100 ct" maxlength="8" value="{$cid}"> 不限制，请留空</td>
+<td class="pd l"><input type="text" name="cid" id="cid" class="w100 ct" maxlength="8" value="{$cid}"> Do not limit, please leave blank</td>
 </tr>
 <tr>
 <td class="tl">
-更新时间：
+Updated:
 </td>
-<td class="pd l"><input type="text" name="h" id="h" class="w100 ct" maxlength="8" value="24"> 单位：小时，不限制时间留空</td>
+<td class="pd l"><input type="text" name="h" id="h" class="w100 ct" maxlength="8" value="24"> Unit: hours, no restrictions on time blank</td>
 </tr>
 <tr>
 <td class="tl">
-指定播放器：
+Specify the player:
 </td>
-<td class="pd l"><input type="text" name="play" id="play" class="w100 ct" maxlength="20"> 如：youku，不限制，请留空</td>
+<td class="pd l"><input type="text" name="play" id="play" class="w100 ct" maxlength="20"> Such as: youku, no restrictions, please leave blank</td>
 </tr>
 <tr>
 <td class="tl">
-每页采集数量：
+Number of collections per page:
 </td>
-<td class="pd l"><input type="text" name="limit" id="limit" class="w100 ct" maxlength="3" value="50"> 最大100</td>
+<td class="pd l"><input type="text" name="limit" id="limit" class="w100 ct" maxlength="3" value="50"> Max 100</td>
 </tr>
 <tr>
 <td class="tl">
-重采资料字段：
+Re-pick data fields:
 </td>
-<td class="pd l"><input type="text" name="field" id="field" class="w100 ct" maxlength="50"> 如：vod_pic,vod_scenario,vod_area（填写后将只直接更新对应的字段，不新增也不修改其它字段）</td>
+<td class="pd l"><input type="text" name="field" id="field" class="w100 ct" maxlength="50"> 如：vod_pic,vod_scenario,Vod_area (fill out will only directly update the corresponding field, do not add or modify other fields)</td>
 </tr>
 <td class="tl">
-按条件采集：
+Conditional collection:
 </td>
-<td class="pd l"><input type="submit" value="开始采集" class="submit"></td>
+<td class="pd l"><input type="submit" value="Start collecting" class="submit"></td>
 </tr>
 </table>
 </form>
 <a name="bind"></a>
 <form action="?s=Admin-Cj-Api" method="post" name="myform" id="myform">{__NOTOKEN__}
 <table border="0" cellpadding="0" cellspacing="0" class="table" style="border-bottom:1px solid #cad9ea">
-<thead><tr><th colspan="6" class="r">分类绑定 <notempty name="cid" value="0"><a href="javascript:changeurl('','');"><font color="red">查看全部资源</font></a></notempty></th></tr></thead>
+<thead><tr><th colspan="6" class="r">Classification binding <notempty name="cid" value="0"><a href="javascript:changeurl('','');"><font color="red">View all resources</font></a></notempty></th></tr></thead>
 <tr><volist name="cj_list" id="feifei">
 <if condition="$i neq 1 and $i%6 eq 1"></tr><tr></if>
-<td class="ct"><a href="?s=Admin-Cj-Api-action-{$action}-cjid-{$cjid}-xmlurl-{$xmlurl|base64_encode}-play-{$play}-inputer-{$inputer}-cid-{$feifei.list_id}-wd-{$wd}">{$feifei.list_name}</a> <a class="cj-bind" href="javascript:;" data-cid="{$feifei.list_id}" data-bid="{$feifei.bind_id}" id="bind_{$feifei.bind_id}"><if condition="ff_bind_id($feifei['bind_id']) gt 0"><font color="green">已绑定</font><else /><font color="red">未绑定</font></if></a></td>
+<td class="ct"><a href="?s=Admin-Cj-Api-action-{$action}-cjid-{$cjid}-xmlurl-{$xmlurl|base64_encode}-play-{$play}-inputer-{$inputer}-cid-{$feifei.list_id}-wd-{$wd}">{$feifei.list_name}</a> <a class="cj-bind" href="javascript:;" data-cid="{$feifei.list_id}" data-bid="{$feifei.bind_id}" id="bind_{$feifei.bind_id}"><if condition="ff_bind_id($feifei['bind_id']) gt 0"><font color="green">Binded</font><else /><font color="red">Unbounded</font></if></a></td>
 </volist>
 </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" class="table">
 <thead>
 <tr>
-<th class="r">视频搜索</th>
+<th class="r">Video search</th>
 </tr>
 </thead>
 <tr>
-<td class="l pd ct"> <input type="text" name="wd" id="wd" maxlength="20" value="{$wd|urldecode}" onClick="this.select();" class="w400 pd"> <input type="button" value="搜索" class="submit" onClick="post(getjumpurl('','',''));">
+<td class="l pd ct"> <input type="text" name="wd" id="wd" maxlength="20" value="{$wd|urldecode}" onClick="this.select();" class="w400 pd"> <input type="button" value="search for" class="submit" onClick="post(getjumpurl('','',''));">
 </td>
 </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" class="table">
 <thead>
 <tr class="ct">
-  <th class="l" >视频名称 </th>
-  <th class="l" width="250">来源</th>
-  <th class="r ct" width="200">更新时间</th>
+  <th class="l" >Video name </th>
+  <th class="l" width="250">source</th>
+  <th class="r ct" width="200">Update time</th>
 </tr>
 </thead>
 <tbody>
 <volist name="cj_data" id="feifei">
   <tr>
-    <td class="l pd"><input name='ids[]' type='checkbox' value='{$feifei.vod_id}' class="noborder">『{$feifei.list_name}』{$feifei.vod_name}{$feifei.vod_title} <neq name="feifei['vod_continu']" value="0"><sup>{$feifei.vod_continu}</sup></neq> <a href="?s=Admin-Vod-Show-wd-{$feifei.vod_name|msubstr=0,4|urlencode}" target="_blank" style="color:#FF0000">查</a></td>
+    <td class="l pd"><input name='ids[]' type='checkbox' value='{$feifei.vod_id}' class="noborder">『{$feifei.list_name}』{$feifei.vod_name}{$feifei.vod_title} <neq name="feifei['vod_continu']" value="0"><sup>{$feifei.vod_continu}</sup></neq> <a href="?s=Admin-Vod-Show-wd-{$feifei.vod_name|msubstr=0,4|urlencode}" target="_blank" style="color:#FF0000">check</a></td>
     <td class="l ct">{$feifei.vod_play|str_replace='$$$',' ',###}</td>
     <td class="r ct">{$feifei.vod_addtime}</td>
   </tr>
@@ -117,7 +117,7 @@ $(document).ready(function(){
   </tr>   
 <tfoot>
 <tr>
-    <td colspan="3" class="r"><input type="button" value="全选" class="submit" onClick="checkall('all');"> <input name="" type="button" value="反选" class="submit" onClick="checkall();"> <input type="button" value="采集选中" class="submit" onClick="post(getjumpurl('ids','',''));"> <input type="button" value="采集当天" class="submit" onClick="post(getjumpurl('day','',24));"> <notempty name="cid" value="0"><input type="button" value="采集本类" class="submit" onClick="post(getjumpurl('all','{$cid}',''));"></notempty> <input type="button" value="采集所有" class="submit" onClick="post(getjumpurl('all','',''));"></td>
+    <td colspan="3" class="r"><input type="button" value="select all" class="submit" onClick="checkall('all');"> <input name="" type="button" value="Anti-election" class="submit" onClick="checkall();"> <input type="button" value="Collection selected" class="submit" onClick="post(getjumpurl('ids','',''));"> <input type="button" value="Collection day" class="submit" onClick="post(getjumpurl('day','',24));"> <notempty name="cid" value="0"><input type="button" value="Collect this class" class="submit" onClick="post(getjumpurl('all','{$cid}',''));"></notempty> <input type="button" value="Collect all" class="submit" onClick="post(getjumpurl('all','',''));"></td>
   </tr>  
 </tfoot>        
 </table>

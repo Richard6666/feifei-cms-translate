@@ -11,7 +11,7 @@ class ApiAction extends HomeAction{
 	public function _initialize(){
 		if(C('collect_ips')){
 			if( !in_array(get_client_ip(), explode(',', C('collect_ips'))) ){
-				exit( json_encode( array('status'=>501, 'data'=>'IP未授权') ) );
+				exit( json_encode( array('status'=>501, 'data'=>'IP is not authorized') ) );
 			}
 		}
   }

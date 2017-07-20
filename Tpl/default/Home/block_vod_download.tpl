@@ -3,16 +3,16 @@
 <eq name="feifei.player_name_en" value="down">
   <div class="clearfix ff-clearfix"></div>
   <div class="page-header">
-    <h4><span class="glyphicon glyphicon-download ff-text"></span> 下载观看</h4>
+    <h4><span class="glyphicon glyphicon-download ff-text"></span> Download watch</h4>
   </div>
   <ul class="list-unstyled ff-down-list">
     <div class="row">
       <div class="col-xs-9">
-        <p class="text-muted">友情提示：未安装工具时，会自动提示安装，安装完毕后即可高速下载。</p>
+        <p class="text-muted">Tips: do not install the tool, it will automatically prompt to install, after installation can be high-speed download.</p>
       </div>
       <div class="col-xs-3">
-        <a class="btn btn-primary btn-sm thunder_down_all" href="javascript:;">迅雷批量</a>
-     		<a class="btn btn-primary btn-sm xf_down_all" href="javascript:void(0);">旋风批量</a>
+        <a class="btn btn-primary btn-sm thunder_down_all" href="javascript:;">Thunder batch</a>
+     		<a class="btn btn-primary btn-sm xf_down_all" href="javascript:void(0);">Whirlwind lot</a>
       </div>
     </div>
     <volist name="feifei.son" id="feifeison" key="pid">
@@ -26,8 +26,8 @@
         </div>
       </div>
       <div class="col-xs-3">
-        <button type="button" class="btn btn-success btn-sm thunder_down">迅雷下载</button>
-        <button type="button" class="btn btn-warning btn-sm qqdl">旋风下载</button>
+        <button type="button" class="btn btn-success btn-sm thunder_down">Thunder download</button>
+        <button type="button" class="btn btn-warning btn-sm qqdl">Whirlwind download</button>
       </div>
     </div>
     </volist>

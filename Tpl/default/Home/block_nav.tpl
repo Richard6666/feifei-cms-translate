@@ -30,8 +30,8 @@
         <div class="form-group">
           <input type="text" class="form-control" id="ff-wd" name="wd" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default" data-module="vod" data-action="{:ff_url('vod/search',array('name'=>'FFWD'), true)}">搜索</button>
-        <button type="submit" class="btn btn-default btn-success" data-module="news" data-action="{:ff_url('news/search',array('name'=>'FFWD'), true)}">资讯</button>
+        <button type="submit" class="btn btn-default" data-module="vod" data-action="{:ff_url('vod/search',array('name'=>'FFWD'), true)}">search for</button>
+        <button type="submit" class="btn btn-default btn-success" data-module="news" data-action="{:ff_url('news/search',array('name'=>'FFWD'), true)}">Information</button>
       </form>
       </neq>
   </div><!-- /.container -->

@@ -35,9 +35,9 @@ class UserAction extends BaseAction{
 		$rs = D("Admin.User");
 		if($rs->create()) {
 			if($rs->add()) {
-    			$this->success('用户添加成功！');
+    			$this->success('User added successfully!');
             }else{
-                $this->error('用户添加失败！');
+                $this->error('User added failed!');
             }
 		}else{
 			$this->error($rs->getError());
@@ -49,9 +49,9 @@ class UserAction extends BaseAction{
 		if ($rs->create()) {
 			if (false !==  $rs->save()) {
 			    $this->assign("jumpUrl",'?s=Admin-User-Show');
-				$this->success('更新用户信息成功！');
+				$this->success('Update user information successfully!');
 			}else{
-				$this->error("更新用户信息失败！");
+				$this->error("Update user information failed!");
 			}
 		}else{
 			$this->error($rs->getError());
@@ -61,7 +61,7 @@ class UserAction extends BaseAction{
 	public function del(){
 		$rs = D("Admin.User");
 		$rs->where('user_id = '.$_GET['id'])->delete();
-		$this->success('删除用户成功！');
+		$this->success('Delete user success!');
 	}			
 	// 用户组列表
     public function showgroup(){
@@ -86,9 +86,9 @@ class UserAction extends BaseAction{
 		$rs = D("Admin.Group");
 		if($rs->create()) {
 			if ($rs->add()) {
-    			$this->success('用户组添加成功！');
+    			$this->success('User group added successfully!');
             }else{
-                $this->error('用户组添加失败！');
+                $this->error('User group added failed!');
             }
 		}else{
 			exit($rs->getError());

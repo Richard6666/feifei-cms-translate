@@ -3,7 +3,7 @@ class LinkModel extends AdvModel {
 	
 	//自动验证
 	protected $_validate=array(
-		array('link_name','require','名称必须填写！',0),
+		array('link_name','require','Name must be filled in!',0),
 	);
 	
 	/* 自动完成 */
@@ -17,7 +17,7 @@ class LinkModel extends AdvModel {
 		if($info){
 			return $info;
 		}
-		$this->error = '没有查询到数据！';
+		$this->error = 'no data has been found!';
 		return false;
 	}
 	
@@ -39,7 +39,7 @@ class LinkModel extends AdvModel {
 		if($infos){
 			return $infos;
 		}
-		$this->error = '无符合条件的数据';
+		$this->error = 'No eligible data';
 		return false;
 	}
 	

@@ -26,7 +26,7 @@ class ForumAction extends HomeAction{
 		$detail = D('Forum')->ff_find('*', $where, 'cache_page_forum_'.$info['id'], intval(C('cache_page_forum')), 'User');
 		if(!$detail){
 			$this->assign("jumpUrl", C('site_path'));
-			$this->error('评论已删除！');
+			$this->error('Comments deleted!');
 		}
 		$detail = $this->Lable_Forum_Detail($info, $detail);
 		$this->assign($info);
@@ -56,10 +56,10 @@ class ForumAction extends HomeAction{
 			$count = D('Forum')->where('forum_pid = '.$forum_id)->count("forum_id");
 			if($count){
 				D('Forum')-> where('forum_id='.$forum_id)->setField('forum_reply', $count);
-				$this->ajaxReturn($count, "回复数", 200);
+				$this->ajaxReturn($count, "The number of replies", 200);
 			}
 		}
-		$this->ajaxReturn(0, "回复数", 0);
+		$this->ajaxReturn(0, "The number of replies", 0);
 	}
 	
 	//写入举报次数
@@ -67,9 +67,9 @@ class ForumAction extends HomeAction{
 		$forum_id = intval($_GET['id']);
 		if($forum_id){
 			D("Forum")->setInc('forum_report', 'forum_id = '.$forum_id, 1);
-			$this->ajaxReturn($count, "举报成功！", 200);
+			$this->ajaxReturn($count, "Report success!", 200);
 		}else{
-			$this->ajaxReturn($count, "举报失败！", 0);
+			$this->ajaxReturn($count, "Report failed!", 0);
 		}
 	}
 	
@@ -80,9 +80,9 @@ class ForumAction extends HomeAction{
 		$info = D("Forum")->ff_update($post);
 		if($info){
 			if (C('user_check')) {
-				$this->ajaxReturn($info, "谢谢，我们会尽快审核你的发言！", 201);
+				$this->ajaxReturn($info, "Thank you, we will review your speech as soon as possible!", 201);
 			}else{
-				$this->ajaxReturn($info, "感谢你的参与！", 200);
+				$this->ajaxReturn($info, "Thank you for your participation!", 200);
 			}
 		}else{
 			$this->ajaxReturn('', D("Forum")->getError(), 0);

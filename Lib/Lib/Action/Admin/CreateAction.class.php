@@ -56,11 +56,11 @@ class CreateAction extends BaseAction{
   public function check($html_status, $html_err, $jumpurl='?s=Admin-Create-Show'){	
 		if(!C('url_html')){
 			$this->assign("jumpUrl",'?s=Admin-Create-Show');
-			$this->error('动态模式运行，不需要生成任何数据！');
+			$this->error('Dynamic mode does not need to generate any data!');
 		}
 	  if (!$html_status) {
 		  $this->assign("jumpUrl", $jumpurl);
-		  $this->error('"'.$html_err.'"模块动态运行，不需要生成静态网页！');
+		  $this->error('"'.$html_err.'"Module dynamic operation, do not need to generate static pages!');
 		}
 	}
 	// 跳转
@@ -90,7 +90,7 @@ class CreateAction extends BaseAction{
 			redirect('?s=Admin-Create-news_list_page-jump-'.$jump.'-ids-'.$_POST['news_list']);
 		}else{
 			$this->assign("jumpUrl",'?s=Admin-Create-Show');
-			$this->error('操作错误。');	
+			$this->error('Operation error.');	
 		}
 	}
 	// 生成网站首页
@@ -100,7 +100,7 @@ class CreateAction extends BaseAction{
 	  $this->assign($this->Lable_Index());
 		$this->assign("jumpUrl",'?s=Admin-Create-Show');
 		$this->buildHtml("index",'./','Home:index');
-		$this->success('首页生成完毕。');
+		$this->success('Home is finished.');
   }
 	//视频内容页按分类列表
 	public function vod_detail_cids(){
@@ -114,7 +114,7 @@ class CreateAction extends BaseAction{
 			$ids = $post['vod_cids'];
 		}		
 		//检测是否需要生成
-		$this->check(C('url_vod_detail'),'视频内容页','?s=Admin-Create-vod_list_page-jump-'.$jump);
+		$this->check(C('url_vod_detail'),'Video content page','?s=Admin-Create-vod_list_page-jump-'.$jump);
 		//断点生成(写入缓存)
 		F('_create/next','?s=Admin-Create-vod_detail_cids-jump-'.$jump.'-ids-'.$ids.'-page-'.$page);
 		//参数
@@ -136,7 +136,7 @@ class CreateAction extends BaseAction{
 		//
 		$infos = D('VodView')->ff_select_page($params, $where);
 		$pages = $_GET['ff_page_'.$params['page_id']];
-		echo'<h4>总共需要生成<font color=blue>'.$pages['records'].'</font>个视频内容页，需要分<font color=blue>'.$pages['totalpages'].'</font>次来执行，正在执行第<font color=red>'.$pages['currentpage'].'</font>次</h4>';
+		echo'<h4>A total of need to be generated<font color=blue>'.$pages['records'].'</font>A video content page that needs to be divided<font color=blue>'.$pages['totalpages'].'</font>Times to perform, is executing the first<font color=red>'.$pages['currentpage'].'</font>Times</h4>';
 		echo'<ul style="font-size:13px;margin:0px;padding:0 0 0 20px;">';
 		// 生成内容页与播放页
 		foreach($infos as $key=>$value){
@@ -145,12 +145,12 @@ class CreateAction extends BaseAction{
 		echo'</ul>';
 		//组合回跳URL路径与执行跳转
 		if($pages['currentpage'] < $pages['totalpages']){
-			$this->jump('?s=Admin-Create-vod_detail_cids-jump-'.$jump.'-ids-'.$ids.'-page-'.($page+1), '稍等一会，准备生成下一批视频内容页...');
+			$this->jump('?s=Admin-Create-vod_detail_cids-jump-'.$jump.'-ids-'.$ids.'-page-'.($page+1), 'Wait a moment and prepare to generate the next video content page...');
 		}else{
 			if($jump){
-				$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump, '稍等一会，准备生成视频分类页...');
+				$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump, 'Wait a moment and prepare to generate a video category page...');
 			}else{
-				$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump, '恭喜您，视频内容页全部生成完毕。');
+				$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump, 'Congratulations, all the video content pages are generated.');
 			}
 		}		
 	}
@@ -160,7 +160,7 @@ class CreateAction extends BaseAction{
 		$key = intval($_GET['key']);
 		$page = !empty($_GET['p']) ? intval($_GET['p']) : 1;
 		//检测是否需要生成
-		$this->check(C('url_vod_list'), '视频分类页', '?s=Admin-Create-index');
+		$this->check(C('url_vod_list'), 'Video sorting page', '?s=Admin-Create-index');
 		//断点生成(写入缓存)
 		F('_create/next','?s=Admin-Create-vod_list_page-jump-'.$jump.'-key-'.$key.'-ids-'.$ids.'-p-'.$page);
 		//当前需要生成的分类ID
@@ -180,7 +180,7 @@ class CreateAction extends BaseAction{
 		$where['list_id'] = array('eq', $params['id']);
 		$info = D('List')->ff_find('*', $where, 'cache_page_list_'.$params['id']);
 		if($info){
-			echo'<h4>视频模块分类页需静态化任务的ID（'.$ids.'） 正在第'.$page.'次执行分类ID：<font color="blue">'.$params['id'].'</font>的静态化任务</h4>';
+			echo'<h4>Video module classification page to be static task ID ('.$ids.'） Is the first'.$page.'次执行分类ID：<font color="blue">'.$params['id'].'</font>Of the static task</h4>';
 			echo'<ul style="font-size:13px;margin:0px;padding:0 0 0 20px;">';
 			for($i=1; $i<51; $i++){
 				$pagetpl = ($page-1)*50+$i;
@@ -195,7 +195,7 @@ class CreateAction extends BaseAction{
 					$get = end($_GET);
 				}
 				if($pagetpl >= $get['totalpages']){
-					echo '<li style="color:#ff0000">视频模块分类ID为（'.$params['id'].'）的栏目分页静态化任务完成</li>';
+					echo '<li style="color:#ff0000">Video module classification ID is ('.$params['id'].') Section of the paging static task is completed</li>';
 					break;
 				}
 				ob_flush();flush();
@@ -204,18 +204,18 @@ class CreateAction extends BaseAction{
 			//计算总页码需要分多少次生成
 			$total = ceil($get['totalpages']/50);
 			if($page < $total){
-				$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump.'-key-'.$key.'-ids-'.$ids.'-p-'.($page+1), '稍等一会，当前分类需要继续分页执行...');
+				$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump.'-key-'.$key.'-ids-'.$ids.'-p-'.($page+1), 'Wait a moment, the current classification needs to continue paging execution...');
 			}
 		}
 		//是否生成下一个分类
 		if(($key+1) < count($ids_array)){
-			$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump.'-key-'.($key+1).'-ids-'.$ids, '稍等一会，准备生成下一个分类...');
+			$this->jump('?s=Admin-Create-vod_list_page-jump-'.$jump.'-key-'.($key+1).'-ids-'.$ids, 'Wait for a while, ready to generate the next category...');
 		}else{
 			if($jump){
-				$this->jump('?s=Admin-Create-news_detail_cids-jump-'.$jump, '稍等一会，准备生成文章内容页...');
+				$this->jump('?s=Admin-Create-news_detail_cids-jump-'.$jump, 'Wait for a while, ready to generate article content page...');
 			}else{
 				F('_create/next',NULL);
-				$this->jump('?s=Admin-Create-show', '恭喜您，分类页全部生成完毕。');
+				$this->jump('?s=Admin-Create-show', 'Congratulations, all of the sort pages are finished.');
 			}
 		}
 	}	
@@ -224,7 +224,7 @@ class CreateAction extends BaseAction{
 		$day = intval($_REQUEST['vod_day']);
 		$page = !empty($_GET['page']) ? intval($_GET['page']) : 1;
 		$pagekey = intval($_GET['pagekey']);
-		$this->check(C('url_vod_detail'),'视频内容页','?s=Admin-Create-Show');
+		$this->check(C('url_vod_detail'),'Video content page','?s=Admin-Create-Show');
 		F('_create/next','?s=Admin-Create-vod_detail_day-vod_day-'.$day.'-page-'.$page);
 		//查询数据开始
 		$params = array();
@@ -245,7 +245,7 @@ class CreateAction extends BaseAction{
 		//
 		$infos = D('VodView')->ff_select_page($params, $where);
 		$pages = $_GET['ff_page_'.$params['page_id']];
-		echo'<h4>总共需要生成<font color=blue>'.$pages['records'].'</font>个视频内容页，需要分<font color=blue>'.$pages['totalpages'].'</font>次来执行，正在执行第<font color=red>'.$pages['currentpage'].'</font>次</h4>';
+		echo'<h4>A total of need to be generated<font color=blue>'.$pages['records'].'</font>A video content page that needs to be divided<font color=blue>'.$pages['totalpages'].'</font>Times to perform, is executing the first<font color=red>'.$pages['currentpage'].'</font>次</h4>';
 		echo'<ul style="font-size:13px;margin:0px;padding:0 0 0 20px;">';
 		// 生成内容页与播放页
 		foreach($infos as $key=>$value){
@@ -253,10 +253,10 @@ class CreateAction extends BaseAction{
 		}
 		echo'</ul>';
 		if($pages['currentpage'] < $pages['totalpages']){
-			$this->jump('?s=Admin-Create-vod_detail_day-vod_day-'.$day.'-page-'.($page+1), '稍等一会，准备生成下一批视频内容页...');
+			$this->jump('?s=Admin-Create-vod_detail_day-vod_day-'.$day.'-page-'.($page+1), 'Wait a moment and prepare to generate the next video content page...');
 		}else{
 			F('_create/next',NULL);
-			$this->jump('?s=Admin-Create-Show', '恭喜您，视频内容页全部生成完毕。');
+			$this->jump('?s=Admin-Create-Show', 'Congratulations, all the video content pages are generated.');
 		}
 	}
 	//视频内容页按ID列表
@@ -284,9 +284,9 @@ class CreateAction extends BaseAction{
 		}
 		//检查整个任务是否完成
 		if($pages['currentpage'] < $pages['totalpages']){
-			$this->jump('?s=Admin-Create-vod_detail_id-ids-'.$ids.'-page-'.($page+1), '稍等一会，准备生成下一个视频...');
+			$this->jump('?s=Admin-Create-vod_detail_id-ids-'.$ids.'-page-'.($page+1), 'Wait for a while, ready to generate the next video...');
 		}else{
-			echo '<li style="color:#ff0000">所有视频内容页静态化完成。</li>';
+			echo '<li style="color:#ff0000">All video content pages are static.</li>';
 		}
 	}
 	//生成视频内容页与播放页
@@ -306,7 +306,7 @@ class CreateAction extends BaseAction{
 				$path = ff_url_build('vod/read', array('list_id'=>$info['list_id'],'list_dir'=>$info['list_dir'],'id'=>$info['vod_id'],'ename'=>$info['vod_ename']));
 				$this->assign($info);
 				$this->buildHtml($path, './', $info['vod_skin_detail']);
-				echo '<li>'.$info['vod_id'].' 内容页 <a href="'.$path.C('html_file_suffix').'" target="_blank">'.$path.C('html_file_suffix').'</a></li>';
+				echo '<li>'.$info['vod_id'].' Content page <a href="'.$path.C('html_file_suffix').'" target="_blank">'.$path.C('html_file_suffix').'</a></li>';
 				ob_flush();flush();
 			}
 			//是否生成播放页
@@ -331,7 +331,7 @@ class CreateAction extends BaseAction{
 		$path = ff_url_build('vod/play', array('list_id'=>$info['list_id'],'list_dir'=>$info['list_dir'],'id'=>$info['vod_id'],'ename'=>$info['vod_ename'],'sid'=>$array_play['sid'],'pid'=>$array_play['pid']));
 		$this->assign($info);
 		$this->buildHtml($path, './', $info['vod_skin_play']);
-		echo '<li style="color:#666">'.$info['vod_id'].' 播放页 <a href="'.$path.C('html_file_suffix').'" target="_blank" style="color:#666">'.$path.C('html_file_suffix').'</a></li>';
+		echo '<li style="color:#666">'.$info['vod_id'].' Play page <a href="'.$path.C('html_file_suffix').'" target="_blank" style="color:#666">'.$path.C('html_file_suffix').'</a></li>';
 		ob_flush();flush();
 	}
 	//播放页集数太多易超时，故一页生成一个影片并播放页按页生成
@@ -356,7 +356,7 @@ class CreateAction extends BaseAction{
 		}
 		//跳转
 		if($jumpurl){
-			$this->jump($jumpurl, '稍等一会，准备生成下一批播放页...');
+			$this->jump($jumpurl, 'Wait for a while, ready to generate the next batch of pages...');
 		}
 	}	
 	//文章内容页分类列表
@@ -370,7 +370,7 @@ class CreateAction extends BaseAction{
 			$ids = $post['news_cids'];
 		}
 		//检测是否需要生成
-		$this->check(C('url_news_detail'),'文章内容页','?s=Admin-Create-news_list_page-jump-'.$jump);
+		$this->check(C('url_news_detail'),'Article content page','?s=Admin-Create-news_list_page-jump-'.$jump);
 		//断点生成(写入缓存)
 		F('_create/next','?s=Admin-Create-news_detail_cids-jump-'.$jump.'-ids-'.$ids.'-page-'.$page);
 		//查询数据开始
@@ -388,7 +388,7 @@ class CreateAction extends BaseAction{
 		//
 		$infos = D('NewsView')->ff_select_page($params, $where);
 		$pages = $_GET['ff_page_'.$params['page_id']];
-		echo'<h4>总共需要生成<font color=blue>'.$pages['records'].'</font>个文章内容页，需要分<font color=blue>'.$pages['totalpages'].'</font>次来执行，正在执行第<font color=red>'.$pages['currentpage'].'</font>次</h4>';
+		echo'<h4>A total of need to be generated<font color=blue>'.$pages['records'].'</font>Article content page, need points<font color=blue>'.$pages['totalpages'].'</font>Times to perform, is executing the first<font color=red>'.$pages['currentpage'].'</font>次</h4>';
 		echo'<ul style="font-size:14px;margin:0px;padding:0px;">';
 		foreach($infos as $key=>$value){
 			$this->news_create($value['news_id']);
@@ -397,13 +397,13 @@ class CreateAction extends BaseAction{
 		echo'</ul>';
 		//组合回跳URL路径与执行跳转
 		if($pages['currentpage'] < $pages['totalpages']){
-			$this->jump('?s=Admin-Create-news_detail_cids-jump-'.$jump.'-page-'.($page+1), '稍等一会，准备生成下一批文章内容页...');
+			$this->jump('?s=Admin-Create-news_detail_cids-jump-'.$jump.'-page-'.($page+1), 'Wait for a while, ready to generate the next article content page...');
 		}else{
 			if($jump){
-				$this->jump('?s=Admin-Create-news_list_page-jump-'.$jump, '稍等一会，准备生成文章分类页...');
+				$this->jump('?s=Admin-Create-news_list_page-jump-'.$jump, 'Wait for a while, ready to generate article classification page...');
 			}else{
 				F('_create/next',NULL);
-				$this->jump('?s=Admin-Create-Show', '恭喜您，文章内容页全部生成完毕。');
+				$this->jump('?s=Admin-Create-Show', 'Congratulations, the article content page is fully generated.');
 			}
 		}		
 	}
@@ -413,7 +413,7 @@ class CreateAction extends BaseAction{
 		$key = intval($_GET['key']);
 		$page = !empty($_GET['p']) ? intval($_GET['p']) : 1;
 		//检测是否需要生成
-		$this->check(C('url_news_list'), '文章分类页', '?s=Admin-Create-index');
+		$this->check(C('url_news_list'), 'Article classification page', '?s=Admin-Create-index');
 		//断点生成(写入缓存)
 		F('_create/next','?s=Admin-Create-news_list_page-jump-'.$jump.'-key-'.$key.'-ids-'.$ids.'-p-'.$page);
 		//当前需要生成的分类ID
@@ -433,7 +433,7 @@ class CreateAction extends BaseAction{
 		$where['list_id'] = array('eq', $params['id']);
 		$info = D('List')->ff_find('*', $where, 'cache_page_list_'.$params['id']);
 		if($info){
-			echo'<h4>文章模块分类页需静态化任务的ID（'.$ids.'） 正在第'.$page.'次执行分类ID：<font color="blue">'.$params['id'].'</font>的静态化任务</h4>';
+			echo'<h4>Article module classification page to be static task ID ('.$ids.'） Is the first'.$page.'Times the implementation of classification ID:<font color="blue">'.$params['id'].'</font>Of the static task</h4>';
 			echo'<ul style="font-size:13px;margin:0px;padding:0 0 0 20px;">';
 			for($i=1; $i<51; $i++){
 				$pagetpl = ($page-1)*50+$i;
@@ -448,7 +448,7 @@ class CreateAction extends BaseAction{
 					$get = end($_GET);
 				}
 				if($pagetpl >= $get['totalpages']){
-					echo '<li style="color:#ff0000">文章模块分类ID为（'.$params['id'].'）的栏目分页静态化任务完成</li>';
+					echo '<li style="color:#ff0000">Article Module Category ID is ('.$params['id'].') Section of the paging static task is completed</li>';
 					break;
 				}
 				ob_flush();flush();
@@ -457,18 +457,18 @@ class CreateAction extends BaseAction{
 			//计算总页码需要分多少次生成
 			$total = ceil($get['totalpages']/50);
 			if($page < $total){
-				$this->jump('?s=Admin-Create-news_list_page-jump-'.$jump.'-key-'.$key.'-ids-'.$ids.'-p-'.($page+1), '稍等一会，当前分类需要继续分页执行...');
+				$this->jump('?s=Admin-Create-news_list_page-jump-'.$jump.'-key-'.$key.'-ids-'.$ids.'-p-'.($page+1), 'Wait a moment, the current classification needs to continue paging execution...');
 			}
 		}
 		//是否生成下一个分类
 		if(($key+1) < count($ids_array)){
-			$this->jump('?s=Admin-Create-news_list_page-jump-'.$jump.'-key-'.($key+1).'-ids-'.$ids, '稍等一会，准备生成下一个分类...');
+			$this->jump('?s=Admin-Create-news_list_page-jump-'.$jump.'-key-'.($key+1).'-ids-'.$ids, 'Wait for a while, ready to generate the next category...');
 		}else{
 			if($jump){
-				$this->jump('?s=Admin-Create-index', '稍等一会，准备生成网站首页...');
+				$this->jump('?s=Admin-Create-index', 'Wait a moment, ready to generate the home page...');
 			}else{
 				F('_create/next',NULL);
-				$this->jump('?s=Admin-Create-show', '恭喜您，分类页全部生成完毕。');
+				$this->jump('?s=Admin-Create-show', 'Congratulations, all of the sort pages are finished.');
 			}
 		}
 	}	
@@ -476,7 +476,7 @@ class CreateAction extends BaseAction{
 	public function news_detail_day(){
 		$day = intval($_REQUEST['news_day']);
 		$page = !empty($_GET['page']) ? intval($_GET['page']) : 1;
-		$this->check(C('url_news_detail'),'文章内容页','?s=Admin-Create-Show');
+		$this->check(C('url_news_detail'),'Article content page','?s=Admin-Create-Show');
 		F('_create/next','?s=Admin-Create-news_detail_day-news_day-'.$day.'-page-'.$page);
 		//查询数据开始
 		$params = array();
@@ -493,17 +493,17 @@ class CreateAction extends BaseAction{
 		//
 		$infos = D('NewsView')->ff_select_page($params, $where);
 		$pages = $_GET['ff_page_'.$params['page_id']];
-		echo'<h4>总共需要生成<font color=blue>'.$pages['records'].'</font>个文章内容页，需要分<font color=blue>'.$pages['totalpages'].'</font>次来执行，正在执行第<font color=red>'.$pages['currentpage'].'</font>次</h4>';
+		echo'<h4>A total of need to be generated<font color=blue>'.$pages['records'].'</font>Article content page, need points<font color=blue>'.$pages['totalpages'].'</font>Times to perform, is executing the first<font color=red>'.$pages['currentpage'].'</font>次</h4>';
 		echo'<ul style="font-size:14px;margin:0px;padding:0px;">';
 		foreach($infos as $key=>$value){
 			$this->news_create($value['news_id']);
 		}
 		echo'</ul>';
 		if($pages['currentpage'] < $pages['totalpages']){
-			$this->jump('?s=Admin-Create-news_detail_day-news_day-'.$day.'-page-'.($page+1), '稍等一会，准备生成下一批文章内容页...');
+			$this->jump('?s=Admin-Create-news_detail_day-news_day-'.$day.'-page-'.($page+1), 'Wait for a while, ready to generate the next article content page...');
 		}else{
 			F('_create/next',NULL);
-			$this->jump('?s=Admin-Create-Show', '恭喜您，文章内容页全部生成完毕。');
+			$this->jump('?s=Admin-Create-Show', 'Congratulations, the article content page is fully generated.');
 		}
 	}
 	//文章内容页按ID列表
@@ -551,7 +551,7 @@ class CreateAction extends BaseAction{
 			foreach($array as $key=>$value){
 				$this->assign($value['info']);
 				$this->buildHtml($value['path'], './', $value['info']['news_skin_detail']);
-				echo '<li>'.$value['info']['news_id'].' <a href="'.$value['path'].C('html_file_suffix').'" target="_blank">'.$value['path'].C('html_file_suffix').'</a> 生成完毕</li>';
+				echo '<li>'.$value['info']['news_id'].' <a href="'.$value['path'].C('html_file_suffix').'" target="_blank">'.$value['path'].C('html_file_suffix').'</a> Generated</li>';
 				ob_flush();flush();
 			}
 		}

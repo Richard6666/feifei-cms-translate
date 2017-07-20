@@ -2,11 +2,11 @@
 class ForumModel extends RelationModel {
 	
 	protected $_validate = array(
-		array('forum_vcode','require','请输入验证码!',1,'',1),
-		array('forum_vcode','check_vcode','验证码错误！',1,'callback',1),
-		array('forum_cookie','check_cookie','您已经评论过了!',2,'callback',1),
-		array('forum_sid','require','您没有指定模型ID！',1,'',1),
-		array('forum_content','require','请填写评论内容！',1),
+		array('forum_vcode','require','please enter verification code!',1,'',1),
+		array('forum_vcode','check_vcode','Verification code error!',1,'callback',1),
+		array('forum_cookie','check_cookie','You have already commented on it!',2,'callback',1),
+		array('forum_sid','require','You did not specify the model ID!',1,'',1),
+		array('forum_content','require','Please fill in the comments!',1),
 	);
 	
 	protected $_auto = array(
@@ -91,7 +91,7 @@ class ForumModel extends RelationModel {
 			}
     	return $info;
     }
-		$this->error = '数据不存在！';
+		$this->error = 'Data does not exist!';
 		return false;
 	}
 	

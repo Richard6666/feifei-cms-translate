@@ -22,11 +22,11 @@ class SlideAction extends BaseAction{
 			if(!$info){
 				$this->error($rs->getError());
 			}
-			$info['tpltitle'] = '编辑';
+			$info['tpltitle'] = 'edit';
 		}else{
 		  $info['slide_oid'] = $rs->max('slide_oid')+1;
 			$info['slide_status'] = 1;
-			$info['tpltitle'] = '添加';
+			$info['tpltitle'] = 'Add to';
 		}
 		$this->assign($info);
 		$this->display('./Public/system/slide_add.html');
@@ -39,7 +39,7 @@ class SlideAction extends BaseAction{
 			$this->error(D('Slide')->getError());
 		}
 		$this->assign("jumpUrl",'?s=Admin-Slide-Show');
-		$this->success('恭喜您，所有操作已完成！');
+		$this->success('Congratulations, all the operations have been done!');
 	}
 	
 	// 隐藏与显示幻灯

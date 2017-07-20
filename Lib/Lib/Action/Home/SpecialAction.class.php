@@ -39,7 +39,7 @@ class SpecialAction extends HomeAction{
 		$info = D('Special')->ff_find('*', $where, 'cache_page_special_'.$Url['id'], true);
 		if(!$info){
 			$this->assign("jumpUrl",C('site_path'));
-			$this->error('此专题已经删除，请选择观看其它节目！');
+			$this->error('This topic has been deleted, please choose to watch other programs!');
 		}
 		//解析标签
 		return $this->Lable_Special_Read($info);

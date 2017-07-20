@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>无效图片管理</title>
+<title>Invalid image management</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin-style.css' />
 <script charset="utf-8" src="__PUBLIC__/jquery/1.11.3/jquery.min.js"></script>
@@ -31,16 +31,16 @@ $(document).ready(function(){
 <table border="0" cellpadding="0" cellspacing="0" class="table">
   <thead>
     <tr class="ct">
-      <th class="l"><span style="float:left">无效图片清理</span>文件夹名/文件名</th>
-      <th class="l" width="80">文件大小</th>
-      <th class="l" width="150">修改时间</th>
-      <th class="l" width="150">相关操作</th>
+      <th class="l"><span style="float:left">Invalid image cleanup</span>Folder name/file name</th>
+      <th class="l" width="80">File size</th>
+      <th class="l" width="150">Change the time</th>
+      <th class="l" width="150">Related operations</th>
     </tr>
   </thead>
 <notempty name="dirlast"> 
   <tbody>  
   <tr class="firstalt">
-  <td colspan="5" class="r pd"><img src="__PUBLIC__/images/file/last.gif"> <a href="?s=Admin-Pic-Show-id-{$dirlast}">上级目录</a> 当前目录: {$dirpath}</td>
+  <td colspan="5" class="r pd"><img src="__PUBLIC__/images/file/last.gif"> <a href="?s=Admin-Pic-Show-id-{$dirlast}">Parent directory</a> Current directory: {$dirpath}</td>
   </tr>
   </tbody>
 </notempty>
@@ -51,7 +51,7 @@ $(document).ready(function(){
   	<td class="l pd"><img src="__PUBLIC__/images/file/folder.gif" width="16" height="16"> <a href="?s=Admin-Pic-Show-id-{$feifei.pathfile}">{$feifei.filename}</a></td>
     <td class="l ct">{:byte_format(getdirsize($feifei['path'].'/'.$feifei['filename']))}</td>
     <td class="l ct">{$feifei.mtime|ff_color_date='Y-m-d H:i:s',###}</td>
-    <td class="l ct"><a href="?s=Admin-Pic-Show-id-{$feifei.path}/{:str_replace('-','*',$feifei['filename'])}">下级目录</a> <a href="?s=Admin-Pic-Ajaxpic-id-{$feifei.path}/{:str_replace('-','*',$feifei['filename'])}" class="del">清理</a></td>
+    <td class="l ct"><a href="?s=Admin-Pic-Show-id-{$feifei.path}/{:str_replace('-','*',$feifei['filename'])}">Subordinate directory</a> <a href="?s=Admin-Pic-Ajaxpic-id-{$feifei.path}/{:str_replace('-','*',$feifei['filename'])}" class="del">Clean up</a></td>
   </tr>
   </tbody>
   <else />
@@ -64,7 +64,7 @@ $(document).ready(function(){
     </in>
     <td class="l ct">{$feifei.size|byte_format}</td>
     <td class="l ct">{$feifei.mtime|ff_color_date='Y-m-d H:i:s',###}</td>
-    <td class="r ct"><a href="{$feifei.path}/{$feifei.filename}" target="_blank">浏览</a> <a href="?s=Admin-Pic-Del-id-{$feifei.path}/{:str_replace('-','*',$feifei['filename'])}" onClick="return confirm('确定删除该文件吗?')">删除</a></td>
+    <td class="r ct"><a href="{$feifei.path}/{$feifei.filename}" target="_blank">Browse</a> <a href="?s=Admin-Pic-Del-id-{$feifei.path}/{:str_replace('-','*',$feifei['filename'])}" onClick="return confirm('Are you sure you want to delete the file??')">delete</a></td>
   </tr>
   </tbody>
   </eq>  

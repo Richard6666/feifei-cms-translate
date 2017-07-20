@@ -1,8 +1,8 @@
 <?php 
 class SpecialModel extends RelationModel {
 	protected $_validate=array(
-		array('special_name','require','专题名称必须填写！',1),
-		array('special_ename','','别名标识重复，请重新填写',2,'unique',3),
+		array('special_name','require','Title must be filled in!',1),
+		array('special_ename','','Alias ​​logo repeat, please re-fill',2,'unique',3),
 	);
 	protected $_auto=array(
 		array('special_ename','special_ename',3,'callback'),
@@ -56,7 +56,7 @@ class SpecialModel extends RelationModel {
 			}
     	return $info;
     }
-		$this->error = '数据不存在！';
+		$this->error = 'Data does not exist!';
 		return false;
 	}
 	

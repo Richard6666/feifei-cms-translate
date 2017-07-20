@@ -5,7 +5,7 @@ class UpdownAction extends HomeAction{
   public function vod(){
 		$id = intval($_GET['id']);
 		if ($id < 1) {
-			$this->ajaxReturn(-1,'数据非法！',-1);
+			$this->ajaxReturn(-1,'Data is illegal!',-1);
 		}
 		$this->show($id,trim($_GET['type']),'vod');
   }
@@ -13,7 +13,7 @@ class UpdownAction extends HomeAction{
   public function news(){
 		$id = intval($_GET['id']);
 		if ($id < 1) {
-			$this->ajaxReturn(-1,'数据非法！',-1);
+			$this->ajaxReturn(-1,'Data is illegal!',-1);
 		}
 		$this->show($id,trim($_GET['type']),'news');
   }	
@@ -21,7 +21,7 @@ class UpdownAction extends HomeAction{
 	public function cm(){
 		$id = intval($_GET['id']);
 		if ($id < 1) {
-			$this->ajaxReturn(-1,'数据非法！',-1);
+			$this->ajaxReturn(-1,'Data is illegal!',-1);
 		}
 		$this->show($id,trim($_GET['type']),'cm');
   }
@@ -29,7 +29,7 @@ class UpdownAction extends HomeAction{
 	public function forum(){
 		$id = intval($_GET['id']);
 		if ($id < 1) {
-			$this->ajaxReturn(-1,'数据非法！',-1);
+			$this->ajaxReturn(-1,'Data is illegal!',-1);
 		}
 		$this->show($id,trim($_GET['type']),'forum');
   }
@@ -39,7 +39,7 @@ class UpdownAction extends HomeAction{
 		if($type){
 			$cookie = $model.'-updown-'.$id;
 			if(isset($_COOKIE[$cookie])){
-				$this->ajaxReturn('', '您已经参与过了！', 0);
+				$this->ajaxReturn('', 'Youve been involved!', 0);
 			}
 			if ('up' == $type){
 				$rs->setInc($model.'_up',$model.'_id = '.$id);

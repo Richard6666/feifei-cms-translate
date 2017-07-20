@@ -1,7 +1,7 @@
 <notempty name="vod_series">
 <div class="clearfix ff-clearfix"></div>
 <div class="page-header">
-  <h4><span class="glyphicon glyphicon-heart-empty ff-text"></span> 相关影片系列</h4>
+  <h4><span class="glyphicon glyphicon-heart-empty ff-text"></span> Related videos series</h4>
 </div>
 <ul class="list-unstyled">
   <volist name=":ff_mysql_vod('ids:'.$vod_series.';limit:12;order:vod_hits_lasttime;sort:desc')" id="feifei" key="k">

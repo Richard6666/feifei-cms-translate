@@ -1,1 +1,1 @@
-document.write("工具>网站广告管理 自适应模板顶部广告");
+document.write("tool>Website ad management Adaptive template top ad");

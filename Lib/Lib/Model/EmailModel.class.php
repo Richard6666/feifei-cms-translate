@@ -18,11 +18,11 @@ class EmailModel extends Model {
 		//$mail->IsHTML(true); // set email format to HTML //是否使用HTML格式
 		//$mail->AltBody = "This is the body in plain text for non-HTML mail clients"; //附加信息，可以省略
 		if(!$mail->Send()) {
-			echo "邮件发送失败. <p>";
-			echo "错误原因: " . $mail->ErrorInfo;
+			echo "E-mail failed to send. <p>";
+			echo "wrong reason: " . $mail->ErrorInfo;
 			exit;
 		}
-		echo "邮件发送成功。"; 
+		echo "Mail sent successfully."; 
 	}	
 }
 ?>

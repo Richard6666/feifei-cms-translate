@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>后台用户管理</title>
+<title>Background user management</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin-style.css' />
 <script charset="utf-8" src="__PUBLIC__/jquery/1.11.3/jquery.min.js"></script>
@@ -16,47 +16,47 @@ $(document).ready(function(){
 <table border="0" cellpadding="0" cellspacing="0" class="table">
   <thead>
     <tr class="ct">
-      <th class="r" style="text-align:left; padding-left:10px">ID.分类名称</th>
-      <th class="r" width="80">创建</th>
-      <th class="r" width="40">状态</th>
-      <th class="r" width="40">模型</th>
-      <th class="r" width="60">排序</th>
-      <th class="r" width="90">中文名</th>
-      <th class="r" width="130">英文名</th>
-      <th class="r" width="130">使用模板</th>
-      <th class="r" width="70">管理操作</th>
+      <th class="r" style="text-align:left; padding-left:10px">ID.Category Name</th>
+      <th class="r" width="80">create</th>
+      <th class="r" width="40">status</th>
+      <th class="r" width="40">model</th>
+      <th class="r" width="60">Sorting</th>
+      <th class="r" width="90">Chinese name</th>
+      <th class="r" width="130">English name</th>
+      <th class="r" width="130">Use template</th>
+      <th class="r" width="70">Management operation</th>
     </tr>
   </thead>
   <form action="?s=Admin-List-Updateall" method="post" name="myform" id="myform"> 
   <volist name="listtree" id="feifei">
   <tbody><tr>
     <td class="r pd"><input type='checkbox' name='ids[]' value='{$feifei.list_id}' class="noborder" checked>{$feifei.list_id}、<eq name="feifei.list_sid" value="1"><a href="{:ff_url_vod_show($feifei['list_id'],$feifei['list_dir'],1)}" target="_blank"><else/><a href="{:ff_url_news_show($feifei['list_id'],$feifei['list_dir'],1)}" target="_blank"></eq>{$feifei.list_name}</a>(<font color="red">{$feifei.list_id|ff_list_count}</font>)</td>
-    <td class="r ct"><a href="?s=Admin-List-Add-pid-{$feifei.list_id}-sid-{$feifei.list_sid}">创建子类</a></td>
-    <td class="r ct"><eq name="feifei.list_status" value="1"><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-2" title="显示状态,点击隐藏该分类">显示</a><else /><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-1" title="隐藏状态,点击显示该分类"><font color="red">隐藏</font></a></eq></td>
+    <td class="r ct"><a href="?s=Admin-List-Add-pid-{$feifei.list_id}-sid-{$feifei.list_sid}">Create subclasses</a></td>
+    <td class="r ct"><eq name="feifei.list_status" value="1"><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-2" title="Display status,Click to hide the category">display</a><else /><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-1" title="Hidden state,Click to display the category"><font color="red">hide</font></a></eq></td>
     <td class="r ct">{$feifei.list_sid|ff_sid2module}</td>
     <td class="r ct"><input type='text' name='list_oid[{$feifei.list_id}]' value='{$feifei.list_oid}' class="w50"></td>
     <td class="r ct"><input type='text' name='list_name[{$feifei.list_id}]' value='{$feifei.list_name}' class="w70"></td>
     <td class="r ct"><input type='text' name='list_dir[{$feifei.list_id}]' value='{$feifei.list_dir}' class="w120"></td>
     <td class="r ct"><input type='text' name='list_skin[{$feifei.list_id}]' value='{$feifei.list_skin}' class="w120"></td>
-    <td class="r ct"><a href="?s=Admin-List-Add-id-{$feifei.list_id}" title="修改分类">编辑</a> <a href="?s=Admin-List-Del-id-{$feifei.list_id}" onClick="return confirm('确定删除?')" title="删除分类">删除</a> <a href="?s=Admin-List-Add-list_pid-{$feifei.list_id}" ></td>
+    <td class="r ct"><a href="?s=Admin-List-Add-id-{$feifei.list_id}" title="Modify the classification">edit</a> <a href="?s=Admin-List-Del-id-{$feifei.list_id}" onClick="return confirm('confirm delete?')" title="Delete the category">delete</a> <a href="?s=Admin-List-Add-list_pid-{$feifei.list_id}" ></td>
   </tr></tbody>
   <volist name="feifei.list_son" id="feifei">
   <tbody><tr>
     <td class="r pd">&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' name='ids[]' value='{$feifei.list_id}' class="noborder" checked>{$feifei.list_id}、{$feifei.list_name}(<font color="red">{$feifei.list_id|ff_list_count}</font>)</td>
     <td class="r ct">&nbsp;</td>
-    <td class="r ct"><eq name="feifei.list_status" value="1"><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-0" title="显示状态,点击隐藏该分类">显示</a><else /><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-1" title="隐藏状态,点击显示该分类"><font color="red">隐藏</font></a></eq></td>
+    <td class="r ct"><eq name="feifei.list_status" value="1"><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-0" title="Display status,Click to hide the category">display</a><else /><a href="?s=Admin-List-Status-id-{$feifei.list_id}-sid-1" title="Hidden state,Click to display the category"><font color="red">hide</font></a></eq></td>
     <td class="r ct">{$feifei.list_sid|ff_sid2module}</td>
     <td class="r ct"><input type='text' name='list_oid[{$feifei.list_id}]' value='{$feifei.list_oid}' class="w50"></td>
     <td class="r ct"><input type='text' name='list_name[{$feifei.list_id}]' value='{$feifei.list_name}' class="w70"></td>
     <td class="r ct"><input type='text' name='list_dir[{$feifei.list_id}]' value='{$feifei.list_dir}' class="w120"></td>
     <td class="r ct"><input type='text' name='list_skin[{$feifei.list_id}]' value='{$feifei.list_skin}' class="w120"></td>
-    <td class="r ct"><a href="?s=Admin-List-Add-id-{$feifei.list_id}" title="修改分类">编辑</a> <a href="?s=Admin-List-Del-id-{$feifei.list_id}" onClick="return confirm('确定删除?')" title="删除分类">删除</a> <a href="?s=Admin-List-Add-list_pid-{$feifei.list_id}" ></td>
+    <td class="r ct"><a href="?s=Admin-List-Add-id-{$feifei.list_id}" title="Modify the classification">edit</a> <a href="?s=Admin-List-Del-id-{$feifei.list_id}" onClick="return confirm('confirm delete?')" title="Delete the category">delete</a> <a href="?s=Admin-List-Add-list_pid-{$feifei.list_id}" ></td>
   </tr></tbody>
   </volist>  
   </volist>
   <tfoot>
     <tr>
-      <td colspan="9" class="r"><input type="button" value="全选" class="submit" onClick="checkall('all');"> <input name="" type="button" value="反选" class="submit" onClick="checkall();"> <input type="button" value="批量修改" class="submit" onClick="post('?s=Admin-List-Updateall');"> <input type="button" value="批量删除" class="submit" onClick="if(confirm('删除后将无法还原,确定要删除吗?')){post('?s=Admin-List-Delall');}else{return false}"></td>
+      <td colspan="9" class="r"><input type="button" value="select all" class="submit" onClick="checkall('all');"> <input name="" type="button" value="Anti-election" class="submit" onClick="checkall();"> <input type="button" value="Batch Edit" class="submit" onClick="post('?s=Admin-List-Updateall');"> <input type="button" value="batch deletion" class="submit" onClick="if(confirm('It will not be restored after deletion,You sure you want to delete it?')){post('?s=Admin-List-Delall');}else{return false}"></td>
     </tr>  
   </tfoot>
   </form>

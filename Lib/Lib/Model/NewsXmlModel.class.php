@@ -4,10 +4,10 @@ class NewsXmlModel extends Model {
 	//采集入库 先智能判断是否有相同文章，最后都没有的情况才新添加
   public function xml_insert($news){
 	  if(empty($news['news_name']) || empty($news['news_content'])){
-			return '文章名称或文章内容为空，不做处理!';
+			return 'Article name or article content is empty, do not deal with!';
 		}
 		if(!$news['news_cid']){
-			return '未匹配到对应栏目分类，不做处理!';
+			return 'Did not match the corresponding column classification, do not deal with!';
 		}
 		// 要查询检查的字段
 		$field = 'news_id,news_cid,news_name,news_remark,news_content';
@@ -60,20 +60,20 @@ class NewsXmlModel extends Model {
 			if( $vod['vod_keywords'] ){
 				D('Tag')->tag_update($id, $vod["vod_keywords"], 'news_tag');
 			}	
-			return '文章添加成功。';
+			return 'Article added successfully.';
 		}
-		return '文章添加失败。';
+		return 'Article added failed.';
   }	
 	
 	// 更新数据
 	public function xml_update($news, $news_old){	
 		// 检测是否站长手动锁定更新
 		if('feifeicms' == $news_old['news_inputer']){
-			return '站长手动设置，不更新。';
+			return 'Webmaster manually set, not updated.';
 		}
 		$edit = array();
 		if($news['news_content'] == $news_old['news_content']){
-			return '文章内容未变化，不需要更新。';
+			return 'The article content has not changed and does not need to be updated.';
 		}else{
 			$edit['news_content'] = $news['news_content'];
 		}
@@ -88,7 +88,7 @@ class NewsXmlModel extends Model {
 		if(C('cache_page_news')){
 			S('cache_page_news_'.$news_old['news_id'],NULL);
 		}
-		return '文章已更新。';
+		return 'The article has been updated.';
 	}					
 }
 ?>

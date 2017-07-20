@@ -4,7 +4,7 @@ class LoginAction extends Action{
     public function index(){
 		if (!$_SESSION['AdminLogin']) {
 			header("Content-Type:text/html; charset=utf-8");
-			echo('请从后台管理入口登录。');
+			echo('Please log in from the background management portal.');
 			exit();
 		}
 		if ($_SESSION[C('USER_AUTH_KEY')]) {
@@ -53,7 +53,7 @@ class LoginAction extends Action{
 			session_destroy();
         }
 		header("Content-Type:text/html; charset=utf-8");
-		echo ('您已经退出网站管理后台，如需操作请重新登录！');
+		echo ('You have already logged out of the site management background, please log in!');
     }
 }
 ?>

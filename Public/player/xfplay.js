@@ -55,11 +55,11 @@ var cms_player_fun = {
 					document.write('<embed id="xf_player" name="xf_player" type="application/xfplay-plugin" PARAM_URL="'+cms_player.url+'" PARAM_Status="1" width="480" height="320"></embed></div>');
 					cms_player_fun.buffer();
 				}else{
-					document.write('<div id="xf_player" name="xf_player">请安装影音先锋播放器</div></div>');
+					document.write('<div id="xf_player" name="xf_player">Please install the video vanguard player</div></div>');
 					cms_player_fun.install();
 				}
 			}else{
-				alert('不支持该浏览器点播，推荐使用Goolge Chrome');
+				alert('Does not support the browser on demand, it is recommended to use Goolge Chrome');
 			}
 		}
 	}

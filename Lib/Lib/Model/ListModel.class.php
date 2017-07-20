@@ -2,9 +2,9 @@
 class ListModel extends AdvModel {
 	//自动验证
 	protected $_validate=array(
-		array('list_name','require','必须填写分类标题！'),
-		array('list_oid','number','必须填写排序ID！'),
-		array('list_dir','','分类别名已经存在,请重新设定！',1,'unique',1),
+		array('list_name','require','Must fill in classification title!'),
+		array('list_oid','number','Must fill in sort ID!'),
+		array('list_dir','','The classification alias already exists,Please re-set!',1,'unique',1),
 	);
 	//自动完成
 	protected $_auto=array(
@@ -41,7 +41,7 @@ class ListModel extends AdvModel {
 			}
     	return $info;
     }
-		$this->error = '数据不存在！';
+		$this->error = 'Data does not exist!';
 		return false;
 	}
 	

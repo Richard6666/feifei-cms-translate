@@ -50,7 +50,7 @@ class NewsAction extends BaseAction{
 		$currentpage = ff_page_max($currentpage,$totalpages);
 		$pageurl = U('Admin-News/Show',$admin,false,false).'FFLINK'.C('url_html_suffix');
 		$admin['p'] = $currentpage;$_SESSION['news_jumpurl'] = U('Admin-News/Show',$admin).C('url_html_suffix');
-		$pages = '共'.$count.'篇文章&nbsp;当前:'.$currentpage.'/'.$totalpages.'页&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
+		$pages = '共'.$count.'Article&nbsp;current:'.$currentpage.'/'.$totalpages.'page&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
 		$admin['pages'] = $pages;
 		//查询数据
 		$list = $rs->where($where)->order($order)->limit($limit)->page($currentpage)->select();
@@ -79,7 +79,7 @@ class NewsAction extends BaseAction{
 			$array['news_starsarr'] = admin_star_arr($array['news_stars']);
 			$array['news_type'] = implode(',',$tag['news_type']);
 			$array['news_keywords'] = implode(',',$tag['news_tag']);
-			$array['news_tplname'] = '编辑';
+			$array['news_tplname'] = 'edit';
 			$array['list_extend'] = json_decode($array['list_extend'],true);//转化json格式
 			$_SESSION['news_jumpurl'] = $_SERVER['HTTP_REFERER'];
 		}else{
@@ -88,7 +88,7 @@ class NewsAction extends BaseAction{
 			$array['news_inputer'] = $_SESSION['admin_name'];
 			$array['news_addtime'] = time();
 			$array['news_starsarr'] = admin_star_arr(1);
-			$array['news_tplname'] = '添加';
+			$array['news_tplname'] = 'Add to';
 			$array["list_extend"]['type'] = C('news_type');
 		}
 		$this->assign($array);
@@ -124,9 +124,9 @@ class NewsAction extends BaseAction{
 			}
 			//跳转网页
 			$this->assign("jumpUrl",$_SESSION['news_jumpurl']);
-			$this->success('恭喜您，数据库、缓存、静态所有操作已完成！');
+			$this->success('Congratulations, database, cache, static all operations have been completed!');
 		}else{
-			$this->error('数据库操作完成，附加操作不做处理！');
+			$this->error('Database operation is completed, additional operations do not deal with!');
 		}		
 	}	
 	// Ajax设置星级
@@ -156,7 +156,7 @@ class NewsAction extends BaseAction{
 	// 删除文章all
   public function delall(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要删除的文章！');
+			$this->error('Please select the article you want to delete!');
 		}	
 		$array = $_POST['ids'];
 		foreach($array as $val){
@@ -202,7 +202,7 @@ class NewsAction extends BaseAction{
 	// 批量转移文章
   public function pestcid(){
 		if(empty($_POST['ids'])){
-			$this->error('请选择需要转移的新闻！');
+			$this->error('Please choose the news you want to transfer!');
 		}	
 		$cid = intval($_POST['pestcid']);
 		if (ff_list_isson($cid)) {
@@ -212,7 +212,7 @@ class NewsAction extends BaseAction{
 			$rs->where($where)->save($data);
 			redirect($_SESSION['news_jumpurl']);
 		}else{
-			$this->error('请选择当前大类下面的子分类！');		
+			$this->error('Please select the subclass for the current category!');		
 		}
   }	
 	// 批量生成数据
@@ -221,7 +221,7 @@ class NewsAction extends BaseAction{
 			redirect('?s=Admin-Create-news_detail_id-ids-'.implode(',',$_POST['ids']));
 		}else{
 			$this->assign("jumpUrl",$_SESSION['news_jumpurl']);
-			$this->error('操作错误！');
+			$this->error('Wrong operation!');
 		}
   }				
 }

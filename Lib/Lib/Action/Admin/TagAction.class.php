@@ -14,7 +14,7 @@ class TagAction extends BaseAction{
 		$currentpage = ff_page_max($currentpage,$totalpages);//$admin['page'] = $currentpage;
 		$pageurl = U('Admin-Tag/Show',$admin,false,false).'FFLINK'.C('url_html_suffix');
 		$admin['p'] = $currentpage;
-		$pages = '共'.$count.'个标签&nbsp;当前:'.$currentpage.'/'.$totalpages.'页&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
+		$pages = '共'.$count.'A label&nbsp;current:'.$currentpage.'/'.$totalpages.'page&nbsp;'.getpage($currentpage,$totalpages,8,$pageurl,'pagego(\''.$pageurl.'\','.$totalpages.')');
 		$admin['pages'] = $pages;
 		//查询数据
 		$rs = D("Tag");
@@ -40,7 +40,7 @@ class TagAction extends BaseAction{
 		$rs = D("Tag");
 		$where['tag_name'] = trim($_GET['id']);
 		$rs->where($where)->delete();
-		$this->success('标签:'.$tag.'删除成功！');
+		$this->success('label:'.$tag.'successfully deleted!');
   }									
 }
 ?>

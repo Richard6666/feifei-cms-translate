@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>系统发生错误</title>
+<title>System error</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 <meta name="Generator" content="EditPlus"/>
 <style>
@@ -53,12 +53,12 @@ h2{
 </head>
 <body>
 <div class="notice">
-<h2>系统发生错误 </h2>
-<div >您可以选择 [ <A HREF="<?php echo(strip_tags($_SERVER['PHP_SELF']))?>">重试</A> ] [ <A HREF="javascript:history.back()">返回</A> ] 或者 [ <A HREF="<?php echo(__APP__);?>">回到首页</A> ]</div>
+<h2>System error </h2>
+<div >you can choose [ <A HREF="<?php echo(strip_tags($_SERVER['PHP_SELF']))?>">Retry</A> ] [ <A HREF="javascript:history.back()">return</A> ] or [ <A HREF="<?php echo(__APP__);?>">back to the homepage</A> ]</div>
 <?php if(isset($e['file'])) {?>
-<p><strong>错误位置:</strong>　FILE: <span class="red"><?php echo $e['file'] ;?></span>　LINE: <span class="red"><?php echo $e['line'];?></span></p>
+<p><strong>The wrong location:</strong>　FILE: <span class="red"><?php echo $e['file'] ;?></span>　LINE: <span class="red"><?php echo $e['line'];?></span></p>
 <?php }?>
-<p class="title">[ 错误信息 ]</p>
+<p class="title">[ Error message ]</p>
 <p class="message"><?php echo strip_tags($e['message']);?></p>
 <?php if(isset($e['trace'])) {?>
 <p class="title">[ TRACE ]</p>
@@ -67,6 +67,6 @@ h2{
 </p>
 <?php }?>
 </div>
-<div align="center" style="color:#FF3300;margin:5pt;font-family:Verdana"><a href="http://www.feifeicms.com" target="_blank">飞飞影视导航系统 www.feifeicms.com</a></div>
+<div align="center" style="color:#FF3300;margin:5pt;font-family:Verdana"><a href="http://www.feifeicms.com" target="_blank">Feifei video navigation system www.feifeicms.com</a></div>
 </body>
 </html>

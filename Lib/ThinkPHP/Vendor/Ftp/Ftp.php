@@ -12,7 +12,7 @@ class ftp{
 	protected $_conn = null; 
 	protected $_rs = null; 
 	public function __construct($config=array()){ 
- 		!function_exists('ftp_connect') && die('FTP模块不支持!'); 
+ 		!function_exists('ftp_connect') && die('FTP module is not supported!'); 
  		$this->config($config);
 	} 
 	public function config($config=array()){ 

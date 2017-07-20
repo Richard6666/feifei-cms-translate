@@ -19,9 +19,9 @@ class PlayerAction extends BaseAction{
 		if ($rs->create()) {
 			if ( false !==  $rs->add() ) {
 				$this->assign("jumpUrl",'?s=Admin-Player-Show');
-				$this->success('添加播放器来源成功！');
+				$this->success('Add player source success!');
 			}else{
-				$this->error('添加播放器来源错误');
+				$this->error('Added player source error');
 			}
 		}else{
 		    $this->error($rs->getError());
@@ -58,7 +58,7 @@ class PlayerAction extends BaseAction{
 		$rs = D("Player");
 		$where['player_id'] = $_GET['id'];
 		$rs->where($where)->delete();
-		$this->success('删除播放器成功！');
+		$this->success('Remove the player successfully!');
   }			
 }
 ?>

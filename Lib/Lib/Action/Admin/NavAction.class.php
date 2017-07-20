@@ -34,7 +34,7 @@ class NavAction extends BaseAction{
 			$this->error(D('Nav')->getError());
 		}
 		$this->assign("jumpUrl",'?s=Admin-Nav-Show');
-		$this->success('恭喜您，所有操作已完成！');
+		$this->success('Congratulations, all the operations have been done!');
 	}
 	
 	public function all(){
@@ -61,7 +61,7 @@ class NavAction extends BaseAction{
 		}
 		//redirect('?s=Admin-Nav-Show');
 		$this->assign("jumpUrl",'?s=Admin-Nav-Show');
-		$this->success('恭喜您，所有操作已完成！');
+		$this->success('Congratulations, all the operations have been done!');
 	}
 }
 ?>
