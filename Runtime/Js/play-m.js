@@ -1,0 +1,1 @@
+document.write("工具>网站广告管理  移动端专用广告（播放页banner）");
