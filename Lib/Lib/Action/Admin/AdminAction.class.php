@@ -38,9 +38,9 @@ class AdminAction extends BaseAction{
 		if($rs->create()){
 			if(false !==  $rs->add()){
 			    $this->assign("jumpUrl",'?s=Admin-Admin-Show');
-				$this->success('添加后台管理员成功！');
+				$this->success('Add background manager success!');
 			}else{
-				$this->error('添加后台管理员失败');
+				$this->error('Added background administrator failed');
 			}
 		}else{
 		    $this->error($rs->getError());
@@ -53,9 +53,9 @@ class AdminAction extends BaseAction{
 		if ($rs->create()) {
 			if(false !==  $rs->save()){
 			    $this->assign("jumpUrl",'?s=Admin-Admin-Show');
-				$this->success('更新管理员信息成功！');
+				$this->success('Update administrator information is successful!');
 			}else{
-				$this->error("更新管理员信息失败！");
+				$this->error("Update administrator information failed!");
 			}
 		}else{
 			$this->error($rs->getError());
@@ -65,14 +65,14 @@ class AdminAction extends BaseAction{
   public function del(){
 		$rs = D("Admin");
 		$rs->where('admin_id='.$_GET['id'])->delete();
-		$this->success('删除后台管理员成功！');
+		$this->success('Remove the background manager succeed!');
   }
 	// 批量删除
   public function delall(){
 		$where['admin_id'] = array('in',implode(',',$_POST['ids']));
 		$rs = D("Admin");
 		$rs->where($where)->delete();
-		$this->success('批量删除后台管理员成功！');
+		$this->success('Batch delete the background administrator succeed!');
   }
 	// 配置信息
   public function config(){
@@ -168,7 +168,7 @@ class AdminAction extends BaseAction{
 		@unlink('./Runtime/~app.php');
 		//cookie('think_template',NULL); //TMPL_PATH.TEMPLATE_NAME
 		admin_ff_hot_key(C('site_hot'));
-		$this->success('恭喜您，配置信息更新成功！');
+		$this->success('Congratulations, the configuration information is updated successfully!');
   }				
 }
 ?>

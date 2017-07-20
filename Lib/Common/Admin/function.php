@@ -128,16 +128,16 @@ function admin_ff_taglist2modelname($tag_list){
 //分页样式
 function getpage($currentPage,$totalPages,$halfPer=5,$url,$pagego){
     $linkPage .= ( $currentPage > 1 )
-        ? '<a href="'.str_replace('FFLINK',1,$url).'" class="pagegbk">首页</a>&nbsp;<a href="'.str_replace('FFLINK',($currentPage-1),$url).'" class="pagegbk">上一页</a>&nbsp;' 
-        : '<em>首页</em>&nbsp;<em>上一页</em>&nbsp;';
+        ? '<a href="'.str_replace('FFLINK',1,$url).'" class="pagegbk">Home</a>&nbsp;<a href="'.str_replace('FFLINK',($currentPage-1),$url).'" class="pagegbk">Previous page</a>&nbsp;' 
+        : '<em>Home</em>&nbsp;<em>Previous page</em>&nbsp;';
     for($i=$currentPage-$halfPer,$i>1||$i=1,$j=$currentPage+$halfPer,$j<$totalPages||$j=$totalPages;$i<$j+1;$i++){
         $linkPage .= ($i==$currentPage)?'<span>'.$i.'</span>&nbsp;':'<a href="'.str_replace('FFLINK',$i,$url).'">'.$i.'</a>&nbsp;'; 
     }
     $linkPage .= ( $currentPage < $totalPages )
-        ? '<a href="'.str_replace('FFLINK',($currentPage+1),$url).'" class="pagegbk">下一页</a>&nbsp;<a href="'.str_replace('FFLINK',$totalPages,$url).'" class="pagegbk">尾页</a>'
-        : '<em>下一页</em>&nbsp;<em>尾页</em>';
+        ? '<a href="'.str_replace('FFLINK',($currentPage+1),$url).'" class="pagegbk">Next page</a>&nbsp;<a href="'.str_replace('FFLINK',$totalPages,$url).'" class="pagegbk">last page</a>'
+        : '<em>Next page</em>&nbsp;<em>last page</em>';
 	if(!empty($pagego)){
-		$linkPage .='&nbsp;<input type="input" name="page" id="page" size=4 class="pagego"/><input type="button" value="跳 转" onclick="'.$pagego.'" class="pagebtn" />';
+		$linkPage .='&nbsp;<input type="input" name="page" id="page" size=4 class="pagego"/><input type="button" value="Jump" onclick="'.$pagego.'" class="pagebtn" />';
 	}
 	//
 	if(C('url_html') && C('url_html_list')){
@@ -149,107 +149,107 @@ function getpage($currentPage,$totalPages,$halfPer=5,$url,$pagego){
 // 获取数据库表名描述
 function ff_table_name($tablename){
 	if (strpos($tablename,'ads')>0){
-		return '广告';
+		return 'advertising';
 	}
 	if (strpos($tablename,'news')>0){
-		return '文章';
+		return 'article';
 	}
 	if (strpos($tablename,'vod')>0){
-		return '视频';
+		return 'video';
 	}
 	if (strpos($tablename,'list')>0){
-		return '栏目';
+		return 'Column';
 	}
 	if (strpos($tablename,'forum')>0){
-		return '评论';
+		return 'comment';
 	}
 	if (strpos($tablename,'admin')>0){
-		return '管理员';
+		return 'administrator';
 	}
 	if (strpos($tablename,'special')>0){
-		return '专题';
+		return 'Topic';
 	}
 	if (strpos($tablename,'user')>0){
-		return '用户';
+		return 'user';
 	}
 	if (strpos($tablename,'slide')>0){
-		return '轮播';
+		return 'Rotation';
 	}	
 	if (strpos($tablename,'link')>0){
-		return '友情链接';
+		return 'Links';
 	}
 	if (strpos($tablename,'cj')>0){
-		return '采集';
+		return 'collection';
 	}	
 	if (strpos($tablename,'tag')>0){
-		return '标签';
+		return 'label';
 	}
 	if (strpos($tablename,'nav')>0){
-		return '导航';
+		return 'navigation';
 	}	
 	if (strpos($tablename,'player')>0){
-		return '播放器';
+		return 'player';
 	}											
 }
 //获取模板编辑名称
 function ff_tpl_name($filename){
 	if('footer.tpl' == $filename){
-	    return '底部公用模板';
+	    return 'Bottom public template';
 	}elseif('header.tpl' == $filename){
-	    return '顶部公用模板';
+	    return 'Top public template';
 	}elseif('index.tpl' == $filename){
-	    return '网站首页模板';
+	    return 'Home template';
 	}elseif('news_detail.tpl' == $filename){
-	    return '文章内容模板';
+	    return 'Article content template';
 	}elseif('news_channel.tpl' == $filename){
-	    return '文章频道列表模板';
+	    return 'Article channel list template';
 	}elseif('news_list.tpl' == $filename){
-	    return '文章列表页模板';
+	    return 'Article list page template';
 	}elseif('news_search.tpl' == $filename){
-	    return '文章搜索模板';
+	    return 'Article search template';
 	}elseif('news_tags.tpl' == $filename){
-	    return '文章标签模板';
+	    return 'Article tag template';
 	}elseif('news_type.tpl' == $filename){
-	    return '文章筛选模板';
+	    return 'Article filter template';
 	}elseif('vod_play.tpl' == $filename){
-	    return '播放页模板';
+	    return 'Play the page template';
 	}elseif('vod_detail.tpl' == $filename){
-	    return '视频内容模板';
+	    return 'Video content template';
 	}elseif('vod_list.tpl' == $filename){
-	    return '视频列表页模板';
+	    return 'Video list page template';
 	}elseif('vod_channel.tpl' == $filename){
-	    return '视频频道列表模板';
+	    return 'Video channel list template';
 	}elseif('vod_search.tpl' == $filename){
-	    return '视频搜索模板';
+	    return 'Video search template';
 	}elseif('vod_tags.tpl' == $filename){
-	    return '视频标签模板';
+	    return 'Video tag template';
 	}elseif('vod_type.tpl' == $filename){
-	    return '视频筛选模板';
+	    return 'Video filtering template';
 	}elseif('vod_rss.tpl' == $filename){
-	    return '视频RSS模板';
+	    return 'Video RSS template';
 	}elseif('special_list.tpl' == $filename){
-	    return '专题列表页模板';
+	    return 'Topic list page template';
 	}elseif('special_detail.tpl' == $filename){
-	    return '专题详请页模板';
+	    return 'Topic page template';
 	}elseif('comment.tpl' == $filename){
-	    return '评论模板';
+	    return 'Comment template';
 	}elseif('guestbook.tpl' == $filename){
-	    return '留言模板';
+	    return 'Message template';
 	}elseif('system.css' == $filename){
-	    return '模板主题样式表';
+	    return 'Template theme style sheet';
 	}elseif('system.js' == $filename){
 	    return 'Javascript文件';
 	}else{
 		if(stristr($filename,'my_')){
-	   	return '自定义模板';
+	   	return 'Custom templates';
 		}elseif(stristr($filename,'map_')){
-	   	return '地图页模板';
+	   	return 'Map page template';
 		}elseif(stristr($filename,'block_')){
-	   	return '区块标签';
+	   	return 'Block label';
 		}elseif(stristr($filename,'wap_')){
-	    return '移动模块模板';
+	    return 'Move the module template';
 		}else{
-	    return '未知文件';
+	    return 'Unknown file';
 		}
 	}
 }

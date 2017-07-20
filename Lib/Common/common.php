@@ -354,7 +354,7 @@ function ff_tag_auto($title,$content){
 function ff_xml_vodname($vodname){
 	$vodname = str_replace(array('【','】','（','）','(',')','{','}'),array('[',']','[',']','[',']','[',']'),$vodname);
 	$vodname = preg_replace('/\[([a-z][A-Z])\]|([a-z][A-Z])版/i','',$vodname);
-	$vodname = preg_replace('/TS清晰版|枪版|抢先版|HD|BD|TV|DVD|VCD|TS|\/版|\[\]/i','',$vodname);
+	$vodname = preg_replace('/TS Clear Edition|Gun version|Preemptive version|HD|BD|TV|DVD|VCD|TS|\/Version|\[\]/i','',$vodname);
 	return trim($vodname);
 }
 // 格式化采集影片主演

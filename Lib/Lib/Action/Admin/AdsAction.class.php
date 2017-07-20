@@ -25,7 +25,7 @@ class AdsAction extends BaseAction{
 		}
 		write_file('./'.C('admin_ads_file').'/'.$data['ads_name'].'.js', t2js(stripslashes(trim($data['ads_content']))) );
 		$this->assign("jumpUrl",'?s=Admin-Ads-Show');
-		$this->success('恭喜您，所有操作已完成！');
+		$this->success('Congratulations, all the operations have been done!');
 	}
 	
 	// 批量操作
@@ -44,7 +44,7 @@ class AdsAction extends BaseAction{
 			  $rs->save($data);
 			}
 		}				
-		$this->success('广告数据更新成功！');
+		$this->success('Ad data update success!');
 	}
 	
 	// 预览广告
@@ -67,7 +67,7 @@ class AdsAction extends BaseAction{
 		$where['ads_id'] = array('eq',$adsid);
 		D("Ads")->ff_delete($where);
 		//
-		$this->success('删除广告成功！');
+		$this->success('Delete ad successful!');
   }					
 }
 ?>
