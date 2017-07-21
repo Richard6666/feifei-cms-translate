@@ -21,8 +21,8 @@
           <input type="text" class="form-control" id="ff-wd" name="wd" placeholder="Search">
           </div>
           <div class="col-sm-3 ff-col-0">
-          	<button type="submit" class="btn btn-default" data-module="vod" data-action="{:ff_url('vod/search',array('name'=>'FFWD'), true)}">搜视频</button>
-        		<button type="submit" class="btn btn-default btn-success" data-module="news" data-action="{:ff_url('news/search',array('name'=>'FFWD'), true)}">搜资讯</button>
+          	<button type="submit" class="btn btn-default" data-module="vod" data-action="{:ff_url('vod/search',array('name'=>'FFWD'), true)}">Search video</button>
+        		<button type="submit" class="btn btn-default btn-success" data-module="news" data-action="{:ff_url('news/search',array('name'=>'FFWD'), true)}">Search information</button>
           </div>
         </div>
       </form>
@@ -55,8 +55,8 @@
     <div class="page-header">
       <h4>
         <span class="glyphicon glyphicon-film ff-text"></span> <a href="{:ff_url_vod_show($feifeilist['list_id'],$feifeilist['list_dir'],1)}">{$feifeilist.list_name}</a>
-        <small class="hidden-xs"><php>$list_extend = json_decode($feifeilist['list_extend'],true);</php><volist name=":explode(',',$list_extend['area'])" id="feifeiarea" offset="0" length="12"><a href="{:ff_url('vod/type',array('id'=>$feifeilist['list_id'],'type'=>'','area'=>urlencode($feifeiarea),'year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifeiarea}</a></volist><a href="{:ff_url('vod/type',array('id'=>$feifeilist['list_id'],'type'=>'','area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">更多</a></small>
-        <small class="pull-right visible-xs"><a href="{:ff_url('vod/type',array('id'=>$feifeilist['list_id'],'type'=>'','area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">更多</a></small>
+        <small class="hidden-xs"><php>$list_extend = json_decode($feifeilist['list_extend'],true);</php><volist name=":explode(',',$list_extend['area'])" id="feifeiarea" offset="0" length="12"><a href="{:ff_url('vod/type',array('id'=>$feifeilist['list_id'],'type'=>'','area'=>urlencode($feifeiarea),'year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifeiarea}</a></volist><a href="{:ff_url('vod/type',array('id'=>$feifeilist['list_id'],'type'=>'','area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">More</a></small>
+        <small class="pull-right visible-xs"><a href="{:ff_url('vod/type',array('id'=>$feifeilist['list_id'],'type'=>'','area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">More</a></small>
       </h4>
     </div>
     <!-- -->
@@ -80,7 +80,7 @@
     </div><!--lg-8end -->
     <div class="col-md-4 ff-col index-right visible-lg visible-md">
       <div class="page-header">
-        <h4><span class="glyphicon glyphicon-signal ff-text"></span> 热播榜</h4>
+        <h4><span class="glyphicon glyphicon-signal ff-text"></span> Hit list</h4>
       </div>
       <ol class="ff-vod-hot">
         <volist name=":ff_mysql_vod('cid:'.$feifeilist['list_id'].';limit:10;cache_name:default;cache_time:default;order:vod_gold desc')" id="feifei"><li>
@@ -103,7 +103,7 @@
 <div class="row">
 	<div class="col-xs-12 ff-col">
   	<div class="page-header">
-      <h4><span class="glyphicon glyphicon-link ff-text"></span> 友情链接</h4>
+      <h4><span class="glyphicon glyphicon-link ff-text"></span> Links</h4>
     </div>
     <p class="ff-link">
     <volist name=":ff_mysql_link('limit:20;cache_name:default;cache_time:default;order:link_order;sort:asc')" id="feifei"><a href="{$feifei.link_url}" target="_blank">{$feifei.link_name}</a></volist>

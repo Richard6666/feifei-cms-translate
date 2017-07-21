@@ -1,62 +1,62 @@
 <switch name="list_name">
-<case value="电影">
+<case value="the film">
 	{$vod_state}
 </case>
-<case value="电视剧">
+<case value="TV series">
 	<eq name="vod_isend" value="1">
     <gt name="vod_total" value="0">
-      {$vod_total}集全
+      {$vod_total}Set all
     <else/>
-      {$vod_continu|default='全'}集
+      {$vod_continu|default='all'}set
     </gt>
   <else/>
     <if condition="$vod_continu eq $vod_total">
       <gt name="vod_total" value="0">
-        {$vod_total}集全
+        {$vod_total}Set all
       <else/>
-        {$vod_continu|default='全'}集
+        {$vod_continu|default='all'}set
       </gt>
     <elseif condition="$vod_continu lt $vod_total"/>
     	<gt name="vod_continu" value="0">
-        更新至{$vod_continu}集
+        Update to{$vod_continu}set
       <else/>
-        {$vod_continu|default='全'}集
+        {$vod_continu|default='all'}set
       </gt>
     <elseif condition="$vod_continu gt $vod_total"/>
-    	全{$vod_continu|default=''}集
+    	all{$vod_continu|default=''}set
     </if>
   </eq>
 </case>
-<case value="动漫">
+<case value="Anime">
 	<eq name="vod_isend" value="1">
     <gt name="vod_total" value="0">
-      {$vod_total}集全
+      {$vod_total}Set all
     <else/>
-      {$vod_continu|default='全'}集
+      {$vod_continu|default='all'}set
     </gt>
   <else/>
     <if condition="$vod_continu eq $vod_total">
       <gt name="vod_total" value="0">
-        {$vod_total}集全
+        {$vod_total}Set all
       <else/>
-        {$vod_continu|default='全'}集
+        {$vod_continu|default='全'}set
       </gt>
     <elseif condition="$vod_continu lt $vod_total"/>
     	<gt name="vod_continu" value="0">
-        更新至{$vod_continu}集
+        Update to{$vod_continu}set
       <else/>
-        {$vod_continu|default='全'}集
+        {$vod_continu|default='全'}set
       </gt>
     <elseif condition="$vod_continu gt $vod_total"/>
-    	全{$vod_continu|default=''}集
+    	全{$vod_continu|default=''}set
     </if>
   </eq>
 </case>
-<case value="综艺">
+<case value="Variety">
 	<if condition="strlen($vod_continu) gt 6">
     {$vod_continu|strtotime|date='Y-m-d',###}
   <else/>
-    {$vod_continu}期
+    {$vod_continu}period
   </if>
 </case>
 <default />

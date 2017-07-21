@@ -12,7 +12,7 @@
 <item>
 <title>{$vod_name|htmlspecialchars}{$vod_title|htmlspecialchars}{$feifeison.playname}</title> 
 <link>{$site_url}{:ff_url_vod_play($list_id,$list_dir,$vod_id,$vod_ename,$feifei['player_sid'],$pid)}</link>
-<description><![CDATA["{$vod_name|htmlspecialchars}{$feifeison.title}在线观看地址{$site_url}{:ff_url_vod_play($list_id,$list_dir,$vod_id,$vod_ename,$feifei['player_sid'],$pid)}"]]></description>
+<description><![CDATA["{$vod_name|htmlspecialchars}{$feifeison.title}Watch the address online{$site_url}{:ff_url_vod_play($list_id,$list_dir,$vod_id,$vod_ename,$feifei['player_sid'],$pid)}"]]></description>
 <pubDate>{$vod_addtime|date='Y-m-d H:i:s',###}</pubDate>
 <category>{$vod_name}</category> 
 <author>{$vod_actor|htmlspecialchars}</author>

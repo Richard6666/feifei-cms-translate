@@ -6,7 +6,7 @@ $totalpages = ff_page_count('special', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>影视专题第{$special_page}页_{$site_name}</title>
+<title>Film and television topics first{$special_page}页_{$site_name}</title>
 <meta name="keywords" content="{$list_keywords}">
 <meta name="description" content="{$list_description}">
 </head>
@@ -17,8 +17,8 @@ $totalpages = ff_page_count('special', 'totalpages');
 	<div class="col-xs-12 ff-col">
   	<div class="page-header">
       <h4>
-        <span class="ff-text">影视专题</span>
-        <small>共有<span class="ff-text">{:ff_page_count('special', 'records')}</span>个专题</small>
+        <span class="ff-text">Film and television topics</span>
+        <small>Altogether<span class="ff-text">{:ff_page_count('special', 'records')}</span>A topic</small>
       </h4>
     </div>
   </div>
@@ -41,10 +41,10 @@ $totalpages = ff_page_count('special', 'totalpages');
     <div class="text-center">
       <ul class="pager">
         <gt name="special_page" value="1">
-          <li><a href="{:ff_url('special/show', array('p'=>($special_page-1)), true)}">上一页</a></li>
+          <li><a href="{:ff_url('special/show', array('p'=>($special_page-1)), true)}">Previous page</a></li>
         </gt>
         <lt name="special_page" value="$totalpages">
-          <li><a href="{:ff_url('special/show', array('p'=>($special_page+1)), true)}">下一页</a></li>
+          <li><a href="{:ff_url('special/show', array('p'=>($special_page+1)), true)}">Next page</a></li>
         </lt>
        </ul>
     </div>

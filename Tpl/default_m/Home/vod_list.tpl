@@ -10,7 +10,7 @@ $totalpages = ff_page_count('list', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title><notempty name="list_title">{$list_title}<else/>《{$list_name}》</notempty>第{$list_page}页_{$site_name}</title>
+<title><notempty name="list_title">{$list_title}<else/>《{$list_name}》</notempty>First{$list_page}page_{$site_name}</title>
 <meta name="keywords" content="{$list_keywords}">
 <meta name="description" content="{$list_description}">
 </head>
@@ -19,7 +19,7 @@ $totalpages = ff_page_count('list', 'totalpages');
   <div class="row">
     <div class="col-xs-12 ff-col">
     	<div class="page-header">
-        <h4><span class="glyphicon glyphicon-film ff-text"></span> <a href="{:ff_url_vod_show($list_id,$list_dir,1)}">{$list_name}</a> <small>共有<span class="ff-text">{:ff_page_count('list', 'records')}</span>个影片 第<span class="ff-text">{$list_page}</span>页</small> <a class="btn btn-success btn-sm pull-right" href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}"><span class="glyphicon glyphicon-th-list"></span> 筛选</a></h4>
+        <h4><span class="glyphicon glyphicon-film ff-text"></span> <a href="{:ff_url_vod_show($list_id,$list_dir,1)}">{$list_name}</a> <small>Altogether<span class="ff-text">{:ff_page_count('list', 'records')}</span>A movie First<span class="ff-text">{$list_page}</span>page</small> <a class="btn btn-success btn-sm pull-right" href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}"><span class="glyphicon glyphicon-th-list"></span> filter</a></h4>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -45,10 +45,10 @@ $totalpages = ff_page_count('list', 'totalpages');
       <div class="col-xs-12 ff-col text-center">
         <ul class="pager">
           <gt name="list_page" value="1">
-            <li><a href="{:ff_url_vod_show($list_id,$list_dir,$list_page-1)}">上一页</a></li>
+            <li><a href="{:ff_url_vod_show($list_id,$list_dir,$list_page-1)}">Previous page</a></li>
           </gt>
           <lt name="list_page" value="$totalpages">
-            <li><a href="{:ff_url_vod_show($list_id,$list_dir,$list_page+1)}">下一页</a></li>
+            <li><a href="{:ff_url_vod_show($list_id,$list_dir,$list_page+1)}">Next page</a></li>
           </lt>
          </ul> 
       </div>

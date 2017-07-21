@@ -6,7 +6,7 @@ $totalpages = ff_page_count('newstag', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>《{$tag_tag}{$tag_type}{$tag_name}》第{$tag_page}页_{$site_name}</title>
+<title>《{$tag_tag}{$tag_type}{$tag_name}》First{$tag_page}page_{$site_name}</title>
 <meta name="keywords" content="{$list_keywords}">
 <meta name="description" content="{$list_description}">
 </head>
@@ -16,8 +16,8 @@ $totalpages = ff_page_count('newstag', 'totalpages');
 <div class="row">
   <div class="col-md-8 ff-col">
     <div class="page-header">
-      <h4><span class="glyphicon glyphicon-pencil ff-text"></span> 话题：{$tag_type}{$tag_tag}{$tag_name}
-      <small>共有<span class="ff-text">{:ff_page_count('newstag', 'records')}</span>篇内容</small>
+      <h4><span class="glyphicon glyphicon-pencil ff-text"></span> topic:{$tag_type}{$tag_tag}{$tag_name}
+      <small>Altogether<span class="ff-text">{:ff_page_count('newstag', 'records')}</span>Articles</small>
     	</h4>
     </div>
     <volist name="list" id="feifei">
@@ -45,10 +45,10 @@ $totalpages = ff_page_count('newstag', 'totalpages');
       <div class="text-center">
         <ul class="pager">
           <gt name="list_page" value="1">
-            <li><a href="{:ff_url('news/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page-1), true)}">上一页</a></li>
+            <li><a href="{:ff_url('news/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page-1), true)}">Previous page</a></li>
           </gt>
           <lt name="list_page" value="$totalpages">
-            <li><a href="{:ff_url('news/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page+1), true)}">下一页</a></li>
+            <li><a href="{:ff_url('news/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page+1), true)}">Next page</a></li>
           </lt>
          </ul>
       </div>
@@ -56,7 +56,7 @@ $totalpages = ff_page_count('newstag', 'totalpages');
   </div><!-- -->
   <div class="col-xs-12 ff-col">
     <div class="page-header ff-border-none">
-      <h4><span class="glyphicon glyphicon-signal ff-text"></span> 热门话题</h4>
+      <h4><span class="glyphicon glyphicon-signal ff-text"></span> hot topic</h4>
     </div>
     <ul class="row list-unstyled text-center news-item-type">
     <volist name=":ff_mysql_tags('limit:21;cid:4;group:tag_name,tag_list;cache_name:default;cache_time:default;order:tag_count;sort:desc')" id="feifei" mod="7">

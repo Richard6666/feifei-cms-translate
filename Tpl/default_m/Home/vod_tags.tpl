@@ -6,7 +6,7 @@ $totalpages = ff_page_count('vodtags', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>《{$tag_tag}{$tag_type}{$tag_name}》第{$tag_page}页_{$site_name}</title>
+<title>《{$tag_tag}{$tag_type}{$tag_name}》First{$tag_page}page_{$site_name}</title>
 <meta name="keywords" content="{$list_keywords}">
 <meta name="description" content="{$list_description}">
 </head>
@@ -16,8 +16,8 @@ $totalpages = ff_page_count('vodtags', 'totalpages');
 	<div class="col-xs-12 ff-col">
   	<div class="page-header">
       <h4>
-        <span class="ff-text">话题：{$tag_type}{$tag_tag}{$tag_name}</span>
-        <small>共有<span class="ff-text">{:ff_page_count('vodtags', 'records')}</span>个影片 第<span class="ff-text">{$tag_page}</span>页</small>
+        <span class="ff-text">topic:{$tag_type}{$tag_tag}{$tag_name}</span>
+        <small>Altogether<span class="ff-text">{:ff_page_count('vodtags', 'records')}</span>A movie First<span class="ff-text">{$tag_page}</span>page</small>
       </h4>
     </div>
 	</div>
@@ -42,10 +42,10 @@ $totalpages = ff_page_count('vodtags', 'totalpages');
   	<gt name="totalpages" value="1">
       <ul class="pager">
       <gt name="tag_page" value="1">
-      	<li><a href="{:ff_url('vod/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page-1), true)}">上一页</a></li>
+      	<li><a href="{:ff_url('vod/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page-1), true)}">Previous page</a></li>
       </gt>
       <lt name="tag_page" value="$totalpages">
-      	<li><a href="{:ff_url('vod/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page+1), true)}">下一页</a></li>
+      	<li><a href="{:ff_url('vod/tags', array('name'=>urlencode($tag_name),'p'=>$tag_page+1), true)}">Next page</a></li>
       </lt>
       </ul> 
     </gt>

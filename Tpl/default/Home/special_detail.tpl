@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>{$special_title|default=$special_name.'－影视专题'}－{$site_name}</title>
+<title>{$special_title|default=$special_name.'- film and television topics'}－{$site_name}</title>
 <meta name="keywords" content="{$special_keywords|default='专题'.$special_name}">
 <meta name="description" content="{$special_description|default=msubstr(h($special_content),0,100)}">
 </head>
@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-xs-12 ff-col">
     <div class="page-header">
-      <h4><span class="ff-text">专题：{$special_name}</span></h4> 
+      <h4><span class="ff-text">Topics:{$special_name}</span></h4> 
     </div>
     <div class="media">
       <a class="pull-left" href="javascript:;">
@@ -39,7 +39,7 @@ if($special_tag_name){
 <div class="row">
   <div class="col-md-8 ff-col">
   	<div class="page-header">
-      <h4><span class="glyphicon glyphicon-heart-empty ff-text"></span> 相关影片</h4>
+      <h4><span class="glyphicon glyphicon-heart-empty ff-text"></span> Related videos</h4>
     </div>
     <ul class="list-unstyled">
       <volist name="special_vods" id="feifei">
@@ -61,18 +61,18 @@ if($special_tag_name){
     <div class="clearfix ff-clearfix"></div>
     <div class="page-header">
       <h4>
-      	<small class="pull-right"><a class="text-muted" href="{:ff_url('forum/special', array('cid'=>$special_id), true)}" target="_blank">查看所有评论</a></small>
-      	<span class="glyphicon glyphicon-th-list ff-text"></span> 发表评论
+      	<small class="pull-right"><a class="text-muted" href="{:ff_url('forum/special', array('cid'=>$special_id), true)}" target="_blank">View all comments</a></small>
+      	<span class="glyphicon glyphicon-th-list ff-text"></span> Comment
       </h4>
     </div>
     <div class="ff-forum" id="ff-forum" data-id="{$special_id}" data-sid="{$site_sid}">
-      评论加载中...
+      Comment loading...
     </div>
   </div>
   <div class="clearfix ff-clearfix visible-xs visible-sm"></div>
  	<div class="col-md-4 ff-col">
   	<div class="page-header">
-      <h4><span class="glyphicon glyphicon-signal ff-text"></span> 相关资讯</h4>
+      <h4><span class="glyphicon glyphicon-signal ff-text"></span> relevant information</h4>
     </div>
     <notempty name="special_news">
     <ol class="news-item-hot">

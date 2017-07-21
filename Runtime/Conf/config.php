@@ -20,14 +20,14 @@ return array (
   'site_description' => 'Efforts to build Feifei video navigation system for the best PHP video system!',
   'site_email' => '110119@qq.com',
   'site_copyright' => 'This site is a non-profit site, all the content of this site are from the Internet-related sites automatically search and collect information, the relevant link has been marked with the source.',
-  'site_hot' => '热门影片1
+  'site_hot' => 'Popular video 1
 Hot Videos 2
 Popular videos 3
 Top movies 4
 Popular videos 5
 Popular video 6',
   'site_tongji' => '<script language="javascript" type="text/javascript" src="http://js.users.51.la/14834816.js"></script>',
-  'site_icp' => 'ICP备2010111号',
+  'site_icp' => 'ICP prepared by 2010111',
   'admin_ads_file' => 'Runtime/Js',
   'admin_order_type' => 'id',
   'url_router_on' => '0',

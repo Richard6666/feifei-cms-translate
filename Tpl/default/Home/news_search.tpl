@@ -20,7 +20,7 @@ $totalpages = ff_page_count('search', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>《{$search_name}{$search_remark}{$search_wd}》第{$search_page}页_{$site_name}</title>
+<title>《{$search_name}{$search_remark}{$search_wd}"The first{$search_page}page_{$site_name}</title>
 <meta name="keywords" content="{$list_keywords}">
 <meta name="description" content="{$list_description}">
 </head>
@@ -30,8 +30,8 @@ $totalpages = ff_page_count('search', 'totalpages');
 <div class="row">
 	<div class="col-md-8 ff-col">
   	<div class="page-header">
-      <h4><span class="glyphicon glyphicon-pencil ff-text"></span> 搜索结果：{$search_name}{$search_wd}
-        <small>共有<span class="ff-text">{:ff_page_count('search', 'records')}</span>篇内容 第<span class="ff-text">{$search_page}</span>页</small>
+      <h4><span class="glyphicon glyphicon-pencil ff-text"></span> search results:{$search_name}{$search_wd}
+        <small>Altogether<span class="ff-text">{:ff_page_count('search', 'records')}</span>Articles First<span class="ff-text">{$search_page}</span>page</small>
       </h4>
     </div>
     <volist name="list" id="feifei">
@@ -66,11 +66,11 @@ $totalpages = ff_page_count('search', 'totalpages');
         <ul class="pager visible-xs">
           <gt name="search_page" value="1">
         	<php>$params['p'] = $search_page-1</php>
-        	<li><a href="{:ff_url('news/search', $params, true)}">上一页</a></li>
+        	<li><a href="{:ff_url('news/search', $params, true)}">Previous page</a></li>
           </gt>
           <lt name="search_page" value="$totalpages">
             <php>$params['p'] = $search_page+1</php>
-            <li><a href="{:ff_url('news/search', $params, true)}">下一页</a></li>
+            <li><a href="{:ff_url('news/search', $params, true)}">Next page</a></li>
           </lt>
        </ul>
       </div>
@@ -78,7 +78,7 @@ $totalpages = ff_page_count('search', 'totalpages');
   </div>
   <div class="col-md-4 ff-col">
   	<div class="page-header ff-border-none">
-      <h4><span class="glyphicon glyphicon-signal ff-text"></span> 热门资讯</h4>
+      <h4><span class="glyphicon glyphicon-signal ff-text"></span> Top information</h4>
     </div>
     <ol class="news-item-hot">
       <volist name=":ff_mysql_news('limit:10;cache_name:default;cache_time:default;order:news_hits;sort:desc')" id="feifei"><li><a href="{:ff_url_news_read($feifei['list_id'],$feifei['list_dir'],$feifei['news_id'],$feifei['news_name'],$feifei['news_jumpurl'],1)}">{$feifei.news_name}</a></li></volist>

@@ -15,7 +15,7 @@
       <div class="clearfix"></div>
       <ul class="list-inline">
         <li class="col-md-4">
-        	<h4 class="ff-text">按类型</h4>
+        	<h4 class="ff-text">By type</h4>
           <ul class="list-inline">
           	<volist name=":explode(',',$list_extend['type'])" id="feifei" offset="0" length="12">
           	<li class="col-md-3"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>urlencode($feifei),'area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifei}</a></li>
@@ -23,16 +23,16 @@
           </ul>
         </li>
         <li class="col-md-4">
-        	<h4 class="ff-text">按年份</h4>
+        	<h4 class="ff-text">By year</h4>
           <ul class="list-inline">
           	<volist name=":explode(',',$list_extend['year'])" id="feifei" offset="0" length="11">
           	<li class="col-md-3"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>$feifei,'star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifei}</a></li>
             </volist>
-            <li class="col-md-3"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>'19901999','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">更早</a></li>
+            <li class="col-md-3"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>'19901999','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">Earlier</a></li>
           </ul>
         </li>
         <li class="col-md-4">
-        	<h4 class="ff-text">按地区</h4>
+        	<h4 class="ff-text">By region</h4>
           <ul class="list-inline">
           	<volist name=":explode(',',$list_extend['area'])" id="feifei" offset="0" length="12">
           	<li class="col-md-3"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>urlencode($feifei),'year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifei}</a></li>
@@ -57,8 +57,8 @@
     <div class="page-header">
       <h4>
       <span class="glyphicon glyphicon-film ff-text"></span>
-      {:str_replace(array('国','台湾','大陆','香港','日本'),array('剧','台剧','国产剧','港剧','日剧'),$feifeilist)}
-      <span class="pull-right"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>urlencode($feifeilist),'year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}" class="btn btn-success btn-sm">更多</a></span>
+      {:str_replace(array('country','Taiwan','mainland','Hong Kong','Japan'),array('drama','Drama','Domestic drama','Hong Kong drama','Japanese drama'),$feifeilist)}
+      <span class="pull-right"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>urlencode($feifeilist),'year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}" class="btn btn-success btn-sm">More</a></span>
       </h4>
     </div>
     <!-- -->
@@ -82,7 +82,7 @@
     </div><!--lg-8end -->
     <div class="col-md-4 ff-col index-right visible-lg visible-md">
       <div class="page-header">
-        <h4><span class="glyphicon glyphicon-signal ff-text"></span> 热播榜</h4>
+        <h4><span class="glyphicon glyphicon-signal ff-text"></span> Hit list</h4>
       </div>
       <ol class="ff-vod-hot">
         <volist name=":ff_mysql_vod('field:list_id,list_dir,vod_id,vod_cid,vod_name,vod_ename,vod_jumpurl,vod_hits;cid:'.$list_id.';area:'.$feifeilist.';limit:13;cache_name:default;cache_time:default;order:vod_hits desc')" id="feifei"><li>

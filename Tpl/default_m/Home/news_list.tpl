@@ -5,7 +5,7 @@ $totalpages = ff_page_count('list', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>《<notempty name="list_title">{$list_title}<else/>{$list_name}</notempty>》第{$list_page}页_{$site_name}</title>
+<title>《<notempty name="list_title">{$list_title}<else/>{$list_name}</notempty>》First{$list_page}page_{$site_name}</title>
 <meta name="keywords" content="{$list_keywords}">
 <meta name="description" content="{$list_description}">
 </head>
@@ -15,7 +15,7 @@ $totalpages = ff_page_count('list', 'totalpages');
 	<div class="col-xs-12 ff-col">
   	<div class="page-header">
       <h4><span class="glyphicon glyphicon-pencil ff-text"></span> <a href="{:ff_url_news_show($list_id,$list_dir,1)}">{$list_name}</a>
-      <small>共有<span class="ff-text">{:ff_page_count('list', 'records')}</span>篇内容</small>
+      <small>Altogether<span class="ff-text">{:ff_page_count('list', 'records')}</span>Articles</small>
       </h4>
     </div>
     <volist name="list" id="feifei">
@@ -43,10 +43,10 @@ $totalpages = ff_page_count('list', 'totalpages');
       <div class="text-center">
         <ul class="pager">
           <gt name="list_page" value="1">
-            <li><a href="{:ff_url_news_show($list_id,$list_dir,$list_page-1)}">上一页</a></li>
+            <li><a href="{:ff_url_news_show($list_id,$list_dir,$list_page-1)}">Previous page</a></li>
           </gt>
           <lt name="list_page" value="$totalpages">
-            <li><a href="{:ff_url_news_show($list_id,$list_dir,$list_page+1)}">下一页</a></li>
+            <li><a href="{:ff_url_news_show($list_id,$list_dir,$list_page+1)}">Next page</a></li>
           </lt>
          </ul>
       </div>
@@ -54,7 +54,7 @@ $totalpages = ff_page_count('list', 'totalpages');
   </div><!-- -->
   <div class="col-xs-12 ff-col">
   	<div class="page-header ff-border-none">
-      <h4><span class="glyphicon glyphicon-th-list ff-text"></span> 相关分类</h4>
+      <h4><span class="glyphicon glyphicon-th-list ff-text"></span> Related classification</h4>
     </div>
     <ul class="row list-unstyled text-center news-item-type">
       <volist name=":explode(',',$list_extend['type'])" id="feifei" offset="0" length='12'>
@@ -65,7 +65,7 @@ $totalpages = ff_page_count('list', 'totalpages');
     </ul>
     <div class="clearfix ff-clearfix"></div>
     <div class="page-header ff-border-none">
-      <h4><span class="glyphicon glyphicon-signal ff-text"></span> 热门{$list_name}</h4>
+      <h4><span class="glyphicon glyphicon-signal ff-text"></span> Popular{$list_name}</h4>
     </div>
     <ol class="news-item-hot">
       <volist name=":ff_mysql_news('cid:'.$list_id.';limit:10;cache_name:default;cache_time:default;order:news_hits;sort:desc')" id="feifei">

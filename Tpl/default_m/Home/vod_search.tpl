@@ -25,7 +25,7 @@ $totalpages = ff_page_count('search', 'totalpages');
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>《{$search_name}{$search_actor}{$search_director}{$search_wd}》第{$search_page}页_{$site_name}</title>
+<title>《{$search_name}{$search_actor}{$search_director}{$search_wd}》First{$search_page}页_{$site_name}</title>
 <meta name="keywords" content="{$search_name}{$search_actor}{$search_director}{$search_wd}">
 <meta name="description" content="{$search_name}{$search_actor}{$search_director}{$search_wd}">
 </head>
@@ -35,7 +35,7 @@ $totalpages = ff_page_count('search', 'totalpages');
 <div class="row">
 	<div class="col-xs-12 ff-col">
   	<div class="page-header">
-      <h4><span class="glyphicon glyphicon-film ff-text"></span> 搜索结果：<span class="ff-text">{$search_name}{$search_actor}{$search_director}{$search_wd}</span> <small>共有<span class="ff-text">{:ff_page_count('search', 'records')}</span>个视频 第<span class="ff-text">{$search_page}</span>页</small></h4>
+      <h4><span class="glyphicon glyphicon-film ff-text"></span> search results:<span class="ff-text">{$search_name}{$search_actor}{$search_director}{$search_wd}</span> <small>Altogether<span class="ff-text">{:ff_page_count('search', 'records')}</span>Video First<span class="ff-text">{$search_page}</span>page</small></h4>
     </div>
   </div>
   <div class="clearfix"></div>
@@ -61,11 +61,11 @@ $totalpages = ff_page_count('search', 'totalpages');
       <ul class="pager">
         <gt name="search_page" value="1">
         	<php>$params['p'] = $search_page-1</php>
-        	<li><a href="{:ff_url('vod/search', $params, true)}">上一页</a></li>
+        	<li><a href="{:ff_url('vod/search', $params, true)}">Previous page</a></li>
         </gt>
         <lt name="search_page" value="$totalpages">
         	<php>$params['p'] = $search_page+1</php>
-        	<li><a href="{:ff_url('vod/search', $params, true)}">下一页</a></li>
+        	<li><a href="{:ff_url('vod/search', $params, true)}">Next page</a></li>
         </lt>
      </ul> 
     </gt>

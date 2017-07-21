@@ -15,7 +15,7 @@
       <div class="clearfix"></div>
       <ul class="list-inline">
         <li class="col-xs-12">
-        	<h4 class="ff-text">按类型</h4>
+        	<h4 class="ff-text">By type</h4>
           <ul class="list-inline">
           	<volist name=":explode(',',$list_extend['type'])" id="feifei" offset="0" length="20">
           	<li><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>urlencode($feifei),'area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifei}</a></li>
@@ -23,16 +23,16 @@
           </ul>
         </li>
         <li class="col-xs-12">
-        	<h4 class="ff-text">按年份</h4>
+        	<h4 class="ff-text">By year</h4>
           <ul class="list-inline">
           	<volist name=":explode(',',$list_extend['year'])" id="feifei" offset="0" length="11">
           	<li><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>$feifei,'star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifei}</a></li>
             </volist>
-            <li><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>'19901999','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">更早</a></li>
+            <li><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>'','year'=>'19901999','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">Earlier</a></li>
           </ul>
         </li>
         <li class="col-xs-12">
-        	<h4 class="ff-text">按地区</h4>
+        	<h4 class="ff-text">By region</h4>
           <ul class="list-inline">
           	<volist name=":explode(',',$list_extend['area'])" id="feifei" offset="0" length="12">
           	<li><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>'','area'=>urlencode($feifei),'year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}">{$feifei}</a></li>
@@ -52,7 +52,7 @@
       <h4>
       <span class="glyphicon glyphicon-film ff-text"></span>
       {:str_replace('片','',$feifeilist)}
-      <span class="pull-right"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>urlencode($feifeilist),'area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}" class="btn btn-success btn-sm">更多</a></span>
+      <span class="pull-right"><a href="{:ff_url('vod/type',array('id'=>$list_id,'type'=>urlencode($feifeilist),'area'=>'','year'=>'','star'=>'','state'=>'','order'=>'hits','p'=>1),true)}" class="btn btn-success btn-sm">More</a></span>
       </h4>
     </div>
     <!-- -->

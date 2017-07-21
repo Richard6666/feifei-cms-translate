@@ -4,8 +4,8 @@ $page_array = $_GET['ff_page_forum'];
 <html lang="zh-cn">
 <head>
 <include file="Home:block_header" />
-<title>{$user_name|htmlspecialchars}发表的评论_{$site_name}</title>
-<meta name="keywords" content="{$user_name}的评论">
+<title>{$user_name|htmlspecialchars}Published comment _{$site_name}</title>
+<meta name="keywords" content="{$user_name}comment of">
 <meta name="description" content="{$forum_content|msubstr=0,100,'utf-8',true}">
 </head>
 <body><include file="Home:header" />
@@ -15,7 +15,7 @@ $page_array = $_GET['ff_page_forum'];
   <div class="page-header">
     <h4>
     	<span class="glyphicon glyphicon-heart-empty ff-text"></span>
-    	<a href="{:ff_url('forum/detail', array('id'=>$forum_id), true)}">评论主题</a>
+    	<a href="{:ff_url('forum/detail', array('id'=>$forum_id), true)}">Comment subject</a>
     </h4>
   </div>
 </div>
@@ -30,14 +30,14 @@ $page_array = $_GET['ff_page_forum'];
   	{$forum_content|htmlspecialchars}
   </p>
   <p class="text-center">
-  	<a class="btn btn-default ff-updown" href="javascript:;" data-id="{$forum_id}" data-module="forum" data-type="up" data-toggle="tooltip" data-placement="top" title="有用">
-    	<span class="glyphicon glyphicon-thumbs-up"></span> 有用（<span class="ff-updown-tips">{$forum_up}</span>）
+  	<a class="btn btn-default ff-updown" href="javascript:;" data-id="{$forum_id}" data-module="forum" data-type="up" data-toggle="tooltip" data-placement="top" title="it works">
+    	<span class="glyphicon glyphicon-thumbs-up"></span> it works(<span class="ff-updown-tips">{$forum_up}</span>）
     </a>
-    <a class="btn btn-default ff-updown" href="javascript:;" data-id="{$forum_id}" data-module="forum" data-type="down" data-toggle="tooltip" data-placement="top" title="反对">
-    	<span class="glyphicon glyphicon-thumbs-up"></span> 反对（<span class="ff-updown-tips">{$forum_down}</span>）
+    <a class="btn btn-default ff-updown" href="javascript:;" data-id="{$forum_id}" data-module="forum" data-type="down" data-toggle="tooltip" data-placement="top" title="Against">
+    	<span class="glyphicon glyphicon-thumbs-up"></span> Against<span class="ff-updown-tips">{$forum_down}</span>）
     </a>
     <a class="btn btn-default ff-reply" id="ff-reply-{$forum_id}" href="javascript:;" data-id="{$forum_id}">
-    	<span class="glyphicon glyphicon-comment"></span> 回复（<span class="ff-reply-tips">{$forum_reply}</span>）
+    	<span class="glyphicon glyphicon-comment"></span> Reply(<span class="ff-reply-tips">{$forum_reply}</span>）
     </a>
   </p>
 </div>
@@ -50,14 +50,14 @@ $page_array = $_GET['ff_page_forum'];
     <input name="forum_sid" type="hidden" value="2" />
     <input name="forum_pid" type="hidden" value="{$forum_id}" />
     <div class="form-group">
-      <textarea name="forum_content" class="form-control" rows="5" placeholder="吐槽......"></textarea>
+      <textarea name="forum_content" class="form-control" rows="5" placeholder="Make complaints......"></textarea>
     </div>
     <div class="form-group ff-submit text-right">
       <label>
-      	<input class="form-control input-sm text-center ff-vcode ff-vcode-input" name="forum_vcode" maxlength="4" type="text" placeholder="验证码">
+      	<input class="form-control input-sm text-center ff-vcode ff-vcode-input" name="forum_vcode" maxlength="4" type="text" placeholder="Verification code">
       </label>
       <label>
-    		<button type="submit" class="btn btn-default btn-sm">发表看法</button>
+    		<button type="submit" class="btn btn-default btn-sm">To express their views</button>
       </label>
     </div>
     <div class="form-group ff-alert clear">
@@ -68,7 +68,7 @@ $page_array = $_GET['ff_page_forum'];
 <div class="clear"></div>
 <div class="col-xs-10 col-xs-offset-1">
   <div class="page-header">
-    <h4><span class="glyphicon glyphicon-heart-empty ff-text"></span> 回复评论</h4>
+    <h4><span class="glyphicon glyphicon-heart-empty ff-text"></span> Reply to comment</h4>
   </div>
 </div>
 <div class="clear"></div>
@@ -83,16 +83,16 @@ $page_array = $_GET['ff_page_forum'];
       <p class="forum-title">
         {$feifei.user_name|htmlspecialchars}
         <small>{$feifei.forum_addtime|date='Y/m/d',###}</small>
-        <a class="btn btn-link btn-xs pull-right ff-report forum-report" id="ff-report-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" title="举报"><span class="glyphicon glyphicon-flag"></span> 举报</a>
+        <a class="btn btn-link btn-xs pull-right ff-report forum-report" id="ff-report-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" title="Report"><span class="glyphicon glyphicon-flag"></span> Report</a>
       </p>
       <p class="forum-content">
       	{$feifei.forum_content|htmlspecialchars|msubstr=0,300}
       </p>
       <p class="forum-btn">
-        <a class="btn btn-default btn-xs ff-updown" id="ff-up-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" data-module="forum" data-type="up" data-toggle="tooltip" data-placement="top" title="支持"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="ff-updown-tips">{$feifei.forum_up}</span></a>
-        <a class="btn btn-default btn-xs ff-updown" id="ff-down-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" data-module="forum" data-type="down" data-toggle="tooltip" data-placement="top" title="反对"><span class="glyphicon glyphicon-thumbs-down"></span> <span class="ff-updown-tips">{$feifei.forum_down}</span></a>
-        <a class="btn btn-default btn-xs ff-reply" id="ff-reply-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" data-toggle="collapse" data-target="#forum-reply-{$feifei.forum_id}" title="回复"><span class="glyphicon glyphicon-comment"></span> <span class="ff-reply-tips">{$feifei.forum_reply}</span></a>
-        <a class="btn btn-default btn-xs ff-reply-read forum-reply-{$feifei.forum_reply}" href="{:ff_url('forum/detail', array('id'=>$feifei['forum_id']), true)}" target="_blank" title="查看回复"><span class="glyphicon glyphicon-align-right"></span> 查看回复</a>
+        <a class="btn btn-default btn-xs ff-updown" id="ff-up-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" data-module="forum" data-type="up" data-toggle="tooltip" data-placement="top" title="stand by"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="ff-updown-tips">{$feifei.forum_up}</span></a>
+        <a class="btn btn-default btn-xs ff-updown" id="ff-down-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" data-module="forum" data-type="down" data-toggle="tooltip" data-placement="top" title="Against"><span class="glyphicon glyphicon-thumbs-down"></span> <span class="ff-updown-tips">{$feifei.forum_down}</span></a>
+        <a class="btn btn-default btn-xs ff-reply" id="ff-reply-{$feifei.forum_id}" href="javascript:;" data-id="{$feifei.forum_id}" data-toggle="collapse" data-target="#forum-reply-{$feifei.forum_id}" title="Reply"><span class="glyphicon glyphicon-comment"></span> <span class="ff-reply-tips">{$feifei.forum_reply}</span></a>
+        <a class="btn btn-default btn-xs ff-reply-read forum-reply-{$feifei.forum_reply}" href="{:ff_url('forum/detail', array('id'=>$feifei['forum_id']), true)}" target="_blank" title="View reply"><span class="glyphicon glyphicon-align-right"></span> View reply</a>
       </p>
       <p class="collapse forum-reply" id="forum-reply-{$feifei.forum_id}">
       </p>
@@ -111,10 +111,10 @@ $page_array = $_GET['ff_page_forum'];
     <div class="col-xs-12 text-center">
       <ul class="pager">
         <gt name="forum_page" value="1">
-          <li><a href="{:ff_url('forum/detail', array('id'=>$forum_id,'p'=>($forum_page-1)), true)}">上一页</a></li>
+          <li><a href="{:ff_url('forum/detail', array('id'=>$forum_id,'p'=>($forum_page-1)), true)}">Previous page</a></li>
         </gt>
         <lt name="forum_page" value="$page_array['totalpages']">
-          <li><a href="{:ff_url('forum/detail', array('id'=>$forum_id,'p'=>($forum_page+1)), true)}">下一页</a></li>
+          <li><a href="{:ff_url('forum/detail', array('id'=>$forum_id,'p'=>($forum_page+1)), true)}">Next page</a></li>
         </lt>
       </ul> 
     </div>

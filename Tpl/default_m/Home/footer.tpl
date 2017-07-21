@@ -12,8 +12,8 @@
 <div class="container ff-bg ff-footer">
   <div class="row">
     <div class="col-xs-12">
-      <p>网站简介：{$site_description}</p>
-      <p>版权声明：{$site_copyright}</p>
+      <p>Introduction to the website:{$site_description}</p>
+      <p>Copyright Notice:{$site_copyright}</p>
       <p>
         <a href="{:ff_url('map/show',array('id'=>'rss','limit'=>100,'p'=>1),true)}" target="_blank">rss</a>
         <a href="{:ff_url('map/show',array('id'=>'baidu','limit'=>100,'p'=>1),true)}" target="_blank">baidu</a>

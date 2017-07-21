@@ -69,10 +69,10 @@ var feifei = {
 },
 'alert':{
 	'success':function($id, $tips){
-		$($id).html('<div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>成功！</strong>'+$tips+'</label>');
+		$($id).html('<div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>success!</strong>'+$tips+'</label>');
 	},
 	'warning':function($id, $tips){
-		$($id).html('<div class="alert alert-warning fade in"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>警告！</strong>'+$tips+'</label>');
+		$($id).html('<div class="alert alert-warning fade in"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>caveat!</strong>'+$tips+'</label>');
 	}
 },
 'page': {//分页
@@ -111,7 +111,7 @@ var feifei = {
 				location.href = $action.replace('FFWD',encodeURIComponent($wd));
 			}else{
 				$("#ff-wd").focus();
-				$("#ff-wd").attr('data-toggle','tooltip').attr('data-placement','bottom').attr('title','请输入关键字').tooltip('show');
+				$("#ff-wd").attr('data-toggle','tooltip').attr('data-placement','bottom').attr('title','Please enter key words').tooltip('show');
 			}
 			return false;
 		});
@@ -244,7 +244,7 @@ var feifei = {
 							timeout: 5000,
 							dataType:'json',
 							error: function(){
-								$('#ff-raty').attr('title', '网络异常！').tooltip('show');
+								$('#ff-raty').attr('title', 'network anomaly!').tooltip('show');
 							},
 							success: function(json){
 								if(json.status == 1){
@@ -264,7 +264,7 @@ var feifei = {
 	'load': function($max){
 		$count = $("#vod_scenario>dd").length;
 		if($count > 0 && $max>0){
-			var $list = '<li class="col-md-2 col-xs-4"><a href="javascript:;" data-startid="1" data-endid="'+$max+'" class="ff-text">第1-'+$max+'集</a></li>';
+			var $list = '<li class="col-md-2 col-xs-4"><a href="javascript:;" data-startid="1" data-endid="'+$max+'" class="ff-text">First-'+$max+'set</a></li>';
 			for($i=1; $i<$count; $i++){
 				if(($i+$max) > $count){
 					$max_ji = $count;
@@ -272,7 +272,7 @@ var feifei = {
 					$max_ji = $i+$max;
 				}
 				if($i % $max == 0){
-					$list+='<li class="col-md-2 col-xs-4"><a href="javascript:;" data-startid="'+($i+1)+'" data-endid="'+$max_ji+'">第'+($i+1)+'-'+$max_ji+'集</a></li>';
+					$list+='<li class="col-md-2 col-xs-4"><a href="javascript:;" data-startid="'+($i+1)+'" data-endid="'+$max_ji+'">First'+($i+1)+'-'+$max_ji+'set</a></li>';
 				}
 			}
 			$('#vod_scenario_item').html($list);
@@ -301,7 +301,7 @@ var feifei = {
 'share':{//分享
 	'baidu': function(){
 		if($("#ff-share").length ){
-			$("#ff-share").html('<div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>');
+			$("#ff-share").html('<div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="Share to QQ space"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>');
 			window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 		}
 	}
@@ -332,7 +332,7 @@ var feifei = {
 				timeout: 3000,
 				dataType:'json',
 				error: function(){
-					$("#ff-forum").html('评论加载失败');
+					$("#ff-forum").html('Comments failed to load');
 				},
 				success:function(json){
 					if(json.data.forum_type == 'uyan'){
@@ -358,7 +358,7 @@ var feifei = {
 			url: cms.root+'index.php?s=forum-'+$module+'-sid-'+$sid+'-cid-'+$cid+'-p-'+$page,
 			timeout: 3000,
 			error: function(){
-				$("#ff-forum").html('评论加载失败，请刷新...');
+				$("#ff-forum").html('Comments loaded failed, please refresh...');
 			},
 			success:function($html){
 				$("#ff-forum").html($html);
